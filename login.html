@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - Atlas Church Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0A0A0A;
+            --accent-green: #34D399;
+            --text-light: #F0FDF4;
+            --text-muted: #6B7280;
+            --input-bg: #111111;
+            --input-border: #2A2A2A;
+            --font-main: 'Poppins', sans-serif;
+            --font-sub: 'Source Sans 3', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(150.34deg, rgba(13, 31, 26, 0.5) 0%, rgba(12, 21, 16, 0.5) 100%), #000000;
+            color: var(--text-light);
+            font-family: var(--font-sub); 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-main); }
+
+        /* --- BACKGROUND GLOWS --- */
+        .bg-glow-top { position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+        .bg-glow-bottom { position: absolute; bottom: 40px; left: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.05) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+
+        /* --- HEADER LOGO --- */
+        .auth-header {
+            padding: 40px 80px;
+            width: 100%;
+        }
+
+        .logo-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-group img { width: 50px; height: auto; }
+        
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-text h1 { font-size: 32px; line-height: 1; color: #fff; letter-spacing: -0.6px;}
+        .logo-text span { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1.3px; margin-top: 4px; font-weight: 600;}
+
+        /* --- MAIN CONTENT / LOGIN BOX --- */
+        .auth-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: -60px; /* Slight optical adjustment to center perfectly */
+        }
+
+        .auth-title {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        .auth-title h2 {
+            font-size: 48px;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .auth-header-text { margin-bottom: 30px; }
+        .auth-header-text h3 { font-size: 28px; font-weight: 400; color: #F9FAFB; margin-bottom: 8px; }
+        .auth-header-text p { font-size: 13px; color: var(--text-muted); }
+        .auth-header-text a { color: var(--accent-green); text-decoration: none; font-weight: 600; margin-left: 4px; transition: opacity 0.2s;}
+        .auth-header-text a:hover { opacity: 0.8; }
+
+        /* Form Elements */
+        .form-group { margin-bottom: 24px; position: relative;}
+        
+        .form-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 8px;
+        }
+        
+        .form-label a { color: var(--accent-green); text-decoration: none; font-size: 11px; text-transform: none; letter-spacing: 0; font-weight: 400;}
+        .form-label a:hover { text-decoration: underline; }
+
+        .form-input {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: var(--font-sub);
+            font-size: 14px;
+            color: #F9FAFB;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        
+        .form-input::placeholder { color: #3A3A3A; }
+        .form-input:focus { border-color: var(--accent-green); }
+
+        /* The little eye icon for password */
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 39px;
+            cursor: pointer;
+            color: #4B5563;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .checkbox-group input {
+            /* Hiding default checkbox */
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #6B7280;
+            border-radius: 3px;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Custom checkmark when checked */
+        .checkbox-group input:checked {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+        .checkbox-group input:checked::before {
+            content: "✓";
+            color: #052E16;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent-green);
+            color: #052E16;
+            border: none;
+            border-radius: 8px;
+            padding: 13px;
+            font-family: var(--font-sub);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        .btn-submit:hover { opacity: 0.9; }
+
+        /* --- FOOTER --- */
+        footer { background: transparent; padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); font-family: 'Arial', sans-serif; width: 100%;}
+        .footer-links { display: flex; gap: 30px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .auth-header { padding: 30px 20px; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+            .auth-title h2 { font-size: 36px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-top"></div>
+
+    <header class="auth-header">
+        <a href="index.html" class="logo-group">
+            <img src="image_2.png" alt="Atlas Logo">
+            <div class="logo-text">
+                <h1>Atlas</h1>
+                <span>Church Solutions</span>
+            </div>
+        </a>
+    </header>
+
+    <main class="auth-main">
+        
+        <div class="auth-title">
+            <h2>Welcome back. Your ministry is waiting.</h2>
+        </div>
+
+        <div class="auth-container">
+            <div class="auth-header-text">
+                <h3>Sign in</h3>
+                <p>New to Atlas? <a href="signup.html">Create a free account</a></p>
+            </div>
+
+            <form action="#">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="pastor@yourchurch.org" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label">
+                        <label for="password">Password</label>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                    <div class="password-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me for 30 days</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Sign in &rarr;</button>
+            </form>
+        </div>
+    </main>
+
+    <div class="bg-glow-bottom"></div>
+
+    <footer>
+        <div class="footer-copyright">
+            &copy; 2026 Atlas Church Solutions. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="pricing.html">Pricing</a>
+            <a href="#">Help Center</a>
+            <a href="legal.html">Privacy Policy</a>
+            <a href="about.html">About Atlas</a>
+        </div>
+    </footer>
+
+</body>
+</html>

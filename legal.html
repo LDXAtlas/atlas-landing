@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal & Privacy - Atlas Church Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0A0A0A;
+            --accent-green: #5CE1A5;
+            --text-light: #EEF9F3;
+            --text-muted: #6B7280;
+            --font-main: 'Poppins', sans-serif;
+            --font-sub: 'Source Sans 3', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Smooth scrolling for the jump links */
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: linear-gradient(150.34deg, rgba(13, 31, 26, 0.5) 0%, rgba(12, 21, 16, 0.5) 100%), #000000;
+            color: var(--text-light);
+            font-family: var(--font-sub); 
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-main); }
+
+        /* --- NAVIGATION (Reused) --- */
+        nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 40px 80px; width: 100%; max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
+        .header-left img { width: 40px; height: auto; }
+        .header-center-text { display: flex; flex-direction: column; align-items: center; text-align: center; text-decoration: none;}
+        .header-center-text h1 { font-size: 32px; line-height: 1; color: #fff; }
+        .header-center-text span { font-size: 12px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .header-right { display: flex; justify-content: flex-end; }
+        .btn-login { background-color: var(--accent-green); color: #052E16; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 16px; transition: opacity 0.3s ease; }
+        .btn-login:hover { opacity: 0.8; }
+
+        /* --- BACKGROUND GLOWS --- */
+        .bg-glow-top { position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+        .bg-glow-bottom { position: absolute; bottom: 40px; left: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.05) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+
+        /* --- LEGAL PAGE LAYOUT --- */
+        .legal-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 100px;
+            max-width: 1300px;
+            margin: 80px auto 150px;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        /* --- SIDEBAR (JUMP LINKS) --- */
+        .legal-sidebar {
+            position: sticky;
+            top: 60px; 
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        .legal-sidebar h3 {
+            font-size: 14px;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .legal-sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+        
+        .legal-sidebar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 16px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            transition: color 0.2s ease;
+            display: block;
+        }
+        
+        .legal-sidebar a:hover { color: var(--accent-green); }
+
+        /* --- LEGAL CONTENT --- */
+        .legal-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .legal-content h1 {
+            font-size: 48px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+
+        .legal-section {
+            scroll-margin-top: 80px; 
+            margin-bottom: 80px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .legal-section:last-child { border-bottom: none; }
+
+        .legal-section h2 {
+            font-size: 28px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .legal-section h3 {
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            color: #E5E7EB;
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+
+        .legal-section p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+        
+        .legal-section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+        
+        .legal-section li {
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 8px;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: transparent; padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); font-family: 'Arial', sans-serif; }
+        .footer-links { display: flex; gap: 30px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text-light); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .legal-wrapper { flex-direction: column; gap: 40px; }
+            .legal-sidebar { position: relative; top: 0; width: 100%; border-bottom: 1px solid #1F1F1F; padding-bottom: 30px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-top"></div>
+
+    <nav>
+        <div class="header-left"><a href="index.html"><img src="image_2.png" alt="Atlas Logo"></a></div>
+        <a href="index.html" class="header-center-text">
+            <h1>Atlas</h1>
+            <span>Church Solutions</span>
+        </a>
+        <div class="header-right"><a href="login.html" class="btn-login">Log In</a></div>
+    </nav>
+
+    <div class="legal-wrapper">
+        
+        <aside class="legal-sidebar">
+            <h3>Directory</h3>
+            <ul>
+                <li><a href="#subprocessors">List of Subprocessors</a></li>
+                <li><a href="#cookie-policy">Cookie Policy</a></li>
+                <li><a href="#aup">Acceptable Use Policy</a></li>
+                <li><a href="#dpa">Data Processing Agreement</a></li>
+                <li><a href="#tos">Terms of Service</a></li>
+            </ul>
+        </aside>
+
+        <main class="legal-content">
+            <h1>Legal & Privacy Center</h1>
+            
+            <div id="subprocessors" class="legal-section">
+                <h2>List of Subprocessors</h2>
+                <p><strong>Last Updated: [DATE]</strong></p>
+                <p>This is the current list of all third-party service providers ("Subprocessors") who process personal data on behalf of [YOUR COMPANY NAME]. This list is subject to change. [YOUR COMPANY NAME] will notify customers of material changes and provide an opportunity to object to new subprocessors in accordance with applicable data protection laws.</p>
+                
+                <h3>Cloud Infrastructure & Hosting</h3>
+                <ul>
+                    <li><strong>[CLOUD PROVIDER: e.g., Amazon Web Services (AWS)]</strong> - Cloud hosting and data storage</li>
+                    <li><strong>[BACKUP PROVIDER]</strong> - Data backup and disaster recovery</li>
+                </ul>
+
+                <h3>Payment Processing</h3>
+                <ul>
+                    <li><strong>Stripe</strong> - Payment processing and billing (Privacy Policy: https://stripe.com/privacy)</li>
+                </ul>
+
+                <h3>Analytics</h3>
+                <ul>
+                    <li><strong>[ANALYTICS TOOL 1: e.g., Google Analytics]</strong> - Website and product analytics</li>
+                    <li><strong>[ANALYTICS TOOL 2]</strong> - User behavior tracking</li>
+                </ul>
+
+                <h3>Email & Communication</h3>
+                <ul>
+                    <li><strong>[EMAIL SERVICE: e.g., SendGrid]</strong> - Transactional and marketing emails</li>
+                    <li><strong>[CUSTOMER SUPPORT TOOL: e.g., Intercom]</strong> - Customer communication and support</li>
+                </ul>
+
+                <h3>Security & Monitoring</h3>
+                <ul>
+                    <li><strong>[SECURITY TOOL: e.g., Cloudflare]</strong> - DDoS protection and security</li>
+                    <li><strong>[MONITORING TOOL]</strong> - System monitoring and alerting</li>
+                </ul>
+
+                <h3>Development & Operations</h3>
+                <ul>
+                    <li><strong>[CI/CD PLATFORM: e.g., GitHub]</strong> - Code repository and deployment</li>
+                    <li><strong>[LOGGING TOOL: e.g., LogRocket, DataDog]</strong> - Application logging and debugging</li>
+                </ul>
+
+                <p><em>Note: All subprocessors are contractually obligated to protect personal data and comply with data protection laws including GDPR, CCPA, and other applicable regulations.</em></p>
+                <p>For questions about our subprocessors or to object to a new subprocessor, please contact [YOUR PRIVACY EMAIL].</p>
+            </div>
+
+            <div id="cookie-policy" class="legal-section">
+                <h2>Cookie Policy</h2>
+                <p><strong>Last Updated: [DATE]</strong></p>
+                
+                <h3>1. What Are Cookies?</h3>
+                <p>Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit a website or use an app. They are widely used to make websites and apps work more efficiently and to provide information to the website or app owners.</p>
+
+                <h3>2. Types of Cookies We Use</h3>
+                <p>We use the following types of cookies on [YOUR COMPANY NAME]'s website and Services:</p>
+                <ul>
+                    <li><strong>Essential/Necessary Cookies:</strong> These cookies are required for the website to function properly. They enable core functionality such as session management, user authentication, and security features. Without these cookies, the Services cannot operate properly.</li>
+                    <li><strong>Functional Cookies:</strong> These cookies remember your preferences and choices to provide a more personalized experience. For example, they may remember your language preference or theme selection.</li>
+                    <li><strong>Analytical Cookies:</strong> These cookies help us understand how users interact with our website and Services. We use tools such as [LIST YOUR ANALYTICS TOOLS: e.g., Google Analytics, Mixpanel] to collect and analyze usage data. This helps us improve our Services and understand user behavior patterns.</li>
+                </ul>
+
+                <h3>3. Third-Party Cookies</h3>
+                <p>Some cookies are set by third-party services we use, including: (a) Google Analytics for web analytics; (b) [OTHER THIRD-PARTY SERVICES]; (c) Advertising partners for retargeting and marketing. These third parties have their own cookie policies, and we are not responsible for their use of cookies.</p>
+
+                <h3>4. How to Control Cookies</h3>
+                <p>You can control and manage cookies in several ways: (a) Browser Settings: Most browsers allow you to refuse cookies or alert you when a cookie is being sent. Instructions for controlling cookies in popular browsers can be found at [www.allaboutcookies.org]; (b) Opt-Out Tools: You can opt-out of Google Analytics tracking by installing the Google Analytics Opt-Out Browser Add-on; (c) Do Not Track: If your browser supports Do Not Track signals, you can enable this feature (though we do not currently respond to DNT signals).</p>
+
+                <h3>5. Impact of Disabling Cookies</h3>
+                <p>Please note that disabling cookies may impact the functionality of our Services. Essential cookies cannot be disabled without affecting your ability to use certain features.</p>
+
+                <h3>6. Cookie List</h3>
+                <p>[CUSTOMIZE: Provide a detailed list of all cookies used, including name, type, purpose, duration, and provider. Example:<br>
+                - Session ID (Essential) - Maintains user session - Duration: Session - Set by [YOUR COMPANY]<br>
+                - User Preferences (Functional) - Remembers user theme/language - Duration: 1 year - Set by [YOUR COMPANY]<br>
+                - _ga (Analytical) - Google Analytics tracking - Duration: 2 years - Set by Google Analytics]</p>
+
+                <h3>7. Changes to This Cookie Policy</h3>
+                <p>[YOUR COMPANY NAME] may update this Cookie Policy at any time. We will notify you of material changes by updating the date at the top of this policy.</p>
+
+                <h3>8. Contact Us</h3>
+                <p>If you have questions about this Cookie Policy, please contact us at [YOUR EMAIL].</p>
+            </div>
+
+            <div id="aup" class="legal-section">
+                <h2>Acceptable Use Policy</h2>
+                <p><strong>Last Updated: [DATE]</strong></p>
+
+                <h3>1. Purpose</h3>
+                <p>This Acceptable Use Policy ("AUP") applies to all users of [YOUR COMPANY NAME]'s Services. The purpose of this policy is to ensure that our Services are used in a responsible, legal, and ethical manner that does not harm [YOUR COMPANY NAME], other users, or third parties.</p>
+
+                <h3>2. Prohibited Activities</h3>
+                <p>You agree not to use the Services for: (a) Any unlawful purpose or activity that violates local, state, national, or international law; (b) Harassment, threats, intimidation, or abusive behavior directed at any individual or group; (c) Transmission of spam, unsolicited commercial communications, or mass mailings; (d) Phishing, social engineering, or fraudulent activities; (e) Hacking, cracking, or attempting to gain unauthorized access to the Services or other systems; (f) Disrupting the normal flow of dialog or interfering with the Services' infrastructure; (g) Intellectual property infringement, including copyright, trademark, or trade secret violations.</p>
+
+                <h3>3. Prohibited Content</h3>
+                <p>You agree not to upload, transmit, or create content that: (a) Is illegal, obscene, profane, defamatory, or libelous; (b) Contains malware, viruses, worms, or other malicious code; (c) Violates anyone's privacy or confidentiality; (d) Infringes on intellectual property rights; (e) Promotes illegal activities, violence, or discrimination; (f) Contains child sexual abuse material.</p>
+
+                <h3>4. Scraping and Automated Access</h3>
+                <p>You agree not to: (a) Scrape, crawl, or systematically access our Services without prior written permission; (b) Use automated tools or bots to access the Services in a manner that strains our infrastructure; (c) Access the Services using methods other than the publicly supported interfaces; (d) Bypass any authentication mechanisms or rate limiting.</p>
+
+                <h3>5. Resource Abuse</h3>
+                <p>You agree not to: (a) Use the Services for cryptocurrency mining or similar resource-intensive activities; (b) Conduct denial-of-service (DoS) or distributed denial-of-service (DDoS) attacks; (c) Use the Services as a proxy or VPN service; (d) Monopolize resources or use the Services in a manner that negatively impacts other users.</p>
+
+                <h3>6. Reverse Engineering</h3>
+                <p>You agree not to: (a) Reverse engineer, decompile, or disassemble any portion of the Services; (b) Attempt to derive or discover the source code, algorithms, or business logic underlying the Services; (c) Create derivative works based on the Services without authorization.</p>
+
+                <h3>7. Enforcement</h3>
+                <p>[YOUR COMPANY NAME] reserves the right to: (a) Monitor user activity for violations of this AUP; (b) Suspend or terminate service for users in violation of this policy; (c) Report illegal activity to law enforcement; (d) Take legal action to protect its rights and the rights of other users; (e) Pursue damages and recovery of costs incurred due to violations.</p>
+
+                <h3>8. Reporting Violations</h3>
+                <p>If you encounter content or behavior that violates this AUP, please report it to [YOUR ABUSE EMAIL]. We will investigate all reports promptly.</p>
+
+                <h3>9. No Obligation to Monitor</h3>
+                <p>While [YOUR COMPANY NAME] does not have an obligation to monitor user activity, we reserve the right to do so and take action as appropriate.</p>
+
+                <h3>10. Changes to This Policy</h3>
+                <p>[YOUR COMPANY NAME] may update this AUP at any time. Your continued use of the Services constitutes acceptance of updates.</p>
+            </div>
+
+            <div id="dpa" class="legal-section">
+                <h2>Data Processing Agreement</h2>
+                <p><strong>Last Updated: [DATE]</strong></p>
+
+                <h3>1. Scope and Purpose</h3>
+                <p>This Data Processing Agreement ("DPA") is entered into between [YOUR COMPANY NAME] ("Service Provider") and the Customer. This DPA applies when Customer is a controller of personal data and Service Provider processes such personal data on behalf of the Customer in the course of providing the Services. This DPA is supplementary to the Master Services Agreement/Terms of Service between the parties.</p>
+
+                <h3>2. Definitions</h3>
+                <p>"Personal Data" means any information relating to an identified or identifiable natural person. "Processing" means any operation performed on Personal Data. "Data Subject" means the individual to whom Personal Data relates. "Data Protection Laws" means the GDPR, CCPA, LGPD, and other applicable privacy laws.</p>
+
+                <h3>3. Data Processor Obligations</h3>
+                <p>Service Provider agrees to: (a) Process Personal Data only on documented instructions from the Customer; (b) Ensure that persons authorized to process Personal Data are subject to confidentiality or under an appropriate legal obligation of confidentiality; (c) Implement appropriate technical and organizational measures to ensure a level of security appropriate to the risk; (d) Implement measures to ensure the confidentiality, integrity, availability and resilience of processing systems and services.</p>
+
+                <h3>4. Sub-processors</h3>
+                <p>Service Provider shall not engage sub-processors without prior specific or general written authorization from Customer. Service Provider shall: (a) inform Customer of any new or replacement sub-processors; (b) give Customer the opportunity to object to the engagement of new sub-processors; (c) ensure sub-processors are bound by data protection obligations equivalent to those in this DPA.</p>
+
+                <h3>5. Data Subject Rights</h3>
+                <p>Service Provider shall, taking into account the nature of processing, assist Customer by appropriate technical and organizational measures in fulfilling the Customer's obligation to respond to Data Subject rights requests, including rights of access, rectification, erasure, restriction, portability, and objection.</p>
+
+                <h3>6. Assistance with Compliance</h3>
+                <p>Service Provider shall assist Customer with compliance with Articles 32-36 of the GDPR, including: (a) assisting with Data Protection Impact Assessments; (b) assisting with notifying supervisory authorities and Data Subjects in case of a Personal Data breach; (c) making available to Customer all information necessary to demonstrate compliance with GDPR obligations.</p>
+
+                <h3>7. Data Security</h3>
+                <p>Service Provider implements and maintains: (a) encryption of Personal Data in transit (TLS/SSL) and at rest; (b) access controls limiting access to authorized personnel only; (c) regular security assessments and penetration testing; (d) incident response procedures; (e) employee training on data protection.</p>
+
+                <h3>8. Data Breach Notification</h3>
+                <p>In case of a Personal Data breach, Service Provider shall notify Customer without undue delay and in no case later than 72 hours after becoming aware of the breach. Service Provider shall provide Customer with sufficient information to allow Customer to notify relevant authorities and affected Data Subjects.</p>
+
+                <h3>9. Data Transfers</h3>
+                <p>For transfers of Personal Data outside the European Economic Area or United Kingdom, Service Provider shall implement appropriate safeguards such as Standard Contractual Clauses (SCCs). Customer acknowledges that data may be processed in [YOUR DATA CENTER LOCATION(S)].</p>
+
+                <h3>10. Deletion or Return of Data</h3>
+                <p>Upon termination or expiration of the Services, Service Provider shall, at Customer's choice, delete all Personal Data or return it to Customer, unless applicable law requires storage.</p>
+
+                <h3>11. Audit Rights</h3>
+                <p>Service Provider shall make available to Customer all information necessary to demonstrate compliance with this DPA and allow for and contribute to audits and inspections by Customer or Customer's independent auditor.</p>
+
+                <h3>12. Liability</h3>
+                <p>The parties' liability with respect to this DPA is limited as set forth in the Master Services Agreement, except that liability for data breaches shall be unlimited.</p>
+
+                <h3>13. Duration</h3>
+                <p>This DPA is effective as of the date Customer first uses the Services and continues for the duration of the Services or until terminated by either party.</p>
+
+                <h3>14. Contact</h3>
+                <p>For questions about this DPA, contact [YOUR DPO EMAIL OR PRIVACY EMAIL].</p>
+            </div>
+
+            <div id="tos" class="legal-section">
+                <h2>Terms of Service</h2>
+                <p><strong>Last Updated: [DATE]</strong></p>
+
+                <h3>1. Agreement to Terms</h3>
+                <p>By accessing and using [YOUR COMPANY NAME]'s website, products, and services (collectively, the "Services"), you accept and agree to be bound by and abide by the terms and condition of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+
+                <h3>2. Use License</h3>
+                <p>Permission is granted to temporarily download one copy of the materials (information or software) on [YOUR COMPANY NAME]'s Services for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not: (a) modify or copy the materials; (b) use the materials for any commercial purpose or for any public display; (c) attempt to decompile or reverse engineer any software contained on [YOUR COMPANY NAME]'s Services; (d) remove any copyright or other proprietary notations from the materials; (e) transfer the materials to another person or "mirror" the materials on any other server.</p>
+
+                <h3>3. Disclaimer</h3>
+                <p>The materials on [YOUR COMPANY NAME]'s Services are provided on an 'as is' basis. [YOUR COMPANY NAME] makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+
+                <h3>4. Limitations</h3>
+                <p>In no event shall [YOUR COMPANY NAME] or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on [YOUR COMPANY NAME]'s Services, even if [YOUR COMPANY NAME] or an authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+
+                <h3>5. Accuracy of Materials</h3>
+                <p>[YOUR COMPANY NAME] does not warrant that the materials on its Services are accurate, complete, or current. The materials on [YOUR COMPANY NAME]'s Services could include technical, typographical, or photographic errors. [YOUR COMPANY NAME] does not warrant that any of the materials on its website will be free of viruses or other harmful components.</p>
+
+                <h3>6. Modifications</h3>
+                <p>[YOUR COMPANY NAME] may revise these terms of service for its Services at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
+
+                <h3>7. Governing Law</h3>
+                <p>These terms of service are governed by and construed in accordance with the laws of [YOUR STATE/COUNTRY], and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+
+                <h3>8. Acceptable Use Policy</h3>
+                <p>You agree not to use [YOUR COMPANY NAME]'s Services: (a) for any unlawful purpose or in violation of any laws; (b) to harass, abuse, or harm any person; (c) to transmit or procure transmission of obscene, profane, vulgar, or otherwise objectionable material; (d) to spam, phish, or conduct fraudulent activities; (e) to reverse engineer, decompile, or disassemble our Services; (f) to circumvent any authentication or security measures; (g) to scrape, crawl, or systematically access our Services without permission.</p>
+
+                <h3>9. Intellectual Property Rights</h3>
+                <p>The Services and all content, features, and functionality (including but not limited to all information, software, text, displays, images, video and audio) are owned by [YOUR COMPANY NAME], its licensors, or other providers of such material and are protected by copyright, trademark, and other intellectual property laws.</p>
+
+                <h3>10. User Accounts</h3>
+                <p>If you create an account, you are responsible for safeguarding your password and agree to accept responsibility for all activities that occur under your account. You agree to provide accurate, complete, and current information during registration. You agree to notify [YOUR COMPANY NAME] of any unauthorized use of your account.</p>
+
+                <h3>11. Payment Terms</h3>
+                <p>[CUSTOMIZE: Include your pricing model, billing frequency, payment methods, late payment procedures, refund policy, and any auto-renewal terms. Example: "You agree to pay all charges and fees that you incur. Billing occurs monthly on the same day each month. If you cancel, you are not entitled to a refund for the remainder of your billing period."]</p>
+
+                <h3>12. Termination</h3>
+                <p>[YOUR COMPANY NAME] may terminate or suspend your account and access to the Services immediately, without prior notice or liability, for any reason whatsoever, including if you breach any terms of this Agreement. Upon termination, your right to use the Services will immediately cease.</p>
+
+                <h3>13. Limitation of Liability</h3>
+                <p>To the fullest extent permitted by law, [YOUR COMPANY NAME] shall not be liable for any indirect, incidental, special, consequential, or punitive damages, regardless of the cause of action.</p>
+
+                <h3>14. Contact Information</h3>
+                <p>If you have any questions about these Terms of Service, please contact us at [YOUR EMAIL/CONTACT INFO].</p>
+            </div>
+            
+        </main>
+    </div>
+
+    <div class="bg-glow-bottom"></div>
+
+    <footer>
+        <div class="footer-copyright">
+            &copy; 2026 Atlas Church Solutions. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="pricing.html">Pricing</a>
+            <a href="#">Help Center</a>
+            <a href="legal.html">Privacy Policy</a>
+            <a href="about.html">About Atlas</a>
+        </div>
+    </footer>
+
+</body>
+</html>
