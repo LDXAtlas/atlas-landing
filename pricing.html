@@ -126,10 +126,24 @@
         .footer-links a { color: rgba(0,0,0,0.6); text-decoration: none; transition: color 0.2s; font-weight: 700; }
         .footer-links a:hover { color: #000; }
 
+        /* --- MOBILE STYLES (Updated Breakpoint) --- */
         @media (max-width: 900px) {
+            /* Fix the cards and FAQs to stack */
             .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
-            .table-grid { overflow-x: auto; display: block; white-space: nowrap; }
             .faqs-grid { grid-template-columns: 1fr; }
+            
+            /* 1. Fix the Nav Bar padding and spacing for small screens */
+            nav { padding: 20px; }
+            .header-center-text h1 { font-size: 24px; }
+            .btn-login { padding: 10px 16px; font-size: 14px; }
+
+            /* 2. Fix the Footer to stack vertically instead of stretching horizontally */
+            footer { flex-direction: column; gap: 20px; padding: 30px 20px; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+
+            /* 3. Fix the Table so the whole container scrolls smoothly left/right */
+            .table-container { overflow-x: auto; padding-bottom: 20px; margin-bottom: 100px; }
+            .table-grid { min-width: 700px; } /* Forces the table to keep its shape so you can swipe it */
         }
 
     </style>
