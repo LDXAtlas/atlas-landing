@@ -24,6 +24,14 @@
             box-sizing: border-box; 
         }
 
+        /* STRICT OVERFLOW RULE: This kills the mobile horizontal scroll glitch */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
+
         body {
             background: linear-gradient(150.34deg, rgba(13, 31, 26, 0.5) 0%, rgba(12, 21, 16, 0.5) 100%), #000000;
             color: var(--text-light);
@@ -31,7 +39,6 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -43,7 +50,7 @@
         .bg-glow-top { position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
         .bg-glow-bottom { position: absolute; bottom: 40px; left: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.05) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
 
-        /* --- NAVIGATION (Standardized to match index.html) --- */
+        /* --- NAVIGATION --- */
         nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 30px 5%; width: 100%; max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
         .header-left { display: flex; justify-content: flex-start; align-items: center; }
         .header-left img { width: 40px; height: auto; }
@@ -51,7 +58,6 @@
         .header-center-text h1 { font-size: 32px; line-height: 1; color: #fff; font-weight: 800; }
         .header-center-text span { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600;}
         .header-right { display: flex; justify-content: flex-end; align-items: center; }
-        /* Keeping an empty right div or optional link to balance the 3-column grid */
 
         /* --- MAIN CONTENT / LOGIN BOX --- */
         .auth-main {
@@ -66,7 +72,6 @@
 
         .auth-title {
             text-align: center;
-            /* Shifted spacing: Added top margin to pull away from logo, reduced bottom margin to stay close to form */
             margin-top: 40px;
             margin-bottom: 10px;
             max-width: 440px;
@@ -75,7 +80,7 @@
         .auth-title h2 {
             font-size: clamp(36px, 5vw, 48px);
             line-height: 1.1;
-            font-weight: 700; /* Made bold per request */
+            font-weight: 700;
             letter-spacing: -1px;
         }
 
@@ -197,14 +202,13 @@
            MOBILE RESPONSIVENESS OVERRIDES
            ======================================================== */
         @media (max-width: 900px) {
-            /* Exact same logic used on index.html to guarantee perfect alignment */
             nav { grid-template-columns: 1fr auto 1fr; padding: 20px 5%; gap: 10px; }
             .header-left img { width: 32px; }
             .header-center-text h1 { font-size: 24px; }
             .header-center-text span { font-size: 9px; margin-top: 2px;}
             
             .auth-title {
-                margin-top: 60px; /* Pushes text even further away from nav on mobile */
+                margin-top: 60px;
                 margin-bottom: 0px;
                 padding: 0 20px;
             }
