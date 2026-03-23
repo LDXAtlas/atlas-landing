@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>About Us - Atlas Church Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
@@ -16,40 +16,52 @@
             --card-border: #1F1F1F;
             --font-main: 'Poppins', sans-serif;
             --font-sub: 'Source Sans 3', sans-serif;
-            --font-serif: 'Georgia', serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        /* STRICT OVERFLOW RULE: Kills horizontal scroll glitch */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
 
         body {
-            /* Using the specific background gradient from your Figma */
             background: linear-gradient(150.34deg, rgba(13, 31, 26, 0.5) 0%, rgba(12, 21, 16, 0.5) 100%), #000000;
             color: var(--text-light);
             font-family: var(--font-sub); 
-            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         h1, h2, h3, h4, h5, h6 { font-family: var(--font-main); }
 
-        /* --- NAVIGATION (Reused) --- */
-        nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 40px 80px; width: 100%; max-width: 1400px; margin: 0 auto; }
+        /* --- NAVIGATION --- */
+        nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 30px 5%; width: 100%; max-width: 1400px; margin: 0 auto; position: relative; z-index: 10;}
+        .header-left { display: flex; justify-content: flex-start; align-items: center; }
         .header-left img { width: 40px; height: auto; }
         .header-center-text { display: flex; flex-direction: column; align-items: center; text-align: center; text-decoration: none;}
-        .header-center-text h1 { font-size: 32px; line-height: 1; color: #fff; }
-        .header-center-text span { font-size: 12px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .header-right { display: flex; justify-content: flex-end; }
-        .btn-login { background-color: var(--accent-green); color: #052E16; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 16px; transition: opacity 0.3s ease; }
+        .header-center-text h1 { font-size: 32px; line-height: 1; color: #fff; font-weight: 800;}
+        .header-center-text span { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600;}
+        .header-right { display: flex; justify-content: flex-end; align-items: center; }
+        .btn-login { background-color: var(--accent-green); color: #052E16; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 15px; transition: opacity 0.3s ease; }
         .btn-login:hover { opacity: 0.8; }
 
         /* --- REUSABLE UTILITIES --- */
         .section-wrapper { max-width: 1100px; margin: 0 auto 120px; padding: 0 20px; }
-        .eyebrow { color: var(--accent-green); font-family: 'Arial', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 24px; display: block; }
+        .eyebrow { color: var(--accent-green); font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 24px; display: block; }
         
         /* --- ABOUT HERO --- */
         .about-hero { max-width: 800px; margin: 100px auto 120px; padding: 0 20px; position: relative; }
         .about-hero-bg-glow { position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
-        .about-hero h1 { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 52px; line-height: 1.2; margin-bottom: 30px; color: var(--text-light); max-width: 500px; }
-        .about-hero p { font-family: var(--font-serif); font-style: italic; color: var(--text-muted); font-size: 16px; line-height: 1.8; margin-bottom: 20px; max-width: 540px; }
+        .about-hero h1 { font-weight: 800; font-size: clamp(40px, 6vw, 56px); line-height: 1.2; margin-bottom: 30px; color: var(--text-light); max-width: 600px; letter-spacing: -1px;}
+        .about-hero p { color: var(--text-muted); font-size: 18px; line-height: 1.8; margin-bottom: 20px; max-width: 540px; }
 
         /* --- MISSION QUOTE --- */
         .mission-box { 
@@ -64,55 +76,66 @@
         }
         .mission-glow-1 { position: absolute; top: -80px; right: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(52, 211, 153, 0.07) 0%, transparent 70%); border-radius: 50%; }
         .mission-glow-2 { position: absolute; bottom: -60px; left: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.04) 0%, transparent 70%); border-radius: 50%; }
-        .mission-box h2 { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 28px; line-height: 1.5; color: var(--text-light); max-width: 800px; margin: 0 auto 30px; position: relative; z-index: 2; }
-        .mission-cite { font-family: 'Arial', sans-serif; font-size: 13px; color: var(--text-muted); position: relative; z-index: 2; }
+        .mission-box h2 { font-weight: 700; font-size: clamp(28px, 4vw, 36px); line-height: 1.5; color: var(--text-light); max-width: 800px; margin: 0 auto 30px; position: relative; z-index: 2; letter-spacing: -0.5px;}
+        .mission-cite { font-family: 'Arial', sans-serif; font-size: 15px; color: var(--text-muted); position: relative; z-index: 2; }
 
         /* --- STORY SECTION --- */
         .story-header { margin-bottom: 60px; }
-        .story-header h2 { font-family: var(--font-serif); font-style: italic; font-size: 36px; font-weight: 400; }
+        .story-header h2 { font-weight: 800; font-size: clamp(32px, 5vw, 48px); letter-spacing: -1px;}
         .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
         .story-block h3 { font-family: 'Arial', sans-serif; font-size: 14px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 20px; }
-        .story-block p { font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--text-muted); line-height: 1.9; margin-bottom: 20px; }
+        .story-block p { font-size: 17px; color: var(--text-muted); line-height: 1.9; margin-bottom: 20px; }
 
         /* --- VALUES SECTION --- */
         .values-header { margin-bottom: 60px; }
-        .values-header h2 { font-family: var(--font-serif); font-style: italic; font-size: 36px; font-weight: 400; }
+        .values-header h2 { font-weight: 800; font-size: clamp(32px, 5vw, 48px); letter-spacing: -1px;}
         .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         .value-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 40px 30px; transition: transform 0.3s ease; }
         .value-card:hover { transform: translateY(-5px); border-color: rgba(52, 211, 153, 0.3); }
         .value-icon { width: 40px; height: 40px; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 10px; display: flex; justify-content: center; align-items: center; margin-bottom: 24px; color: var(--accent-green); }
-        .value-card h3 { font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #E5E7EB; margin-bottom: 16px; font-weight: 400; }
-        .value-card p { font-family: 'Arial', sans-serif; font-style: italic; font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .value-card h3 { font-size: 20px; color: #E5E7EB; margin-bottom: 16px; font-weight: 700; }
+        .value-card p { font-family: 'Arial', sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.7; }
 
         /* --- TEAM SECTION --- */
         .team-header { text-align: center; margin-bottom: 60px; }
-        .team-header h2 { font-family: var(--font-serif); font-style: italic; font-size: 36px; font-weight: 400; margin-bottom: 20px; }
-        .team-header p { font-family: 'Arial', sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.8; max-width: 600px; margin: 0 auto; }
+        .team-header h2 { font-weight: 800; font-size: clamp(32px, 5vw, 48px); margin-bottom: 20px; letter-spacing: -1px;}
+        .team-header p { font-family: 'Arial', sans-serif; font-size: 17px; color: var(--text-muted); line-height: 1.8; max-width: 600px; margin: 0 auto; }
         .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; }
         .team-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 40px 20px; text-align: center; }
+        
         .team-avatar { width: 56px; height: 56px; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; color: var(--accent-green); font-family: 'Arial', sans-serif; font-weight: 700; font-size: 16px; }
-        .team-card h4 { font-family: 'Arial', sans-serif; font-weight: 700; font-size: 15px; color: #E5E7EB; margin-bottom: 6px; }
-        .team-card .team-title { font-family: 'Arial', sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
-        .team-card p { font-family: 'Arial', sans-serif; font-style: italic; font-size: 13px; color: #9CA3AF; line-height: 1.6; }
+        .team-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        
+        .team-card h4 { font-family: 'Arial', sans-serif; font-weight: 700; font-size: 16px; color: #E5E7EB; margin-bottom: 6px; }
+        .team-card .team-title { font-family: 'Arial', sans-serif; font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+        .team-card p { font-family: 'Arial', sans-serif; font-size: 15px; color: #9CA3AF; line-height: 1.6; }
 
         /* --- CTA SECTION --- */
         .cta-simple { text-align: center; padding: 100px 20px; max-width: 600px; margin: 0 auto; }
-        .cta-simple h2 { font-family: var(--font-serif); font-style: italic; font-size: 32px; font-weight: 400; margin-bottom: 30px; color: var(--text-light); }
-        .btn-outline { display: inline-block; border: 1px solid #3A3A3A; border-radius: 8px; padding: 14px 32px; font-family: 'Arial', sans-serif; font-size: 14px; color: #D1D5DB; text-decoration: none; transition: background 0.2s; }
+        .cta-simple h2 { font-weight: 800; font-size: clamp(28px, 4vw, 36px); margin-bottom: 30px; color: var(--text-light); letter-spacing: -1px;}
+        .btn-outline { display: inline-block; border: 1px solid #3A3A3A; border-radius: 100px; padding: 14px 32px; font-family: var(--font-main); font-weight: 700; font-size: 15px; color: #D1D5DB; text-decoration: none; transition: background 0.2s; }
         .btn-outline:hover { background: rgba(255,255,255,0.05); }
 
         /* --- FOOTER --- */
-        footer { background: #A0F1C8; padding: 30px 40px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(0,0,0,0.6); font-family: 'Arial', sans-serif; }
+        footer { background: transparent; padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); font-family: 'Arial', sans-serif; }
         .footer-links { display: flex; gap: 30px; }
-        .footer-links a { color: rgba(0,0,0,0.6); text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover { color: #000; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text-light); }
 
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
+        /* Mobile adjustments */
+        @media (max-width: 900px) {
+            nav { grid-template-columns: 1fr auto 1fr; padding: 20px 5%; gap: 10px; }
+            .header-left img { width: 32px; }
+            .header-center-text h1 { font-size: 24px; }
+            .header-center-text span { font-size: 9px; margin-top: 2px;}
+            .header-right { display: flex; } 
+            .btn-login { padding: 8px 16px; font-size: 13px; }
+
             .story-grid, .values-grid, .team-grid { grid-template-columns: 1fr; }
             .mission-box h2 { font-size: 22px; }
             .about-hero h1 { font-size: 40px; }
             footer { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
