@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Atlas Church Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
@@ -16,7 +16,11 @@
             --font-sub: 'Source Sans 3', sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
 
         body {
             background-color: var(--bg-dark);
@@ -24,49 +28,55 @@
             font-family: var(--font-sub); 
             background-image: radial-gradient(circle at top center, rgba(92, 225, 165, 0.05) 0%, transparent 60%);
             overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        h1, h2, h3, h4, h5, h6 { font-family: var(--font-main); }
+        /* Strict Font Hierarchy: Poppins for all titles, Source Sans 3 for body */
+        h1, h2, h3, h4, h5, h6, .ui-title, .ui-item-title, .ui-ai-title, .ui-stat-num { 
+            font-family: var(--font-main); 
+        }
 
-        /* Navigation */
-        nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 40px 80px; width: 100%; max-width: 1400px; margin: 0 auto; }
+        /* --- NAVIGATION --- */
+        nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 30px 5%; width: 100%; max-width: 1400px; margin: 0 auto; }
         .header-left img { width: 40px; height: auto; }
-        /* Added text-decoration: none so the link doesn't get underlined */
         .header-center-text { display: flex; flex-direction: column; align-items: center; text-align: center; text-decoration: none; }
-        .header-center-text h1 { font-size: 32px; line-height: 1; color: #fff; }
-        .header-center-text span { font-size: 12px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .header-center-text h1 { font-size: 32px; line-height: 1; color: #fff; font-weight: 800; }
+        .header-center-text span { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600;}
         .header-right { display: flex; justify-content: flex-end; }
-        .btn-login { background-color: var(--accent-green); color: #0F1112; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 16px; transition: opacity 0.3s ease; }
+        .btn-login { background-color: var(--accent-green); color: #0F1112; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 15px; transition: opacity 0.3s ease; }
         .btn-login:hover { opacity: 0.8; }
 
-        /* Hero Text Area */
+        /* --- HERO SECTION --- */
         .hero-text-content { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px; margin: 60px auto 40px; padding: 0 20px; }
         .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(92, 225, 165, 0.09); border: 1px solid rgba(92, 225, 165, 0.22); padding: 8px 16px; border-radius: 100px; font-family: var(--font-main); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-green); margin-bottom: 24px; }
         .badge-dot { width: 6px; height: 6px; background-color: var(--accent-green); border-radius: 50%; }
-        .hero-text-content h1 { font-size: 78px; font-weight: 800; line-height: 1.05; letter-spacing: -3px; margin-bottom: 24px; }
+        
+        .hero-text-content h1 { font-size: clamp(40px, 7vw, 78px); font-weight: 800; line-height: 1.05; letter-spacing: -2px; margin-bottom: 24px; }
         .hero-text-content h1 span { color: var(--accent-green); }
-        .hero-text-content p { font-size: 18px; line-height: 1.75; color: var(--text-muted); max-width: 500px; margin-bottom: 40px; }
-        .cta-group { display: flex; gap: 16px; }
+        .hero-text-content p { font-size: clamp(18px, 2.5vw, 20px); line-height: 1.75; color: var(--text-muted); max-width: 550px; margin-bottom: 40px; }
+        
+        .cta-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;}
         .btn-primary { background-color: var(--accent-green); color: var(--bg-dark); padding: 14px 32px; border-radius: 100px; text-decoration: none; font-family: var(--font-main); font-weight: 800; display: flex; align-items: center; gap: 8px; transition: transform 0.2s ease; }
         .btn-primary:hover { transform: translateY(-2px); }
-        .btn-secondary { border: 1px solid #1F2B22; color: var(--text-muted); padding: 14px 32px; border-radius: 100px; text-decoration: none; font-family: var(--font-main); font-weight: 600; transition: background 0.2s ease; }
+        .btn-secondary { border: 1px solid #1F2B22; color: var(--text-muted); padding: 14px 32px; border-radius: 100px; text-decoration: none; font-family: var(--font-main); font-weight: 700; transition: background 0.2s ease; }
         .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
-        /* Animation Sequence Container */
+        /* --- ANIMATION SEQUENCE CONTAINER --- */
         .scroll-sequence { position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
 
         /* Mockup Image Area */
-        .hero-image-container { width: 100%; max-width: 900px; height: auto; background: #111; border-radius: 20px; border: 1px solid #1F2B22; display: flex; align-items: center; justify-content: center; padding: 20px; box-shadow: 0px 0px 40px rgba(92, 225, 165, 0.05); position: absolute; z-index: 10; will-change: transform, opacity; }
+        .hero-image-container { width: 90%; max-width: 900px; height: auto; background: #111; border-radius: 20px; border: 1px solid #1F2B22; display: flex; align-items: center; justify-content: center; padding: 20px; box-shadow: 0px 0px 40px rgba(92, 225, 165, 0.05); position: absolute; z-index: 10; will-change: transform, opacity; }
         .hero-image-container img { max-width: 100%; height: auto; border-radius: 12px; }
 
-        /* Backbone Section (Revealed after zoom) */
-        .backbone-section { position: absolute; z-index: 5; display: flex; flex-direction: column; align-items: center; text-align: center; opacity: 0; transform: translateY(40px); }
-        .section-label { font-family: var(--font-main); color: var(--accent-green); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
-        .backbone-section h2 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 14px; }
+        /* Backbone Section */
+        .backbone-section { position: absolute; z-index: 5; display: flex; flex-direction: column; align-items: center; text-align: center; opacity: 0; transform: translateY(40px); padding: 0 20px;}
+        .section-label { font-family: var(--font-main); color: var(--accent-green); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
+        .backbone-section h2 { font-size: clamp(36px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 14px; }
         .backbone-section h2 span { color: var(--accent-green); }
-        .backbone-section p { font-size: 16px; color: var(--text-muted); max-width: 440px; line-height: 1.7; }
+        .backbone-section p { font-size: 18px; color: var(--text-muted); max-width: 480px; line-height: 1.7; }
 
-        /* The INITIAL Spine Line (drawn during pin) */
+        /* The Spine Line */
         .spine-line-container { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 2px; height: 25vh; z-index: 1; }
         .spine-line { width: 100%; height: 0%; background: var(--accent-green); border-radius: 2px; }
 
@@ -81,105 +91,137 @@
 
         .module-content { width: 42%; padding: 40px; background: rgba(6, 33, 26, 0.2); border: 2px solid #06211A; border-radius: 30px; cursor: default; transition: all 0.4s ease; }
         .module-content:hover { border-color: rgba(92, 225, 165, 0.6); box-shadow: 0 10px 40px rgba(92, 225, 165, 0.15); transform: translateY(-5px); }
-        .module-content h3 { font-family: 'Georgia', serif; font-style: italic; font-size: 40px; font-weight: 400; color: #F0FDF4; margin-bottom: 20px; line-height: 1.2; }
+        .module-content h3 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; color: #F0FDF4; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.5px;}
         .module-content h3 span { color: var(--accent-green); }
-        .module-content p { font-size: 15px; line-height: 1.8; color: #D1D5DB; font-style: italic; }
+        .module-content p { font-size: 17px; line-height: 1.8; color: #D1D5DB; }
 
-        .module-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
-        .module-pill { background: linear-gradient(rgba(52, 211, 153, 0.07), rgba(52, 211, 153, 0.07)), var(--bg-dark); border: 1px solid rgba(52, 211, 153, 0.15); box-shadow: 0px 0px 20px rgba(92, 225, 165, 0.2); border-radius: 20px; padding: 6px 16px; display: flex; align-items: center; gap: 8px; font-family: var(--font-sub); font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent-green); }
+        .module-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; z-index: 3;}
+        .module-pill { background: linear-gradient(rgba(52, 211, 153, 0.07), rgba(52, 211, 153, 0.07)), var(--bg-dark); border: 1px solid rgba(52, 211, 153, 0.15); box-shadow: 0px 0px 20px rgba(92, 225, 165, 0.2); border-radius: 20px; padding: 6px 16px; display: flex; align-items: center; gap: 8px; font-family: var(--font-main); font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent-green); }
         .module-pill-dot { width: 6px; height: 6px; background-color: var(--accent-green); border-radius: 50%; }
 
-        /* --- MINI UI MOCKUPS --- */
         .module-ui { width: 42%; display: flex; justify-content: center; align-items: center; }
         
+        /* Desktop Alternating Logic */
         .module-row:nth-child(even) .module-content { order: 2; }
         .module-row:nth-child(even) .module-ui { order: 1; }
 
-        .ui-card { width: 100%; max-width: 420px; background: #0F0F0F; border: 1px solid #1D1D1D; border-radius: 16px; padding: 24px; font-family: 'Arial', sans-serif; box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.5s ease; }
+        /* --- MINI UI MOCKUPS --- */
+        .ui-card { width: 100%; max-width: 420px; background: #0F0F0F; border: 1px solid #1D1D1D; border-radius: 16px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.5s ease; }
         .module-row:hover .ui-card { transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 60px rgba(92, 225, 165, 0.08); }
         .ui-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; border-bottom: 1px solid #1A1A1A; padding-bottom: 24px; }
-        
-        .ui-title { color: #4B5563; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .ui-title { color: #4B5563; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
         .ui-list { display: flex; flex-direction: column; gap: 20px; }
         .ui-item { display: flex; align-items: center; gap: 14px; }
-        .ui-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+        .ui-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-family: var(--font-main); font-size: 11px; font-weight: 700; flex-shrink: 0; }
         .ui-avatar.green { background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.15); color: #34D399; }
         .ui-item-content { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-        .ui-item-title { color: #D1D5DB; font-size: 13px; }
-        .ui-item-sub { color: #6B7280; font-size: 11px; line-height: 1.4; }
+        .ui-item-title { color: #D1D5DB; font-size: 14px; font-weight: 600;}
+        .ui-item-sub { color: #6B7280; font-size: 12px; line-height: 1.4; }
         .ui-progress-bg { height: 4px; background: #1A1A1A; border-radius: 2px; width: 100%; overflow: hidden; }
         .ui-progress-fill { height: 100%; background: #34D399; border-radius: 2px; }
-        .ui-badge { padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; white-space: nowrap; }
+        .ui-badge { padding: 4px 10px; border-radius: 20px; font-family: var(--font-main); font-size: 10px; font-weight: 700; white-space: nowrap; }
         .ui-badge.green { background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); color: #34D399; }
         .ui-badge.yellow { background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.2); color: #FBBF24; }
         .ui-badge.dark { background: #1A1A1A; border: 1px solid #222; color: #4B5563; }
-
         .ui-ai-block { background: #0A0A0A; border: 1px solid rgba(52, 211, 153, 0.12); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
-        .ui-ai-title { color: #34D399; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .ui-input { background: #141414; border: 1px solid #1D1D1D; border-radius: 8px; padding: 12px 16px; color: #757575; font-size: 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 20px;}
-        
+        .ui-ai-title { color: #34D399; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700;}
+        .ui-input { background: #141414; border: 1px solid #1D1D1D; border-radius: 8px; padding: 12px 16px; color: #757575; font-size: 13px; display: flex; justify-content: space-between; align-items: center; margin-top: 20px;}
         .ui-stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px; }
         .ui-stat-box { background: #141414; border-radius: 8px; padding: 16px; text-align: center; }
-        .ui-stat-num { color: #34D399; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-        .ui-stat-label { color: #4B5563; font-size: 10px; text-transform: uppercase; }
+        .ui-stat-num { color: #34D399; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+        .ui-stat-label { font-family: var(--font-main); color: #4B5563; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;}
         .ui-chart-bar { background: rgba(52, 211, 153, 0.4); border-radius: 4px 4px 0 0; flex: 1; }
 
         /* --- URS --- */
         .urs-section { text-align: center; max-width: 620px; margin: 0px auto 150px; position: relative; z-index: 2; }
         .urs-section .module-pill { display: inline-flex; margin-bottom: 30px; }
-        .urs-section p { font-style: italic; color: #fff; line-height: 1.8; font-size: 16px; }
+        .urs-section p { color: #fff; line-height: 1.8; font-size: 18px; }
 
         /* --- MANIFESTO --- */
         .manifesto-wrapper { position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(circle at center, rgba(92, 225, 165, 0.06) 0%, transparent 60%); }
-        .manifesto-content { position: relative; z-index: 1; text-align: center; }
-        .manifesto-content h2 { font-size: 65px; font-weight: 800; line-height: 76px; letter-spacing: -2px; color: #EEF9F3; }
+        .manifesto-content { position: relative; z-index: 1; text-align: center; padding: 0 20px;}
+        .manifesto-content h2 { font-size: clamp(40px, 6vw, 65px); font-weight: 800; line-height: 1.2; letter-spacing: -2px; color: #EEF9F3; }
         .manifesto-content h2 span { color: var(--accent-green); }
         .period-wrapper { position: relative; display: inline-block; }
         .color-leak-dot { position: absolute; top: 78%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 40px; height: 40px; z-index: -1; will-change: transform; }
 
         /* --- STEPS --- */
         .steps-wrapper { background: linear-gradient(180deg, #5CE1A5 0%, #A0F1C8 100%); padding: 100px 20px; color: #000; text-align: center; position: relative; z-index: 5; }
-        .steps-wrapper .section-label { color: #0F1411; margin-bottom: 10px; }
-        .steps-wrapper h2 { font-size: 46px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 20px; color: #060C09; }
-        .steps-wrapper p.subtitle { font-size: 16px; color: rgba(0,0,0,0.6); max-width: 450px; margin: 0 auto 60px; }
+        .steps-wrapper .section-label { color: #0F1411; margin-bottom: 10px; font-weight: 700; font-size: 12px; letter-spacing: 1.5px;}
+        .steps-wrapper h2 { font-size: clamp(32px, 5vw, 46px); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 20px; color: #060C09; }
+        .steps-wrapper p.subtitle { font-size: 18px; color: rgba(0,0,0,0.6); max-width: 500px; margin: 0 auto 60px; line-height: 1.6;}
         .steps-grid { display: flex; justify-content: center; gap: 20px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
         .step-card { background: #0C1510; border: 1px solid #182219; border-radius: 20px; padding: 40px; text-align: left; flex: 1; min-width: 280px; color: #EEF9F3; transition: transform 0.3s ease; }
         .step-card:hover { transform: translateY(-5px); }
-        .step-num { background: rgba(92, 225, 165, 0.09); border: 1px solid rgba(92, 225, 165, 0.22); color: var(--accent-green); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-family: var(--font-main); font-size: 14px; margin-bottom: 24px; }
-        .step-card h3 { font-size: 18px; margin-bottom: 12px; }
-        .step-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 30px; }
-        .btn-pricing-small { background: var(--accent-green); color: #060C09; padding: 10px 20px; border-radius: 100px; font-weight: 800; font-size: 13px; text-decoration: none; display: inline-block; font-family: var(--font-main); }
+        .step-num { background: rgba(92, 225, 165, 0.09); border: 1px solid rgba(92, 225, 165, 0.22); color: var(--accent-green); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; font-family: var(--font-main); font-size: 16px; margin-bottom: 24px; }
+        .step-card h3 { font-size: 20px; margin-bottom: 12px; font-weight: 700;}
+        .step-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 30px; }
+        .btn-pricing-small { background: var(--accent-green); color: #060C09; padding: 10px 20px; border-radius: 100px; font-weight: 800; font-size: 14px; text-decoration: none; display: inline-block; font-family: var(--font-main); }
 
         /* --- PRE-FOOTER CTA --- */
         .cta-bottom { background: #A0F1C8; padding: 120px 20px 80px; text-align: center; color: #000; }
-        .cta-bottom .section-label { color: #000; letter-spacing: 3px; margin-bottom: 20px; }
-        .cta-bottom h2 { font-family: 'Georgia', serif; font-style: italic; font-weight: 400; font-size: 56px; line-height: 1.1; color: #F0FDF4; margin-bottom: 20px; }
-        .cta-bottom p { color: rgba(0,0,0,0.5); font-size: 15px; margin-bottom: 40px; }
+        .cta-bottom .section-label { color: #000; letter-spacing: 3px; margin-bottom: 20px; font-weight: 700; font-size: 12px;}
+        .cta-bottom h2 { font-weight: 800; font-size: clamp(36px, 5vw, 56px); line-height: 1.1; color: #0F1411; margin-bottom: 20px; letter-spacing: -1px;}
+        .cta-bottom p { color: rgba(0,0,0,0.6); font-size: 17px; margin-bottom: 40px; }
         .cta-bottom .btn-primary { background: #fff; color: var(--accent-green); border: 1px solid #fff; display: inline-flex; }
-        .cta-bottom .btn-secondary { border-color: #fff; color: #fff; display: inline-flex; }
+        .cta-bottom .btn-secondary { border-color: #fff; color: #0F1411; display: inline-flex; background: transparent;}
         .cta-bottom .cta-group { justify-content: center; }
 
         /* --- FOOTER --- */
-        footer { background: #A0F1C8; padding: 30px 40px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(0,0,0,0.6); font-family: 'Arial', sans-serif; }
+        footer { padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
         .footer-links { display: flex; gap: 30px; }
-        .footer-links a { color: rgba(0,0,0,0.6); text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover { color: #000; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text-light); }
 
+
+        /* ========================================================
+           MOBILE RESPONSIVENESS OVERRIDES
+           ======================================================== */
+        @media (max-width: 900px) {
+            nav { grid-template-columns: 1fr auto; padding: 20px; }
+            .header-right { display: none; } 
+            .timeline-track { display: none; }
+            
+            .module-row { 
+                flex-direction: column; 
+                gap: 30px; 
+                margin-bottom: 120px; 
+                align-items: flex-start; 
+            }
+            .module-row:first-of-type { margin-top: 40px; }
+            
+            .module-content, .module-ui { width: 100%; }
+            .module-content { padding: 30px 20px; }
+            
+            .module-row:nth-child(even) .module-content { order: 2; }
+            .module-row:nth-child(even) .module-ui { order: 3; }
+            .module-row:nth-child(odd) .module-content { order: 2; }
+            .module-row:nth-child(odd) .module-ui { order: 3; }
+
+            .module-center {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                order: 1 !important;
+                justify-content: flex-start;
+                margin-bottom: 10px;
+            }
+
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="header-left">
-            <a href="index.html"><img src="image_2.png" alt="Atlas Logo"></a>
-        </div>
+        <div class="header-left"><a href="index.html"><img src="image_2.png" alt="Atlas Logo"></a></div>
         <a href="index.html" class="header-center-text">
             <h1>Atlas</h1>
             <span>Church Solutions</span>
         </a>
-        <div class="header-right">
-            <a href="login.html" class="btn-login">Log In</a>
-        </div>
+        <div class="header-right"><a href="login.html" class="btn-login">Log In</a></div>
     </nav>
 
     <div class="hero-text-content">
@@ -209,11 +251,11 @@
             <div class="timeline-track"><div class="timeline-track-fill" id="track-fill"></div></div>
 
             <div class="module-row">
+                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 01</div></div>
                 <div class="module-content">
                     <h3>Your team,<br><span>in sync.</span></h3>
                     <p>Our platform brings everything you need into one seamless workspace — manage your personal tasks and team meetings, drive projects from kickoff to completion, and plan events with ease, all without switching between tools. A centralized file library keeps your documents organized and always within reach, while the monthly calendar view gives you a clear picture of what's ahead, so you and your team can stay aligned, prepared, and in control at every step.</p>
                 </div>
-                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 01</div></div>
                 
                 <div class="module-ui">
                     <div class="ui-card">
@@ -258,11 +300,11 @@
             </div>
 
             <div class="module-row">
+                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 02</div></div>
                 <div class="module-content">
                     <h3>Volunteers<br><span>who show up.</span></h3>
                     <p>Our Serve section gives you everything you need to build and sustain a thriving volunteer culture — the Onboarding feature walks new volunteers through a fully customizable training pathway so every person is set up for success from day one, while Scheduling makes it simple to place the right people in the right roles for upcoming events without the back-and-forth. Team Health rounds it all out with a clear overview of your volunteer base, helping you spot signs of burnout before they become a problem and ensuring your team stays energized, engaged, and cared for over the long haul.</p>
                 </div>
-                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 02</div></div>
                 
                 <div class="module-ui">
                     <div class="ui-card">
@@ -296,11 +338,11 @@
             </div>
 
             <div class="module-row">
+                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 03</div></div>
                 <div class="module-content">
                     <h3>No one<br><span>falls through.</span></h3>
                     <p>Our Care section equips your team to love and serve your congregation with intention — the Care Journal keeps a detailed record of each person's needs so nothing slips through the cracks, while the Follow-Ups list turns those needs into clear, actionable steps so the right people get reached out to at the right time. The Prayer Wall creates a shared space where members can post and see prayer requests, fostering a culture of transparency, intercession, and community support all in one place.</p>
                 </div>
-                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 03</div></div>
                 
                 <div class="module-ui">
                     <div class="ui-card">
@@ -338,11 +380,11 @@
             </div>
 
             <div class="module-row">
+                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 04</div></div>
                 <div class="module-content">
                     <h3>AI that<br><span>actually helps.</span></h3>
                     <p>Atlas AI is your intelligent command center, always on and ready to work — the Chat With feature lets you pull data from anywhere across the platform in seconds, whether you need a quick answer or want to take action like creating a task and adding it straight to your list for today. But Atlas goes beyond conversation; as a fully capable agent, it can run predetermined sequences of actions automatically through custom Workflows you build yourself, handling the repetitive and time-consuming work in the background so you can stay focused on what matters most. With Atlas AI, the platform doesn't just store your information — it actively works with you to move things forward.</p>
                 </div>
-                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 04</div></div>
                 
                 <div class="module-ui">
                     <div class="ui-card">
@@ -368,11 +410,11 @@
             </div>
 
             <div class="module-row" style="margin-bottom: 100px;">
+                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 05</div></div>
                 <div class="module-content">
                     <h3>Your church,<br><span>at a glance.</span></h3>
                     <p>The Ministry Hub gives you a bird's-eye view of every ministry within your organization, bringing them all together in one central space so leadership can stay informed, connected, and aligned across the board. Rather than navigating siloed teams and scattered information, the Hub serves as the heartbeat of your organization — a single place to see how every ministry is operating, growing, and contributing to the mission as a whole.</p>
                 </div>
-                <div class="module-center"><div class="module-pill"><div class="module-pill-dot"></div>MODULE 05</div></div>
                 
                 <div class="module-ui">
                     <div class="ui-card">
@@ -408,7 +450,7 @@
 
         </div>
 
-        <div class="urs-section module-row">
+        <div class="urs-section module-row" style="margin-bottom: 150px;">
             <div style="width: 100%;">
                 <div class="module-pill" style="margin: 0 auto 20px;"><div class="module-pill-dot"></div>Universal Reference System</div>
                 <p>What truly sets the platform apart is the Universal Reference System — a smart linking layer that runs beneath every section and turns the way your team communicates into a connected, clickable experience. Whether you're typing a message, writing a note, or logging an update, any mention of an event, person, project, or resource can be instantly tagged and linked, so the recipient can click directly through to that event board, user profile, or wherever it lives on the platform. No more hunting through menus or asking "where was that?" — the Universal Reference System makes every corner of the platform instantly accessible from wherever you already are, keeping your team moving with context, clarity, and zero friction.</p>
@@ -485,14 +527,16 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
+        ScrollTrigger.config({ ignoreMobileResize: true });
+
         /* --- 1. Top Zoom Sequence --- */
         let tlTop = gsap.timeline({
             scrollTrigger: {
                 trigger: "#animation-wrapper",
                 start: "center center", 
-                end: "+=2200", 
+                end: "+=1000", 
                 pin: true,      
-                scrub: 1.5 
+                scrub: 0.5 
             }
         });
 
@@ -535,9 +579,9 @@
             scrollTrigger: {
                 trigger: "#manifesto-trigger",
                 start: "center center", 
-                end: "+=1200", 
+                end: "+=600", 
                 pin: true,
-                scrub: 1 
+                scrub: 0.5 
             }
         });
 
