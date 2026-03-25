@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - Atlas Church Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -26,6 +26,9 @@
             font-family: var(--font-sub); 
             font-weight: 400;
             overflow-x: hidden; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4, h5, h6 { 
@@ -33,14 +36,21 @@
             font-weight: 700; 
         }
 
-        /* --- NAVIGATION (Reused) --- */
-        nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 40px 80px; width: 100%; max-width: 1400px; margin: 0 auto; }
-        .header-left img { width: 40px; height: auto; }
-        .header-center-text { display: flex; flex-direction: column; align-items: center; text-align: center; text-decoration: none;}
-        .header-center-text h1 { font-size: 32px; line-height: 1; color: #fff; }
-        .header-center-text span { font-size: 12px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-family: var(--font-sub); }
-        .header-right { display: flex; justify-content: flex-end; }
-        .btn-login { background-color: var(--accent-green); color: #052E16; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 16px; transition: opacity 0.3s ease; }
+        /* --- NAVIGATION --- */
+        nav { flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; padding: 30px 5%; width: 100%; max-width: 1400px; margin: 0 auto; position: relative; z-index: 100; }
+        
+        .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .header-left img { width: 40px; height: auto; transition: width 0.2s; }
+        .header-text { display: flex; flex-direction: column; }
+        .header-text h1 { font-size: 28px; line-height: 1; color: #fff; font-weight: 800; letter-spacing: -0.5px; transition: font-size 0.2s; }
+        .header-text span { font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600; transition: font-size 0.2s;}
+        
+        .header-center { display: flex; gap: 32px; align-items: center; }
+        .header-center a { color: #D1D5DB; text-decoration: none; font-size: 14px; font-family: var(--font-main); font-weight: 600; transition: color 0.2s, font-size 0.2s; }
+        .header-center a:hover { color: var(--accent-green); }
+
+        .header-right { display: flex; justify-content: flex-end; align-items: center; }
+        .btn-login { background-color: var(--accent-green); color: #0F1112; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 15px; transition: all 0.3s ease; white-space: nowrap;}
         .btn-login:hover { opacity: 0.8; }
 
         /* --- PRICING HERO --- */
@@ -105,45 +115,66 @@
         .pill-unlimited { background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); color: var(--accent-green); font-size: 11px; font-family: var(--font-main); font-weight: 700; padding: 4px 12px; border-radius: 20px; }
         .check-icon { color: var(--accent-green); font-size: 16px; font-weight: 700; }
 
-        /* --- FAQS --- */
-        .faqs-section { max-width: 1100px; margin: 0 auto 120px; padding: 0 20px; }
-        .faqs-section h2 { font-size: 28px; text-align: center; margin-bottom: 40px; }
-        .faqs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .faq-card { background: #111111; border: 1px solid #1F1F1F; border-radius: 12px; padding: 24px; }
-        .faq-card h4 { font-family: var(--font-main); font-weight: 700; font-size: 14px; color: #E5E7EB; margin-bottom: 10px; }
-        .faq-card p { font-family: var(--font-sub); font-weight: 400; font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        /* --- FAQ SECTION --- */
+        .faq-section { max-width: 1000px; margin: 0 auto 120px; padding: 0 20px; }
+        .faq-header { text-align: center; margin-bottom: 60px; }
+        .faq-header h2 { font-size: clamp(32px, 5vw, 44px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
 
-        /* --- BOTTOM CTA --- */
-        .cta-banner-wrapper { max-width: 1100px; margin: 0 auto 100px; padding: 0 20px; }
-        .cta-banner { background: linear-gradient(102.7deg, #0D1F1A 0%, #091510 100%); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 16px; padding: 60px; text-align: center; position: relative; overflow: hidden; }
-        .cta-glow { position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%); border-radius: 50%; }
-        .cta-banner h2 { position: relative; z-index: 2; font-size: 32px; color: var(--text-light); }
-        .cta-banner h2 span { color: var(--accent-green); }
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        
+        .faq-card { background: #0A0A0A; border: 1px solid #1F1F1F; border-radius: 16px; padding: 32px; transition: transform 0.2s; }
+        .faq-card:hover { transform: translateY(-4px); border-color: #333; }
+        .faq-card h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.4;}
+        .faq-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+
+        /* Special Link FAQ Box */
+        .faq-link-card { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            text-decoration: none; 
+            background: linear-gradient(135deg, rgba(6, 33, 26, 0.3) 0%, rgba(10, 10, 10, 1) 100%);
+            border: 1px dashed rgba(52, 211, 153, 0.4); 
+            cursor: pointer;
+        }
+        .faq-link-card:hover { 
+            border-color: var(--accent-green); 
+            background: rgba(52, 211, 153, 0.05);
+        }
+        .faq-link-card h3 { color: var(--accent-green); margin-bottom: 0; font-size: 20px; display: flex; align-items: center; gap: 8px;}
+        .faq-arrow { font-size: 24px; transition: transform 0.2s ease; }
+        .faq-link-card:hover .faq-arrow { transform: translateX(5px); }
+
+        .bg-glow-bottom { position: absolute; bottom: 40px; left: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.05) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
 
         /* --- FOOTER --- */
-        footer { background: #A0F1C8; padding: 30px 40px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(0,0,0,0.6); font-family: var(--font-sub); font-weight: 400; }
+        footer { flex-shrink: 0; background: transparent; padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); font-family: 'Arial', sans-serif; margin-top: auto;}
         .footer-links { display: flex; gap: 30px; }
-        .footer-links a { color: rgba(0,0,0,0.6); text-decoration: none; transition: color 0.2s; font-weight: 700; }
-        .footer-links a:hover { color: #000; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text-light); }
 
-        /* --- MOBILE STYLES (Updated Breakpoint) --- */
+        /* --- MOBILE STYLES --- */
         @media (max-width: 900px) {
-            /* Fix the cards and FAQs to stack */
-            .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
-            .faqs-grid { grid-template-columns: 1fr; }
-            
-            /* 1. Fix the Nav Bar padding and spacing for small screens */
-            nav { padding: 20px; }
-            .header-center-text h1 { font-size: 24px; }
-            .btn-login { padding: 10px 16px; font-size: 14px; }
+            nav { padding: 20px 4%; gap: 6px; }
+            .header-left { gap: 6px; }
+            .header-left img { width: 28px; }
+            .header-text h1 { font-size: 18px; letter-spacing: 0;}
+            .header-text span { font-size: 7px; margin-top: 0px; letter-spacing: 1px;}
+            .header-center { display: none; } 
+            .btn-login { padding: 6px 12px; font-size: 12px; }
 
-            /* 2. Fix the Footer to stack vertically instead of stretching horizontally */
+            .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
+            
+            .table-container { overflow-x: auto; padding-bottom: 20px; margin-bottom: 100px; }
+            .table-grid { min-width: 700px; } 
+
+            .faq-grid { grid-template-columns: 1fr; }
+            .faq-link-card { min-height: 140px; }
+
             footer { flex-direction: column; gap: 20px; padding: 30px 20px; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-
-            /* 3. Fix the Table so the whole container scrolls smoothly left/right */
-            .table-container { overflow-x: auto; padding-bottom: 20px; margin-bottom: 100px; }
-            .table-grid { min-width: 700px; } /* Forces the table to keep its shape so you can swipe it */
         }
 
     </style>
@@ -151,12 +182,21 @@
 <body>
 
     <nav>
-        <div class="header-left"><a href="index.html"><img src="image_2.png" alt="Atlas Logo"></a></div>
-        <a href="index.html" class="header-center-text">
-            <h1>Atlas</h1>
-            <span>Church Solutions</span>
+        <a href="index.html" class="header-left">
+            <img src="image_2.png" alt="Atlas Logo">
+            <div class="header-text">
+                <h1>Atlas</h1>
+                <span>Church Solutions</span>
+            </div>
         </a>
-        <div class="header-right"><a href="login.html" class="btn-login">Log In</a></div>
+        <div class="header-center">
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="legal.html">Privacy</a>
+        </div>
+        <div class="header-right">
+            <a href="login.html" class="btn-login">Log In</a>
+        </div>
     </nav>
 
     <header class="pricing-hero">
@@ -319,34 +359,36 @@
         </div>
     </section>
 
-    <section class="faqs-section">
-        <h2>Common questions</h2>
-        <div class="faqs-grid">
+    <section class="faq-section">
+        <div class="faq-header">
+            <h2>Common Questions</h2>
+        </div>
+        
+        <div class="faq-grid">
+            
             <div class="faq-card">
-                <h4>Can I switch plans at any time?</h4>
-                <p>Absolutely. You can upgrade your plan at any time, no penalties, no waiting periods. Your billing adjusts automatically at the start of your next cycle. Not sure which plan fits your church best? Our team is happy to help.</p>
+                <h3>Do I need to be technically inclined to set Atlas up?</h3>
+                <p>Not at all. We built Atlas specifically so that anyone, regardless of technical background, can get their entire church set up and running on the very first day. If you can send an email, you can use Atlas.</p>
             </div>
+
             <div class="faq-card">
-                <h4>What happens when my trial ends?</h4>
-                <p>At the start of your last week of the trial, you will receive an email asking if you would like to sign up for one of our tiers. Upon signing up, you will just continue to use the platform as you have been. If you choose not to, you will lose access once the trial period has ended. We will keep your account for one month once you cancel in case you change your mind.</p>
+                <h3>Does Atlas secure your private data?</h3>
+                <p>Security is our highest priority. We use enterprise-grade encryption to protect all of your church's data, ensuring your member information, care notes, and communications remain completely private and secure.</p>
             </div>
+
             <div class="faq-card">
-                <h4>Do I need to be technically inclined to set Atlas up?</h4>
-                <p>Not at all. Atlas was built from the ground up for ministry leaders, not developers. If you can send an email, you can use Atlas. And if you ever get stuck, our real human support team is on standby. No bots, no ticket queues, no waiting.</p>
+                <h3>Can I switch plans at any time?</h3>
+                <p>Absolutely. You are never locked in. You can upgrade or downgrade your plan at any time directly from your billing dashboard as your ministry grows or your needs change.</p>
             </div>
-            <div class="faq-card">
-                <h4>Does Atlas secure your private data?</h4>
-                <p>Yes, and we take this seriously. Every piece of data in Atlas is encrypted using the same standard used by banks and healthcare providers. Your member information never leaves your organization, we don't sell it, share it, or use it for advertising. Ever. <a href="legal.html" style="color: #34D399; text-decoration: none;">Data Privacy Framework &rarr;</a></p>
-            </div>
+
+            <a href="learn-more.html" class="faq-card faq-link-card">
+                <h3>Have more questions? Check out our Learn more page! <span class="faq-arrow">&rarr;</span></h3>
+            </a>
+
         </div>
     </section>
 
-    <section class="cta-banner-wrapper">
-        <div class="cta-banner">
-            <div class="cta-glow"></div>
-            <h2>Ready to simplify your <span>ministry?</span></h2>
-        </div>
-    </section>
+    <div class="bg-glow-bottom"></div>
 
     <footer>
         <div class="footer-copyright">
