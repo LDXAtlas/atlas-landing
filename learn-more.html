@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Features Details - Atlas Church Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0A0A0A;
+            --accent-green: #5CE1A5;
+            --text-light: #EEF9F3;
+            --text-muted: #6B7280;
+            --font-main: 'Poppins', sans-serif;
+            --font-sub: 'Source Sans 3', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        /* --- APP-LIKE SCROLL LOCK (Desktop Only) --- */
+        html, body {
+            height: 100%;
+            overflow: hidden; 
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
+
+        body {
+            background: linear-gradient(150.34deg, rgba(13, 31, 26, 0.5) 0%, rgba(12, 21, 16, 0.5) 100%), #000000;
+            color: var(--text-light);
+            font-family: var(--font-sub); 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-main); }
+
+        /* --- NAVIGATION --- */
+        nav { flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; padding: 30px 5%; width: 100%; max-width: 1400px; margin: 0 auto; position: relative; z-index: 100; }
+        
+        .header-left { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .header-left img { width: 40px; height: auto; transition: width 0.2s; }
+        .header-text { display: flex; flex-direction: column; }
+        .header-text h1 { font-size: 28px; line-height: 1; color: #fff; font-weight: 800; letter-spacing: -0.5px; transition: font-size 0.2s; }
+        .header-text span { font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600; transition: font-size 0.2s;}
+        
+        .header-center { display: flex; gap: 32px; align-items: center; }
+        .header-center a { color: #D1D5DB; text-decoration: none; font-size: 14px; font-family: var(--font-main); font-weight: 600; transition: color 0.2s, font-size 0.2s; }
+        .header-center a:hover { color: var(--accent-green); }
+
+        .header-right { display: flex; justify-content: flex-end; align-items: center; }
+        .btn-login { background-color: var(--accent-green); color: #0F1112; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-family: var(--font-main); font-weight: 700; font-size: 15px; transition: all 0.3s ease; white-space: nowrap;}
+        .btn-login:hover { opacity: 0.8; }
+
+        /* --- BACKGROUND GLOWS --- */
+        .bg-glow-top { position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+        .bg-glow-bottom { position: absolute; bottom: 40px; left: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.05) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+
+        /* --- SPLIT SCROLL LAYOUT --- */
+        .page-wrapper {
+            flex: 1;
+            min-height: 0; 
+            display: flex;
+            align-items: flex-start;
+            gap: 100px;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px 40px 0px;
+            position: relative;
+        }
+
+        /* --- FIXED SIDEBAR (Desktop) --- */
+        .page-sidebar {
+            width: 300px;
+            height: 100%;
+            flex-shrink: 0;
+            overflow-y: auto;
+            padding-bottom: 40px;
+        }
+        .page-sidebar::-webkit-scrollbar { width: 0px; }
+
+        .sidebar-header { margin-bottom: 24px; }
+        .sidebar-header h3 { font-size: 14px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 2px; }
+        
+        #sidebar-links { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+        #sidebar-links a { color: var(--text-muted); text-decoration: none; font-size: 16px; font-family: var(--font-main); font-weight: 600; transition: color 0.2s ease; display: block; }
+        #sidebar-links a:hover { color: var(--accent-green); }
+
+        /* --- INDEPENDENT SCROLLING CONTENT (Desktop) --- */
+        .page-content {
+            flex: 1;
+            max-width: 800px;
+            height: 100%;
+            overflow-y: auto;
+            scroll-behavior: smooth; 
+            padding-right: 30px;
+            padding-bottom: 100px; 
+        }
+
+        .page-content::-webkit-scrollbar { width: 6px; }
+        .page-content::-webkit-scrollbar-track { background: transparent; }
+        .page-content::-webkit-scrollbar-thumb { background: #1F1F1F; border-radius: 10px; }
+        .page-content::-webkit-scrollbar-thumb:hover { background: #333; }
+
+        .page-content h1 { font-size: clamp(36px, 5vw, 48px); font-weight: 800; color: var(--text-light); margin-bottom: 40px; line-height: 1.2; letter-spacing: -1px; }
+
+        .content-section { scroll-margin-top: 20px; margin-bottom: 80px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .content-section:last-child { border-bottom: none; }
+        .content-section h2 { font-size: 28px; font-weight: 700; color: var(--accent-green); margin-bottom: 8px; }
+        .content-section h3 { font-family: var(--font-main); font-weight: 600; font-size: 20px; color: #E5E7EB; margin-bottom: 20px; }
+        .content-section p { font-size: 17px; color: #D1D5DB; line-height: 1.9; margin-bottom: 16px; }
+
+        /* --- FOOTER --- */
+        footer { flex-shrink: 0; background: transparent; padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); font-family: 'Arial', sans-serif; }
+        .footer-links { display: flex; gap: 30px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text-light); }
+
+        /* ========================================================
+           MOBILE RESPONSIVENESS & STICKY APP LAYOUT
+           ======================================================== */
+        @media (max-width: 900px) {
+            /* Revert back to physical body scrolling on mobile */
+            html, body { height: auto; overflow: visible; overflow-x: clip; }
+
+            /* 1. Make the main nav FIXED */
+            nav { 
+                position: fixed; 
+                top: 0; 
+                left: 0;
+                height: 70px;
+                background: #000; 
+                border-bottom: 1px solid #1A1A1A;
+                padding: 0 5%; 
+                gap: 6px; 
+            }
+            .header-left { gap: 6px; }
+            .header-left img { width: 28px; }
+            .header-text h1 { font-size: 18px; letter-spacing: 0;}
+            .header-text span { font-size: 7px; margin-top: 0px; letter-spacing: 1px;}
+            .header-center { display: none; } 
+            .btn-login { padding: 6px 12px; font-size: 12px; }
+
+            /* Revert layout wrapping */
+            .page-wrapper { 
+                flex-direction: column; 
+                gap: 0px; 
+                padding: 160px 20px 0; /* Pushes text securely below the fixed headers */
+                min-height: auto; 
+                overflow: visible; 
+            }
+            
+            /* 2. Make the sidebar a FIXED sub-header */
+            .page-sidebar { 
+                position: fixed; 
+                top: 70px; /* Locks securely underneath the main nav */
+                left: 0;
+                width: 100%; 
+                background: #0A0A0A; 
+                border-bottom: 1px solid #1F1F1F; 
+                padding: 12px 20px 16px; 
+                height: auto;
+                z-index: 90;
+            }
+            
+            .sidebar-header { margin-bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; }
+            .sidebar-header h3 { margin-bottom: 0px; }
+
+            /* The Pill List (Horizontal scrolling permanently pinned to the top) */
+            #sidebar-links {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 8px;
+                padding-bottom: 4px;
+                scrollbar-width: none; /* Hides scrollbar on Firefox */
+            }
+            #sidebar-links::-webkit-scrollbar { display: none; } /* Hides scrollbar on Chrome/Safari */
+            
+            #sidebar-links a {
+                background: #111;
+                border: 1px solid #1F1F1F;
+                border-radius: 20px;
+                padding: 6px 14px;
+                font-size: 13px;
+                white-space: nowrap; /* Forces them side-by-side */
+            }
+
+            /* Main Content Container */
+            .page-content {
+                height: auto;
+                overflow-y: visible;
+                padding: 0;
+            }
+
+            /* 3. Push the anchor scroll jump down so it clears BOTH fixed headers */
+            .content-section { scroll-margin-top: 180px; }
+
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-top"></div>
+    <div class="bg-glow-bottom"></div>
+
+    <nav>
+        <a href="index.html" class="header-left">
+            <img src="image_2.png" alt="Atlas Logo">
+            <div class="header-text">
+                <h1>Atlas</h1>
+                <span>Church Solutions</span>
+            </div>
+        </a>
+        <div class="header-center">
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="legal.html">Privacy</a>
+        </div>
+        <div class="header-right">
+            <a href="login.html" class="btn-login">Log In</a>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        
+        <aside class="page-sidebar" id="page-sidebar">
+            <div class="sidebar-header">
+                <h3>Features Deep Dive</h3>
+            </div>
+            
+            <ul id="sidebar-links">
+                <li><a href="#workspace">Workspace</a></li>
+                <li><a href="#serve">Serve</a></li>
+                <li><a href="#care">Care</a></li>
+                <li><a href="#ai">Atlas AI</a></li>
+                <li><a href="#hub">Ministry Hub</a></li>
+                <li><a href="#urs">Universal Reference System</a></li>
+            </ul>
+        </aside>
+
+        <main class="page-content">
+            <h1>Platform Features</h1>
+            
+            <div id="workspace" class="content-section">
+                <h2>Workspace</h2>
+                <h3>Your team, in sync.</h3>
+                <p>Our platform brings everything you need into one seamless workspace — manage your personal tasks and team meetings, drive projects from kickoff to completion, and plan events with ease, all without switching between tools. A centralized file library keeps your documents organized and always within reach, while the monthly calendar view gives you a clear picture of what's ahead, so you and your team can stay aligned, prepared, and in control at every step.</p>
+            </div>
+
+            <div id="serve" class="content-section">
+                <h2>Serve</h2>
+                <h3>Volunteers who show up.</h3>
+                <p>Our Serve section gives you everything you need to build and sustain a thriving volunteer culture — the Onboarding feature walks new volunteers through a fully customizable training pathway so every person is set up for success from day one, while Scheduling makes it simple to place the right people in the right roles for upcoming events without the back-and-forth. Team Health rounds it all out with a clear overview of your volunteer base, helping you spot signs of burnout before they become a problem and ensuring your team stays energized, engaged, and cared for over the long haul.</p>
+            </div>
+
+            <div id="care" class="content-section">
+                <h2>Care</h2>
+                <h3>No one falls through.</h3>
+                <p>Our Care section equips your team to love and serve your congregation with intention — the Care Journal keeps a detailed record of each person's needs so nothing slips through the cracks, while the Follow-Ups list turns those needs into clear, actionable steps so the right people get reached out to at the right time. The Prayer Wall creates a shared space where members can post and see prayer requests, fostering a culture of transparency, intercession, and community support all in one place.</p>
+            </div>
+
+            <div id="ai" class="content-section">
+                <h2>Atlas AI</h2>
+                <h3>AI that actually helps.</h3>
+                <p>Atlas AI is your intelligent command center, always on and ready to work — the Chat With feature lets you pull data from anywhere across the platform in seconds, whether you need a quick answer or want to take action like creating a task and adding it straight to your list for today. But Atlas goes beyond conversation; as a fully capable agent, it can run predetermined sequences of actions automatically through custom Workflows you build yourself, handling the repetitive and time-consuming work in the background so you can stay focused on what matters most. With Atlas AI, the platform doesn't just store your information — it actively works with you to move things forward.</p>
+            </div>
+
+            <div id="hub" class="content-section">
+                <h2>Ministry Hub</h2>
+                <h3>Your church, at a glance.</h3>
+                <p>The Ministry Hub gives you a bird's-eye view of every ministry within your organization, bringing them all together in one central space so leadership can stay informed, connected, and aligned across the board. Rather than navigating siloed teams and scattered information, the Hub serves as the heartbeat of your organization — a single place to see how every ministry is operating, growing, and contributing to the mission as a whole.</p>
+            </div>
+
+            <div id="urs" class="content-section">
+                <h2>Universal Reference System</h2>
+                <h3>Everything connected.</h3>
+                <p>What truly sets the platform apart is the Universal Reference System — a smart linking layer that runs beneath every section and turns the way your team communicates into a connected, clickable experience. Whether you're typing a message, writing a note, or logging an update, any mention of an event, person, project, or resource can be instantly tagged and linked, so the recipient can click directly through to that event board, user profile, or wherever it lives on the platform. No more hunting through menus or asking "where was that?" — the Universal Reference System makes every corner of the platform instantly accessible from wherever you already are, keeping your team moving with context, clarity, and zero friction.</p>
+            </div>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-copyright">
+            &copy; 2026 Atlas Church Solutions. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="pricing.html">Pricing</a>
+            <a href="#">Help Center</a>
+            <a href="legal.html">Privacy Policy</a>
+            <a href="about.html">About Atlas</a>
+        </div>
+    </footer>
+
+</body>
+</html>
