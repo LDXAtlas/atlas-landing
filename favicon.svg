@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" viewBox="0 0 48 48" width="48" height="48"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st1 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="37.18" y1="47.54" x2="37.18" y2="16.97" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5ce1a5"></stop>
+      <stop offset="1" stop-color="#a0f1c8"></stop>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="24" y1="47.54" x2="24" y2=".46" xlink:href="#linear-gradient"></linearGradient>
+  </defs><g id="Green_A">
+    <path class="st1" d="M26.58,38.17c.37,5.24,4.73,9.37,10.07,9.37h1.04c5.58,0,10.1-4.52,10.1-10.1v-20.48l-21.2,21.2Z"></path>
+    <path class="st0" d="M24.87,37.91l22.91-22.91v-2.94c0-2.11-.65-4.06-1.75-5.68-.44-.8-1-1.55-1.68-2.22l-.74-.74c-3.94-3.94-10.33-3.94-14.28,0L3.18,29.57c-3.94,3.94-3.94,10.33,0,14.28l.74.74c3.94,3.94,10.33,3.94,14.28,0l6.68-6.68h0Z"></path>
+  </g></svg>
