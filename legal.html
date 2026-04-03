@@ -126,15 +126,16 @@
         .footer-links { display: flex; gap: 30px; }
         .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
         .footer-links a:hover { color: var(--text-light); }
+        
+        .subprocessor-link { display: inline-block; margin-top: 30px; font-size: 16px; color: var(--accent-green); text-decoration: none; font-weight: 600; border: 1px solid var(--accent-green); padding: 10px 20px; border-radius: 6px; transition: all 0.2s; }
+        .subprocessor-link:hover { background-color: var(--accent-green); color: #000; }
 
         /* ========================================================
            MOBILE RESPONSIVENESS & STICKY APP LAYOUT
            ======================================================== */
         @media (max-width: 900px) {
-            /* Revert back to physical body scrolling on mobile */
             html, body { height: auto; overflow: visible; overflow-x: clip; }
 
-            /* 1. Make the main nav FIXED */
             nav { 
                 position: fixed; 
                 top: 0; 
@@ -152,19 +153,17 @@
             .header-center { display: none; } 
             .btn-login { padding: 6px 12px; font-size: 12px; }
 
-            /* Revert layout wrapping */
             .page-wrapper { 
                 flex-direction: column; 
                 gap: 0px; 
-                padding: 160px 20px 0; /* Pushes text securely below the fixed headers */
+                padding: 160px 20px 0; 
                 min-height: auto; 
                 overflow: visible; 
             }
             
-            /* 2. Make the sidebar a FIXED sub-header */
             .page-sidebar { 
                 position: fixed; 
-                top: 70px; /* Locks securely underneath the main nav */
+                top: 70px; 
                 left: 0;
                 width: 100%; 
                 background: #0A0A0A; 
@@ -177,7 +176,6 @@
             .sidebar-header { margin-bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; }
             .sidebar-header h3 { margin-bottom: 0px; }
 
-            /* The Pill List (Horizontal scrolling permanently pinned to the top) */
             #sidebar-links {
                 display: flex;
                 flex-direction: row;
@@ -197,14 +195,12 @@
                 white-space: nowrap; 
             }
 
-            /* Main Content Container */
             .page-content {
                 height: auto;
                 overflow-y: visible;
                 padding: 0;
             }
 
-            /* 3. Push the anchor scroll jump down so it clears BOTH fixed headers */
             .content-section { scroll-margin-top: 180px; }
 
             footer { flex-direction: column; gap: 20px; text-align: center; }
@@ -245,7 +241,6 @@
             </div>
             
             <ul id="sidebar-links">
-                <li><a href="#subprocessors">List of Subprocessors</a></li>
                 <li><a href="#cookie-policy">Cookie Policy</a></li>
                 <li><a href="#aup">Acceptable Use Policy</a></li>
                 <li><a href="#dpa">Data Processing Agreement</a></li>
@@ -255,68 +250,24 @@
 
         <main class="page-content">
             <h1>Legal & Privacy Center</h1>
-            
-            <div id="subprocessors" class="content-section">
-                <h2>List of Subprocessors</h2>
-                <p><strong>Last Updated: [DATE]</strong></p>
-                <p>This is the current list of all third-party service providers ("Subprocessors") who process personal data on behalf of [YOUR COMPANY NAME]. This list is subject to change. [YOUR COMPANY NAME] will notify customers of material changes and provide an opportunity to object to new subprocessors in accordance with applicable data protection laws.</p>
-                
-                <h3>Cloud Infrastructure & Hosting</h3>
-                <ul>
-                    <li><strong>[CLOUD PROVIDER: e.g., Amazon Web Services (AWS)]</strong> - Cloud hosting and data storage</li>
-                    <li><strong>[BACKUP PROVIDER]</strong> - Data backup and disaster recovery</li>
-                </ul>
-
-                <h3>Payment Processing</h3>
-                <ul>
-                    <li><strong>Stripe</strong> - Payment processing and billing (Privacy Policy: https://stripe.com/privacy)</li>
-                </ul>
-
-                <h3>Analytics</h3>
-                <ul>
-                    <li><strong>[ANALYTICS TOOL 1: e.g., Google Analytics]</strong> - Website and product analytics</li>
-                    <li><strong>[ANALYTICS TOOL 2]</strong> - User behavior tracking</li>
-                </ul>
-
-                <h3>Email & Communication</h3>
-                <ul>
-                    <li><strong>[EMAIL SERVICE: e.g., SendGrid]</strong> - Transactional and marketing emails</li>
-                    <li><strong>[CUSTOMER SUPPORT TOOL: e.g., Intercom]</strong> - Customer communication and support</li>
-                </ul>
-
-                <h3>Security & Monitoring</h3>
-                <ul>
-                    <li><strong>[SECURITY TOOL: e.g., Cloudflare]</strong> - DDoS protection and security</li>
-                    <li><strong>[MONITORING TOOL]</strong> - System monitoring and alerting</li>
-                </ul>
-
-                <h3>Development & Operations</h3>
-                <ul>
-                    <li><strong>[CI/CD PLATFORM: e.g., GitHub]</strong> - Code repository and deployment</li>
-                    <li><strong>[LOGGING TOOL: e.g., LogRocket, DataDog]</strong> - Application logging and debugging</li>
-                </ul>
-
-                <p><em>Note: All subprocessors are contractually obligated to protect personal data and comply with data protection laws including GDPR, CCPA, and other applicable regulations.</em></p>
-                <p>For questions about our subprocessors or to object to a new subprocessor, please contact [YOUR PRIVACY EMAIL].</p>
-            </div>
 
             <div id="cookie-policy" class="content-section">
                 <h2>Cookie Policy</h2>
-                <p><strong>Last Updated: [DATE]</strong></p>
+                <p><strong>Last Updated: 04/02/26</strong></p>
                 
                 <h3>1. What Are Cookies?</h3>
                 <p>Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit a website or use an app. They are widely used to make websites and apps work more efficiently and to provide information to the website or app owners.</p>
 
                 <h3>2. Types of Cookies We Use</h3>
-                <p>We use the following types of cookies on [YOUR COMPANY NAME]'s website and Services:</p>
+                <p>We use the following types of cookies on Atlas Church Solutions website and Services:</p>
                 <ul>
                     <li><strong>Essential/Necessary Cookies:</strong> These cookies are required for the website to function properly. They enable core functionality such as session management, user authentication, and security features. Without these cookies, the Services cannot operate properly.</li>
                     <li><strong>Functional Cookies:</strong> These cookies remember your preferences and choices to provide a more personalized experience. For example, they may remember your language preference or theme selection.</li>
-                    <li><strong>Analytical Cookies:</strong> These cookies help us understand how users interact with our website and Services. We use tools such as [LIST YOUR ANALYTICS TOOLS: e.g., Google Analytics, Mixpanel] to collect and analyze usage data. This helps us improve our Services and understand user behavior patterns.</li>
+                    <li><strong>Analytical Cookies:</strong> These cookies help us understand how users interact with our website and Services. We use tools such as Google Analytics to collect and analyze usage data. This helps us improve our Services and understand user behavior patterns.</li>
                 </ul>
 
                 <h3>3. Third-Party Cookies</h3>
-                <p>Some cookies are set by third-party services we use, including: (a) Google Analytics for web analytics; (b) [OTHER THIRD-PARTY SERVICES]; (c) Advertising partners for retargeting and marketing. These third parties have their own cookie policies, and we are not responsible for their use of cookies.</p>
+                <p>Some cookies are set by third-party services we use, including: (a) Google Analytics for web analytics; (b) Advertising partners for retargeting and marketing. These third parties have their own cookie policies, and we are not responsible for their use of cookies.</p>
 
                 <h3>4. How to Control Cookies</h3>
                 <p>You can control and manage cookies in several ways: (a) Browser Settings: Most browsers allow you to refuse cookies or alert you when a cookie is being sent. Instructions for controlling cookies in popular browsers can be found at [www.allaboutcookies.org]; (b) Opt-Out Tools: You can opt-out of Google Analytics tracking by installing the Google Analytics Opt-Out Browser Add-on; (c) Do Not Track: If your browser supports Do Not Track signals, you can enable this feature (though we do not currently respond to DNT signals).</p>
@@ -324,147 +275,105 @@
                 <h3>5. Impact of Disabling Cookies</h3>
                 <p>Please note that disabling cookies may impact the functionality of our Services. Essential cookies cannot be disabled without affecting your ability to use certain features.</p>
 
-                <h3>6. Cookie List</h3>
-                <p>[CUSTOMIZE: Provide a detailed list of all cookies used, including name, type, purpose, duration, and provider. Example:<br>
-                - Session ID (Essential) - Maintains user session - Duration: Session - Set by [YOUR COMPANY]<br>
-                - User Preferences (Functional) - Remembers user theme/language - Duration: 1 year - Set by [YOUR COMPANY]<br>
-                - _ga (Analytical) - Google Analytics tracking - Duration: 2 years - Set by Google Analytics]</p>
-
-                <h3>7. Changes to This Cookie Policy</h3>
-                <p>[YOUR COMPANY NAME] may update this Cookie Policy at any time. We will notify you of material changes by updating the date at the top of this policy.</p>
-
-                <h3>8. Contact Us</h3>
-                <p>If you have questions about this Cookie Policy, please contact us at [YOUR EMAIL].</p>
+                <h3>6. Contact Us</h3>
+                <p>If you have questions about this Cookie Policy, please contact us at Info@atlaschurchsolutions.com.</p>
             </div>
 
             <div id="aup" class="content-section">
                 <h2>Acceptable Use Policy</h2>
-                <p><strong>Last Updated: [DATE]</strong></p>
+                <p><strong>Last Updated: 04/02/26</strong></p>
 
                 <h3>1. Purpose</h3>
-                <p>This Acceptable Use Policy ("AUP") applies to all users of [YOUR COMPANY NAME]'s Services. The purpose of this policy is to ensure that our Services are used in a responsible, legal, and ethical manner that does not harm [YOUR COMPANY NAME], other users, or third parties.</p>
+                <p>This Acceptable Use Policy ("AUP") applies to all users of Atlas Church Solutions services. The purpose of this policy is to ensure that our Services are used in a responsible, legal, and ethical manner that does not harm Atlas Church Solutions, other users, or third parties.</p>
 
-                <h3>2. Prohibited Activities</h3>
-                <p>You agree not to use the Services for: (a) Any unlawful purpose or activity that violates local, state, national, or international law; (b) Harassment, threats, intimidation, or abusive behavior directed at any individual or group; (c) Transmission of spam, unsolicited commercial communications, or mass mailings; (d) Phishing, social engineering, or fraudulent activities; (e) Hacking, cracking, or attempting to gain unauthorized access to the Services or other systems; (f) Disrupting the normal flow of dialog or interfering with the Services' infrastructure; (g) Intellectual property infringement, including copyright, trademark, or trade secret violations.</p>
+                <h3>2. Prohibited Activities & Content</h3>
+                <p>You agree not to use the Services for:</p>
+                <ul>
+                    <li>Any unlawful purpose or activity that violates local, state, national, or international law.</li>
+                    <li>Harassment, threats, intimidation, or abusive behavior directed at any individual or group.</li>
+                    <li>Transmission of spam, unsolicited commercial communications, or mass mailings; Phishing, social engineering, or fraudulent activities.</li>
+                    <li>Hacking, cracking, or attempting to gain unauthorized access to the Services or other systems.</li>
+                    <li>Intellectual property infringement, including copyright, trademark, or trade secret violations.</li>
+                    <li>Uploading content that is illegal, obscene, profane, defamatory, or libelous.</li>
+                    <li>Uploading content that contains malware, viruses, worms, or other malicious code; or violates anyone's privacy or confidentiality.</li>
+                </ul>
 
-                <h3>3. Prohibited Content</h3>
-                <p>You agree not to upload, transmit, or create content that: (a) Is illegal, obscene, profane, defamatory, or libelous; (b) Contains malware, viruses, worms, or other malicious code; (c) Violates anyone's privacy or confidentiality; (d) Infringes on intellectual property rights; (e) Promotes illegal activities, violence, or discrimination; (f) Contains child sexual abuse material.</p>
+                <h3>3. Infrastructure Protection</h3>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Scrape, crawl, or systematically access our Services without prior written permission.</li>
+                    <li>Use automated tools or bots to access the Services in a manner that strains our infrastructure.</li>
+                    <li>Conduct denial-of-service (DoS) or distributed denial-of-service (DDoS) attacks.</li>
+                    <li>Reverse engineer, decompile, or disassemble any portion of the Services.</li>
+                </ul>
 
-                <h3>4. Scraping and Automated Access</h3>
-                <p>You agree not to: (a) Scrape, crawl, or systematically access our Services without prior written permission; (b) Use automated tools or bots to access the Services in a manner that strains our infrastructure; (c) Access the Services using methods other than the publicly supported interfaces; (d) Bypass any authentication mechanisms or rate limiting.</p>
-
-                <h3>5. Resource Abuse</h3>
-                <p>You agree not to: (a) Use the Services for cryptocurrency mining or similar resource-intensive activities; (b) Conduct denial-of-service (DoS) or distributed denial-of-service (DDoS) attacks; (c) Use the Services as a proxy or VPN service; (d) Monopolize resources or use the Services in a manner that negatively impacts other users.</p>
-
-                <h3>6. Reverse Engineering</h3>
-                <p>You agree not to: (a) Reverse engineer, decompile, or disassemble any portion of the Services; (b) Attempt to derive or discover the source code, algorithms, or business logic underlying the Services; (c) Create derivative works based on the Services without authorization.</p>
-
-                <h3>7. Enforcement</h3>
-                <p>[YOUR COMPANY NAME] reserves the right to: (a) Monitor user activity for violations of this AUP; (b) Suspend or terminate service for users in violation of this policy; (c) Report illegal activity to law enforcement; (d) Take legal action to protect its rights and the rights of other users; (e) Pursue damages and recovery of costs incurred due to violations.</p>
-
-                <h3>8. Reporting Violations</h3>
-                <p>If you encounter content or behavior that violates this AUP, please report it to [YOUR ABUSE EMAIL]. We will investigate all reports promptly.</p>
-
-                <h3>9. No Obligation to Monitor</h3>
-                <p>While [YOUR COMPANY NAME] does not have an obligation to monitor user activity, we reserve the right to do so and take action as appropriate.</p>
-
-                <h3>10. Changes to This Policy</h3>
-                <p>[YOUR COMPANY NAME] may update this AUP at any time. Your continued use of the Services constitutes acceptance of updates.</p>
+                <h3>4. Enforcement</h3>
+                <p>Atlas Church Solutions reserves the right to monitor user activity, suspend or terminate service for users in violation of this policy, report illegal activity to law enforcement, and take legal action to protect its rights. If you encounter content or behavior that violates this AUP, please report it to Support@atlaschurchsolutions.com.</p>
             </div>
 
             <div id="dpa" class="content-section">
                 <h2>Data Processing Agreement</h2>
-                <p><strong>Last Updated: [DATE]</strong></p>
+                <p><strong>Last Updated: 04/02/26</strong></p>
 
                 <h3>1. Scope and Purpose</h3>
-                <p>This Data Processing Agreement ("DPA") is entered into between [YOUR COMPANY NAME] ("Service Provider") and the Customer. This DPA applies when Customer is a controller of personal data and Service Provider processes such personal data on behalf of the Customer in the course of providing the Services. This DPA is supplementary to the Master Services Agreement/Terms of Service between the parties.</p>
+                <p>This Data Processing Agreement ("DPA") is entered into between Atlas Church Solutions ("Service Provider") and the Customer. This DPA applies when Customer is a controller of personal data and Service Provider processes such personal data on behalf of the Customer in the course of providing the Services.</p>
 
-                <h3>2. Definitions</h3>
-                <p>"Personal Data" means any information relating to an identified or identifiable natural person. "Processing" means any operation performed on Personal Data. "Data Subject" means the individual to whom Personal Data relates. "Data Protection Laws" means the GDPR, CCPA, LGPD, and other applicable privacy laws.</p>
+                <h3>2. Sub-processors</h3>
+                <p>Service Provider shall not engage sub-processors without prior specific or general written authorization from Customer. Service Provider shall inform Customer of any new or replacement sub-processors and give Customer the opportunity to object to the engagement of new sub-processors.</p>
+                <p><em>You can view our current list of active sub-processors at <a href="sub-processors.html" style="color: var(--accent-green);">atlaschurchsolutions.com/subprocessors</a>.</em></p>
 
-                <h3>3. Data Processor Obligations</h3>
-                <p>Service Provider agrees to: (a) Process Personal Data only on documented instructions from the Customer; (b) Ensure that persons authorized to process Personal Data are subject to confidentiality or under an appropriate legal obligation of confidentiality; (c) Implement appropriate technical and organizational measures to ensure a level of security appropriate to the risk; (d) Implement measures to ensure the confidentiality, integrity, availability and resilience of processing systems and services.</p>
+                <h3>3. Data Processor Obligations & Security</h3>
+                <p>Service Provider agrees to process Personal Data only on documented instructions from the Customer. Service Provider implements and maintains encryption of Personal Data in transit (TLS/SSL) and at rest. We also maintain access controls limiting access to authorized personnel only, conduct regular security assessments, and maintain incident response procedures.</p>
 
-                <h3>4. Sub-processors</h3>
-                <p>Service Provider shall not engage sub-processors without prior specific or general written authorization from Customer. Service Provider shall: (a) inform Customer of any new or replacement sub-processors; (b) give Customer the opportunity to object to the engagement of new sub-processors; (c) ensure sub-processors are bound by data protection obligations equivalent to those in this DPA.</p>
-
-                <h3>5. Data Subject Rights</h3>
-                <p>Service Provider shall, taking into account the nature of processing, assist Customer by appropriate technical and organizational measures in fulfilling the Customer's obligation to respond to Data Subject rights requests, including rights of access, rectification, erasure, restriction, portability, and objection.</p>
-
-                <h3>6. Assistance with Compliance</h3>
-                <p>Service Provider shall assist Customer with compliance with Articles 32-36 of the GDPR, including: (a) assisting with Data Protection Impact Assessments; (b) assisting with notifying supervisory authorities and Data Subjects in case of a Personal Data breach; (c) making available to Customer all information necessary to demonstrate compliance with GDPR obligations.</p>
-
-                <h3>7. Data Security</h3>
-                <p>Service Provider implements and maintains: (a) encryption of Personal Data in transit (TLS/SSL) and at rest; (b) access controls limiting access to authorized personnel only; (c) regular security assessments and penetration testing; (d) incident response procedures; (e) employee training on data protection.</p>
-
-                <h3>8. Data Breach Notification</h3>
-                <p>In case of a Personal Data breach, Service Provider shall notify Customer without undue delay and in no case later than 72 hours after becoming aware of the breach. Service Provider shall provide Customer with sufficient information to allow Customer to notify relevant authorities and affected Data Subjects.</p>
-
-                <h3>9. Data Transfers</h3>
-                <p>For transfers of Personal Data outside the European Economic Area or United Kingdom, Service Provider shall implement appropriate safeguards such as Standard Contractual Clauses (SCCs). Customer acknowledges that data may be processed in [YOUR DATA CENTER LOCATION(S)].</p>
-
-                <h3>10. Deletion or Return of Data</h3>
-                <p>Upon termination or expiration of the Services, Service Provider shall, at Customer's choice, delete all Personal Data or return it to Customer, unless applicable law requires storage.</p>
-
-                <h3>11. Audit Rights</h3>
-                <p>Service Provider shall make available to Customer all information necessary to demonstrate compliance with this DPA and allow for and contribute to audits and inspections by Customer or Customer's independent auditor.</p>
-
-                <h3>12. Liability</h3>
-                <p>The parties' liability with respect to this DPA is limited as set forth in the Master Services Agreement, except that liability for data breaches shall be unlimited.</p>
-
-                <h3>13. Duration</h3>
-                <p>This DPA is effective as of the date Customer first uses the Services and continues for the duration of the Services or until terminated by either party.</p>
-
-                <h3>14. Contact</h3>
-                <p>For questions about this DPA, contact [YOUR DPO EMAIL OR PRIVACY EMAIL].</p>
+                <h3>4. Data Breach Notification</h3>
+                <p>In case of a Personal Data breach, Service Provider shall notify Customer without undue delay and in no case later than 72 hours after becoming aware of the breach.</p>
             </div>
 
-            <div id="tos" class="content-section">
+            <div id="tos" class="content-section" style="border-bottom: none; margin-bottom: 20px; padding-bottom: 0;">
                 <h2>Terms of Service</h2>
-                <p><strong>Last Updated: [DATE]</strong></p>
+                <p><strong>Last Updated: March 27, 2026</strong></p>
 
                 <h3>1. Agreement to Terms</h3>
-                <p>By accessing and using [YOUR COMPANY NAME]'s website, products, and services (collectively, the "Services"), you accept and agree to be bound by and abide by the terms and condition of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                <p>By accessing and using the products and services provided by Atlas Church Solutions (collectively, the "Services"), you accept and agree to be bound by these terms. If you do not agree to these terms, please do not use the Services.</p>
 
-                <h3>2. Use License</h3>
-                <p>Permission is granted to temporarily download one copy of the materials (information or software) on [YOUR COMPANY NAME]'s Services for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not: (a) modify or copy the materials; (b) use the materials for any commercial purpose or for any public display; (c) attempt to decompile or reverse engineer any software contained on [YOUR COMPANY NAME]'s Services; (d) remove any copyright or other proprietary notations from the materials; (e) transfer the materials to another person or "mirror" the materials on any other server.</p>
+                <h3>2. Service Access & License</h3>
+                <p>Atlas Church Solutions grants you a non-exclusive, non-transferable, revocable right to access and use our SaaS platform solely for your organization's internal operations. This is a service access grant, not a transfer of title. Under this access, you may not:</p>
+                <ul>
+                    <li>Modify, copy, or create derivative works based on the Services.</li>
+                    <li>Attempt to decompile or reverse engineer any software contained within the Services.</li>
+                    <li>Use the Services for any commercial bureau or time-sharing purposes.</li>
+                </ul>
 
-                <h3>3. Disclaimer</h3>
-                <p>The materials on [YOUR COMPANY NAME]'s Services are provided on an 'as is' basis. [YOUR COMPANY NAME] makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                <h3>3. User Content & Ownership</h3>
+                <p>You retain all ownership rights to the data, information, and materials you upload to the Services ("User Content"). By uploading User Content, you grant Atlas Church Solutions a limited, worldwide, royalty-free license to host, transmit, and display your data solely as necessary to provide the Services to you and your organization.</p>
 
-                <h3>4. Limitations</h3>
-                <p>In no event shall [YOUR COMPANY NAME] or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on [YOUR COMPANY NAME]'s Services, even if [YOUR COMPANY NAME] or an authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+                <h3>4. Uptime & Maintenance</h3>
+                <p>We strive to provide high availability for our Services; however, we do not guarantee 100% uptime. Services may be temporarily unavailable for scheduled maintenance or due to unforeseen technical issues. We will provide reasonable prior notice for any planned maintenance that may impact your access.</p>
 
-                <h3>5. Accuracy of Materials</h3>
-                <p>[YOUR COMPANY NAME] does not warrant that the materials on its Services are accurate, complete, or current. The materials on [YOUR COMPANY NAME]'s Services could include technical, typographical, or photographic errors. [YOUR COMPANY NAME] does not warrant that any of the materials on its website will be free of viruses or other harmful components.</p>
+                <h3>5. User Accounts & Security</h3>
+                <p>You are responsible for safeguarding the password used to access the Services and for any activities or actions under your password. You must notify us immediately at Lucas@atlaschurchsolutions.com upon becoming aware of any breach of security or unauthorized use of your account.</p>
 
-                <h3>6. Modifications</h3>
-                <p>[YOUR COMPANY NAME] may revise these terms of service for its Services at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
+                <h3>6. Payment & Billing</h3>
+                <ul>
+                    <li><strong>Fees & Billing:</strong> You agree to pay all fees associated with your selected subscription plan. Subscriptions are billed on a recurring basis (monthly or annually) as selected during sign-up.</li>
+                    <li><strong>Refunds:</strong> Unless otherwise stated at the time of purchase, payments are non-refundable. You may cancel your subscription at any time, and you will continue to have access to the service through the end of your current billing period.</li>
+                    <li><strong>Price Changes:</strong> We reserve the right to change our fees with 30 days' notice to you.</li>
+                </ul>
 
-                <h3>7. Governing Law</h3>
-                <p>These terms of service are governed by and construed in accordance with the laws of [YOUR STATE/COUNTRY], and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+                <h3>7. Termination</h3>
+                <p>We may terminate or suspend your account immediately, without prior notice, if you breach these Terms. Upon termination, your right to use the Services will cease immediately. You will have a 30-day window to export your User Content before it is permanently deleted from our systems, unless legal requirements dictate otherwise.</p>
 
-                <h3>8. Acceptable Use Policy</h3>
-                <p>You agree not to use [YOUR COMPANY NAME]'s Services: (a) for any unlawful purpose or in violation of any laws; (b) to harass, abuse, or harm any person; (c) to transmit or procure transmission of obscene, profane, vulgar, or otherwise objectionable material; (d) to spam, phish, or conduct fraudulent activities; (e) to reverse engineer, decompile, or disassemble our Services; (f) to circumvent any authentication or security measures; (g) to scrape, crawl, or systematically access our Services without permission.</p>
+                <h3>8. Limitation of Liability</h3>
+                <p>To the maximum extent permitted by law, Atlas Church Solutions shall not be liable for any indirect, incidental, special, or consequential damages (including loss of profits or data) arising out of your use of the Services. Our total liability for any claim shall not exceed the amount paid by you to Atlas Church Solutions in the 12 months preceding the claim.</p>
 
-                <h3>9. Intellectual Property Rights</h3>
-                <p>The Services and all content, features, and functionality (including but not limited to all information, software, text, displays, images, video and audio) are owned by [YOUR COMPANY NAME], its licensors, or other providers of such material and are protected by copyright, trademark, and other intellectual property laws.</p>
+                <h3>9. Governing Law</h3>
+                <p>These terms are governed by and construed in accordance with the laws of the State of Florida, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
 
-                <h3>10. User Accounts</h3>
-                <p>If you create an account, you are responsible for safeguarding your password and agree to accept responsibility for all activities that occur under your account. You agree to provide accurate, complete, and current information during registration. You agree to notify [YOUR COMPANY NAME] of any unauthorized use of your account.</p>
-
-                <h3>11. Payment Terms</h3>
-                <p>[CUSTOMIZE: Include your pricing model, billing frequency, payment methods, late payment procedures, refund policy, and any auto-renewal terms. Example: "You agree to pay all charges and fees that you incur. Billing occurs monthly on the same day each month. If you cancel, you are not entitled to a refund for the remainder of your billing period."]</p>
-
-                <h3>12. Termination</h3>
-                <p>[YOUR COMPANY NAME] may terminate or suspend your account and access to the Services immediately, without prior notice or liability, for any reason whatsoever, including if you breach any terms of this Agreement. Upon termination, your right to use the Services will immediately cease.</p>
-
-                <h3>13. Limitation of Liability</h3>
-                <p>To the fullest extent permitted by law, [YOUR COMPANY NAME] shall not be liable for any indirect, incidental, special, consequential, or punitive damages, regardless of the cause of action.</p>
-
-                <h3>14. Contact Information</h3>
-                <p>If you have any questions about these Terms of Service, please contact us at [YOUR EMAIL/CONTACT INFO].</p>
+                <h3>10. Contact Information</h3>
+                <p>If you have any questions about these Terms, please contact us at Info@atlaschurchsolutions.com.</p>
             </div>
+
+            <a href="sub-processors.html" class="subprocessor-link">Click here to view our list of Sub Processors</a>
             
         </main>
     </div>
@@ -478,6 +387,7 @@
             <a href="about.html">About</a>
             <a href="legal.html">Privacy Policy</a>
             <a href="learn-more.html">Product Details</a>
+            <a href="Contact-Us.html">Contact Us</a>
         </div>
     </footer>
 
