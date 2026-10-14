@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atlas Church Solutions | Become a founding church</title>
+<meta name="description" content="The invisible backbone of your church. One calm place for your staff's tasks, meetings, projects and plans. Now inviting founding churches.">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: Apple-style chapters, one idea per screen, alternating white and #F4F5F7 bands.
+   Glass only on floating controls (nav, mobile CTA, the hero app shell); content stays solid.
+   Tokens from atlas-app/DESIGN.md. Light only, like the app. */
+:root {
+  color-scheme: light;
+  --white: #FFFFFF;
+  --bg: #F4F5F7;
+  --border: #E5E7EB;
+  --ink: #1F2328;            /* headline ink: a touch deeper than text-primary for display sizes */
+  --text: #2D333A;
+  --text-2: #6B7280;
+  --text-3: #9CA3AF;
+  --ghost: #C9CDD3;          /* dimmed display text in two-tone headlines */
+  --mint: #5CE1A5;
+  --mint-hover: #4DD395;
+  --mint-tint: #A0F1C8;
+  --mint-deep: #3DB882;
+  --mint-ink: #059669;
+  --mint-subtle: rgba(92, 225, 165, 0.12);
+  --on-mint: #12261C;
+  --blue: #3B82F6;
+  --serve: #10B981;
+  --care: #EC4899;
+  --violet: #8B5CF6;
+  --orange: #F97316;
+  --danger: #EF4444;
+  --warning: #F59E0B;
+  --success-bg: #D1FAE5;
+  --warning-bg: #FEF3C7;
+  --danger-bg: #FEF2F2;
+  --hover-tint: rgba(45, 51, 58, 0.05);
+  --line: rgba(45, 51, 58, 0.07);
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-light: rgba(255, 255, 255, 0.5);
+  --glass-edge: rgba(255, 255, 255, 0.9);
+  --glass-blur: blur(24px) saturate(170%);
+  --glass-shadow: 0 10px 40px rgba(20, 40, 30, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  --font-display: 'Poppins', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --wrap: 1120px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 90px; }
+body { margin: 0; background: var(--white); color: var(--text); font: 400 18px/1.55 var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+.gutter { padding-inline: 20px; }
+
+/* ---------- Type scale ---------- */
+.display { font-size: clamp(42px, 7.2vw, 88px); font-weight: 600; line-height: 1.02; letter-spacing: -0.045em; }
+.headline { font-size: clamp(34px, 5.2vw, 64px); font-weight: 600; line-height: 1.05; letter-spacing: -0.04em; }
+.title { font-size: clamp(26px, 3.2vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
+.lede { font-size: clamp(19px, 2.1vw, 24px); line-height: 1.45; color: var(--text-2); }
+.kicker { font: 600 14px var(--font-display); letter-spacing: 0.02em; color: var(--mint-ink); }
+.grad { background: linear-gradient(95deg, var(--mint-deep) 0%, var(--mint) 55%, var(--mint-deep) 110%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- Glass + buttons ---------- */
+.glass { background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-edge); box-shadow: var(--glass-shadow); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .glass { background: var(--white); border-color: var(--border); } }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 50px; padding: 0 26px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; white-space: nowrap; font: 600 16px/1 var(--font-display); transition: background-color .2s var(--ease), transform .12s var(--ease); }
+.btn:active { transform: scale(0.97); }
+.btn-mint { position: relative; overflow: hidden; isolation: isolate; background: var(--mint); color: var(--on-mint); transition: color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease); }
+.btn-mint::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(135deg, #1F2328, #2D333A); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+.btn-mint:hover { color: var(--mint); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(31,35,40,.18); }
+.btn-mint:hover::before { transform: scaleX(1); }
+.btn-mint:active { transform: scale(.97); }
+.btn-sm { height: 36px; padding: 0 16px; font-size: 14px; }
+.link { font: 500 17px var(--font-display); color: var(--mint-ink); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+.link::after { content: "\203A"; font-size: 1.3em; line-height: 1; transform: translateY(-1px); transition: transform .2s var(--ease); }
+.link:hover::after { transform: translate(3px, -1px); }
+
+/* ---------- Nav: floating glass pill that tightens on scroll ---------- */
+.nav-shell { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: 0; right: 0; z-index: 60; display: flex; justify-content: center; padding-inline: 16px; pointer-events: none; }
+.nav { pointer-events: auto; width: 100%; max-width: 1080px; height: 60px; border-radius: 999px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px 0 18px; transition: max-width .5s var(--ease), height .5s var(--ease); }
+.nav.compact { max-width: 760px; height: 54px; }
+.brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.logo-mark { width: 28px; height: 28px; border-radius: 8px; flex: none; background: linear-gradient(135deg, var(--mint), var(--mint-deep)); display: grid; place-items: center; box-shadow: inset 0 1px 1px rgba(255,255,255,.6); }
+.logo-mark::before { content: ""; width: 11px; height: 11px; border: 2.5px solid #fff; border-bottom: none; border-radius: 11px 11px 0 0; transform: translateY(2px); }
+.brand b { font: 700 18px var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
+.nav-links { position: relative; display: flex; gap: 2px; }
+.nav-links .glider { position: absolute; top: 0; left: 0; height: 100%; width: 0; border-radius: 999px; background: rgba(45,51,58,.07); opacity: 0; transition: transform .4s var(--ease), width .4s var(--ease), opacity .25s; pointer-events: none; }
+.nav-links.has-glide .glider { opacity: 1; }
+.nav-links a { text-decoration: none; font: 500 14px var(--font-display); color: var(--text-2); padding: 8px 12px; border-radius: 999px; transition: color .15s, background-color .15s; }
+.nav-links a { position: relative; z-index: 1; }
+.nav-links a:hover { color: var(--ink); }
+.nav-right { display: flex; align-items: center; gap: 4px; }
+.nav-right .login { font: 500 14px var(--font-display); color: var(--text-2); text-decoration: none; padding: 8px 12px; border-radius: 999px; }
+.nav-right .login:hover { color: var(--ink); background: var(--hover-tint); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; padding-block: 150px 40px; text-align: center; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: -10% -20% auto; height: 900px; background: radial-gradient(ellipse 50% 45% at 22% 30%, rgba(92,225,165,.18), transparent 70%), radial-gradient(ellipse 45% 40% at 80% 22%, rgba(160,241,200,.30), transparent 70%); pointer-events: none; }
+.hero > * { position: relative; }
+.hero-copy { display: grid; justify-items: center; gap: 22px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 500 14px var(--font-display); color: var(--text-2); }
+.dot-live { width: 8px; height: 8px; border-radius: 50%; background: var(--serve); position: relative; }
+.dot-live::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--serve); animation: ping 2.2s var(--ease) infinite; }
+@keyframes ping { from { transform: scale(1); opacity: .55; } to { transform: scale(2.8); opacity: 0; } }
+.hero h1 { max-width: 13ch; }
+.hero .lede { max-width: 34ch; }
+.hero-ctas { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 6px; }
+.w { display: inline-block; }
+
+/* App frame, built from the app's own components */
+.stage { margin-top: 64px; perspective: 1400px; }
+.app { max-width: 1040px; margin-inline: auto; border-radius: 26px; padding: 12px; display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 12px; text-align: left; transform-origin: 50% 20%; will-change: transform; }
+.side { border-radius: 18px; padding: 12px; background: var(--glass-light); border: 1px solid var(--glass-edge); display: flex; flex-direction: column; gap: 2px; font: 500 12.5px var(--font-display); color: var(--text-2); }
+.org { display: flex; align-items: center; gap: 9px; padding: 4px 4px 12px; margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+.org-tile { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, #FCD34D, #F59E0B); display: grid; place-items: center; font: 700 12px var(--font-display); color: #fff; }
+.org b { display: block; font: 700 12.5px/1.2 var(--font-display); color: var(--text); }
+.org small { font: 600 9px var(--font-display); letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.ni { display: flex; align-items: center; gap: 8px; padding: 6px 9px; border-radius: 9px; }
+.ni i { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid currentColor; opacity: .65; flex: none; }
+.ni-group { margin: 2px 0 2px 16px; padding-left: 9px; border-left: 1px solid rgba(59,130,246,.22); display: grid; gap: 1px; }
+.ni-group .ni { padding: 5px 8px; font-size: 12px; }
+.ni-group .on { background: var(--white); color: var(--blue); font-weight: 600; border: 1px solid rgba(59,130,246,.2); box-shadow: 0 1px 2px rgba(0,0,0,.05); justify-content: space-between; }
+.ni-group .on::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+.side .grow { flex: 1; }
+.main { display: grid; gap: 12px; min-width: 0; align-content: start; }
+.topbar { height: 44px; border-radius: 14px; background: var(--glass); border: 1px solid var(--glass-edge); display: flex; align-items: center; gap: 10px; padding: 0 8px 0 14px; font-size: 13px; color: var(--text-2); }
+.topbar .crumb { flex: 1; } .topbar .crumb b { color: var(--text); font-weight: 600; }
+.bell { width: 28px; height: 28px; border-radius: 9px; background: var(--glass); border: 1px solid var(--glass-edge); position: relative; }
+.bell::after { content: ""; position: absolute; top: 6px; right: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--danger); }
+.av { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 700 10px var(--font-display); color: #fff; flex: none; }
+.content { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 18px; display: grid; gap: 14px; }
+.ph { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.ph h4 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+.ph p { font-size: 12.5px; color: var(--text-2); }
+.prog { display: flex; align-items: center; gap: 8px; padding-left: 14px; border-left: 1px solid var(--border); font-size: 12px; color: var(--text-2); }
+.ring { width: 34px; height: 34px; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 3.5; }
+.ring .tr { stroke: var(--border); }
+.ring .arc { stroke: var(--mint); stroke-linecap: round; stroke-dasharray: 94.25; stroke-dashoffset: 56.5; transition: stroke-dashoffset .8s var(--ease); }
+.pbtn { margin-left: auto; height: 32px; padding: 0 13px; border-radius: 10px; background: var(--blue); color: #fff; font: 600 12px/32px var(--font-display); }
+.twocol { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 12px; }
+.panel { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--white); }
+.panel-h { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 1px solid var(--border); font: 700 12.5px var(--font-display); color: var(--text); }
+.tile { width: 22px; height: 22px; border-radius: 7px; background: var(--mint-subtle); display: grid; place-items: center; }
+.tile::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--mint-ink); }
+.cnt { min-width: 20px; height: 20px; padding: 0 7px; border-radius: 999px; border: 1px solid var(--border); font: 600 10.5px/18px var(--font-display); color: var(--text-2); text-align: center; }
+.rows { display: grid; gap: 7px; padding: 10px; }
+.row { display: flex; align-items: center; gap: 9px; padding: 9px 11px; border: 1px solid var(--border); border-radius: 11px; font-size: 13px; background: var(--white); }
+.ck { width: 17px; height: 17px; border-radius: 50%; border: 2px solid var(--text-3); flex: none; display: grid; place-items: center; transition: background-color .3s var(--ease), border-color .3s; }
+.ck::after { content: ""; width: 6px; height: 3.5px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px) scale(0); transition: transform .3s var(--ease) .1s; }
+.row.done .ck { background: var(--mint); border-color: var(--mint); }
+.row.done .ck::after { transform: rotate(-45deg) translate(1px, -1px) scale(1); }
+.row .t { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); transition: color .3s; }
+.row.done .t { color: var(--text-2); text-decoration: line-through; }
+.pill { height: 19px; padding: 0 8px; border-radius: 999px; border: 1px solid; font: 700 9px/17px var(--font-display); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.hi { color: #DC2626; background: var(--danger-bg); border-color: rgba(239,68,68,.2); }
+.md { color: #B45309; background: var(--warning-bg); border-color: rgba(245,158,11,.25); }
+.lo { color: var(--text-2); background: var(--bg); border-color: var(--border); }
+.live { color: #047857; background: var(--success-bg); border-color: rgba(16,185,129,.25); display: inline-flex; align-items: center; gap: 5px; }
+.live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--serve); animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .3; } }
+.dept { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--text-2); white-space: nowrap; }
+.dept::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+.chip { display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; border-radius: 6px; background: var(--bg); font: 600 10.5px var(--font-display); color: var(--text-2); white-space: nowrap; }
+.stack { display: flex; }
+.stack .av { width: 22px; height: 22px; font-size: 8.5px; border: 2px solid var(--white); margin-left: -6px; }
+.stack .av:first-child { margin-left: 0; }
+.huddle { padding: 12px; display: grid; gap: 8px; font-size: 12.5px; }
+.huddle .hr { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.huddle .hr b { font: 600 12.5px var(--font-display); color: var(--text); flex: 1; }
+
+/* ---------- Chapter shells ---------- */
+.band { padding-block: 140px; }
+.band.gray { background: var(--bg); }
+.center { text-align: center; display: grid; justify-items: center; gap: 20px; }
+
+/* ---------- Chapter 1: chaos to calm (sticky, scroll-scrubbed) ---------- */
+.chaos { position: relative; height: 280vh; background: var(--white); }
+.chaos-stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.chaos-head { position: absolute; left: 0; right: 0; top: 13%; text-align: center; padding-inline: 20px; z-index: 3; }
+.chaos-head .l1, .chaos-head .l2 { display: block; }
+.chaos-head .l2 { color: var(--ghost); }
+.frag { position: absolute; left: var(--x); top: var(--y); z-index: 2; transform: translate(-50%, -50%) rotate(var(--r)); font-size: 14px; will-change: transform, opacity; }
+.f-bubble { background: #E9E9EB; color: #1C1C1E; padding: 10px 14px; border-radius: 18px 18px 18px 4px; max-width: 230px; line-height: 1.35; }
+.f-bubble small { display: block; font-size: 11px; color: #8E8E93; margin-bottom: 2px; }
+.f-sheet { background: var(--white); border: 1px solid #CFE3D6; border-radius: 6px; overflow: hidden; font: 12px/1 ui-monospace, Menlo, monospace; box-shadow: 0 8px 20px rgba(0,0,0,.07); }
+.f-sheet div { background: #1D6F42; color: #fff; padding: 7px 10px; font: 600 11px var(--font-body); }
+.f-sheet table { border-collapse: collapse; }
+.f-sheet td { border: 1px solid #E3E8E5; padding: 6px 9px; color: #444; }
+.f-sticky { background: #FEF08A; color: #3F3A12; padding: 16px 16px 20px; width: 150px; font: 600 16px/1.25 'Comic Sans MS', 'Marker Felt', 'Segoe Print', cursive; box-shadow: 0 10px 24px rgba(120,100,0,.16); }
+.f-mail { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; width: 240px; box-shadow: 0 10px 28px rgba(0,0,0,.07); display: grid; gap: 3px; }
+.f-mail b { font: 600 13px var(--font-display); color: var(--text); }
+.f-mail span { font-size: 12.5px; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.f-mail .unread { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-right: 6px; }
+.f-cal { width: 200px; white-space: nowrap; background: var(--white); border-radius: 12px; border: 1px solid var(--border); padding: 10px 12px 10px 16px; position: relative; box-shadow: 0 10px 24px rgba(0,0,0,.07); display: grid; gap: 2px; }
+.f-cal::before { content: ""; position: absolute; left: 6px; top: 10px; bottom: 10px; width: 3px; border-radius: 3px; background: var(--orange); }
+.f-cal b { font: 600 13px var(--font-display); color: var(--text); }
+.f-cal span { font-size: 12px; color: var(--text-2); }
+.f-vm { background: #1C1C1E; color: #fff; border-radius: 14px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font: 600 13px var(--font-display); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+.f-vm i { width: 26px; height: 26px; border-radius: 50%; background: #30D158; display: grid; place-items: center; }
+.f-vm i::before { content: ""; border-left: 8px solid #fff; border-top: 5px solid transparent; border-bottom: 5px solid transparent; margin-left: 2px; }
+.calm { position: absolute; left: 50%; top: 62%; transform: translate(-50%, -50%); width: min(460px, calc(100vw - 40px)); border-radius: 22px; padding: 10px; z-index: 1; }
+.calm .panel-h { font-size: 13px; }
+.calm .row { font-size: 13.5px; }
+.calm .who { font-size: 11.5px; color: var(--text-2); white-space: nowrap; }
+
+/* ---------- Chapter 2: one decision, followed through Atlas (sticky visual) ---------- */
+.story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; }
+.story-intro { grid-column: 1 / -1; margin-bottom: 20px; }
+.steps { display: grid; }
+.step { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; gap: 14px; padding-left: 28px; position: relative; opacity: .28; transition: opacity .5s var(--ease); }
+.step::before { content: ""; position: absolute; left: 0; top: 50%; translate: 0 -50%; width: 3px; height: 0; border-radius: 3px; background: var(--mint); transition: height .5s var(--ease); }
+.step.on { opacity: 1; }
+.step.on::before { height: 84px; }
+.step .kicker { color: var(--text-3); transition: color .4s; }
+.step.on .kicker { color: var(--mint-ink); }
+.step h3 { font-size: clamp(26px, 3vw, 38px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.step p { color: var(--text-2); font-size: 19px; max-width: 34ch; }
+.viz-col { position: relative; }
+.viz { position: sticky; top: calc(50vh - 205px); height: 410px; }
+.win { position: relative; height: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 22px; box-shadow: 0 30px 80px rgba(20,40,30,.10), 0 2px 6px rgba(0,0,0,.03); overflow: hidden; }
+.win-bar { height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text-2); }
+.win-bar .crumbs { position: relative; flex: 1; height: 20px; }
+.win-bar .crumbs span { position: absolute; inset: 0; display: flex; align-items: center; gap: 4px; opacity: 0; transform: translateY(6px); transition: opacity .35s var(--ease), transform .35s var(--ease); white-space: nowrap; }
+.win-bar .crumbs b { color: var(--text); font-weight: 600; }
+.win[data-scene="1"] .c1, .win[data-scene="2"] .c2, .win[data-scene="3"] .c3, .win[data-scene="4"] .c4, .win[data-scene="5"] .c5 { opacity: 1; transform: none; }
+.scene { position: absolute; inset: 44px 0 0; padding: 22px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-content: start; opacity: 0; transform: translateY(16px) scale(.985); transition: opacity .5s var(--ease), transform .6s var(--ease); pointer-events: none; }
+.win[data-scene="1"] .s1, .win[data-scene="2"] .s2, .win[data-scene="3"] .s3, .win[data-scene="4"] .s4, .win[data-scene="5"] .s5 { opacity: 1; transform: none; }
+.sc-h { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sc-h h4 { font-size: 18px; font-weight: 700; flex: 1; letter-spacing: -0.01em; }
+.agenda { display: grid; gap: 8px; }
+.ag { display: flex; align-items: center; gap: 10px; padding: 11px 13px; border: 1px solid var(--border); border-radius: 12px; font-size: 14px; }
+.ag .n { width: 22px; height: 22px; border-radius: 7px; background: var(--bg); display: grid; place-items: center; font: 600 11px var(--font-display); color: var(--text-2); flex: none; }
+.ag.focus { border-color: var(--mint); box-shadow: 0 0 0 4px rgba(92,225,165,.16); }
+.ag .t { flex: 1; }
+.note { border-radius: 14px; background: var(--bg); padding: 14px; display: grid; gap: 10px; font-size: 14px; }
+.note .lab { font: 600 10.5px var(--font-display); letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.action { display: flex; align-items: center; gap: 10px; background: var(--white); border: 1px solid var(--border); border-radius: 11px; padding: 10px 12px; transition: transform .6s var(--ease) .25s, box-shadow .6s var(--ease) .25s; }
+.win[data-scene="1"] .action { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,40,30,.10); }
+.newtask { border-color: var(--mint); box-shadow: 0 0 0 4px rgba(92,225,165,.16); opacity: 0; transform: translateY(-14px); transition: opacity .5s var(--ease) .3s, transform .6s var(--ease) .3s; }
+.win[data-scene="2"] .newtask { opacity: 1; transform: none; }
+.from { font: 600 10.5px var(--font-display); color: var(--mint-ink); background: var(--mint-subtle); border-radius: 6px; padding: 3px 7px; white-space: nowrap; }
+.kanban { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; position: relative; }
+.col { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 9px; display: grid; gap: 8px; align-content: start; min-height: 250px; }
+.col-h { display: flex; align-items: center; gap: 6px; font: 700 12px var(--font-display); color: var(--text); padding: 2px 3px; }
+.col-h i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.kc { background: var(--white); border: 1px solid var(--border); border-radius: 11px; padding: 9px 10px; font-size: 12.5px; display: grid; gap: 6px; color: var(--text); }
+.kc .meta { display: flex; align-items: center; gap: 6px; }
+.kc .meta .av { width: 18px; height: 18px; font-size: 7.5px; margin-left: auto; }
+.mover { position: absolute; top: 37px; left: 9px; width: calc((100% - 20px) / 3 - 18px); border-color: rgba(59,130,246,.5); box-shadow: 0 12px 26px rgba(20,40,30,.12); transition: transform .9s var(--ease) .35s; }
+.win[data-scene="3"] .mover { transform: translateX(calc(100% + 28px)); }
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.cal .dh { font: 600 10px var(--font-display); letter-spacing: .08em; color: var(--text-3); text-align: center; padding-bottom: 4px; }
+.cal .d { min-height: 48px; border-radius: 9px; background: var(--bg); padding: 5px; font: 600 10.5px var(--font-display); color: var(--text-2); display: grid; align-content: start; gap: 3px; }
+.cal .d.x { background: transparent; }
+.cal .ev { font: 600 9px/1.2 var(--font-display); color: var(--white); background: var(--c); border-radius: 4px; padding: 2px 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal .d.big { background: var(--white); outline: 2px solid var(--mint); outline-offset: -2px; color: var(--ink); }
+.cal .pop { transform: scale(0); transform-origin: left center; transition: transform .5s cubic-bezier(.3,1.6,.5,1) .4s; }
+.win[data-scene="4"] .cal .pop { transform: scale(1); }
+.ann { border: 1px solid var(--border); border-radius: 16px; padding: 18px; display: grid; gap: 12px; position: relative; }
+.ann::before { content: ""; position: absolute; left: 0; top: 18px; bottom: 18px; width: 4px; border-radius: 0 4px 4px 0; background: var(--mint); }
+.ann .by { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); }
+.ann .by b { color: var(--text); font: 600 13.5px var(--font-display); }
+.ann h5 { margin: 0; font: 700 18px/1.3 var(--font-display); color: var(--ink); }
+.ann p { font-size: 14.5px; color: var(--text-2); }
+.seen { display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: var(--text-2); padding-top: 12px; border-top: 1px solid var(--border); }
+.seen .bar { flex: 1; height: 6px; border-radius: 999px; background: var(--border); overflow: hidden; }
+.seen .bar span { display: block; height: 100%; background: var(--mint); border-radius: 999px; transform: scaleX(.2); transform-origin: left; transition: transform 1.4s var(--ease) .4s; }
+.win[data-scene="5"] .seen .bar span { transform: scaleX(1); }
+
+/* ---------- Chapter 3: real screens (one viewer) ---------- */
+.shots-head { display: grid; gap: 14px; margin-bottom: 32px; }
+.view-tabs-wrap { overflow-x: auto; scrollbar-width: none; margin-bottom: 24px; padding: 4px; }
+.view-tabs-wrap::-webkit-scrollbar { display: none; }
+.view-tabs { position: relative; display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(45,51,58,.06); white-space: nowrap; }
+.view-tabs .pill-bg { position: absolute; top: 4px; left: 0; height: calc(100% - 8px); width: 0; border-radius: 999px; background: var(--white); box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 14px rgba(20,40,30,.06); transition: transform .45s var(--ease), width .45s var(--ease); pointer-events: none; }
+.view-tabs button { position: relative; z-index: 1; appearance: none; border: 0; background: transparent; cursor: pointer; height: 38px; padding: 0 16px; border-radius: 999px; font: 500 14px var(--font-display); color: var(--text-2); transition: color .25s; }
+.view-tabs button[aria-selected="true"] { color: var(--ink); font-weight: 600; }
+.view-tabs button:hover { color: var(--ink); }
+.viewer { position: relative; }
+.shot { position: relative; border-radius: 18px; overflow: hidden; background: var(--white); border: 1px solid var(--border); box-shadow: 0 30px 70px rgba(20,40,30,.09), 0 2px 6px rgba(0,0,0,.03); cursor: zoom-in; }
+.shot:not(.has-img) { aspect-ratio: 2 / 1; }
+.shot img { width: 100%; height: auto; display: none; -webkit-user-drag: none; }
+.shot.has-img img.ok { display: block; }
+.shot.has-img .slot { display: none; }
+.shot .zoom-hint { position: absolute; right: 14px; bottom: 14px; z-index: 2; height: 32px; padding: 0 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; font: 600 12px var(--font-display); color: var(--text); opacity: 0; transition: opacity .25s; pointer-events: none; }
+.shot:hover .zoom-hint { opacity: 1; }
+.slot { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at 25% 20%, rgba(92,225,165,.14), transparent 55%), radial-gradient(circle at 80% 90%, rgba(59,130,246,.06), transparent 50%), var(--white); }
+.slot div { display: grid; gap: 6px; justify-items: center; padding: 18px 22px; border: 1.5px dashed #D3D8DE; border-radius: 16px; }
+.slot b { font: 600 16px var(--font-display); color: var(--text); }
+.slot code { font: 500 12.5px ui-monospace, Menlo, monospace; color: var(--text-2); }
+.viewer { perspective: 1600px; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: min-height .4s var(--ease); }
+.pane { display: grid; gap: 16px; will-change: transform, opacity; }
+.pane[hidden] { display: none; }
+.pane.enter-right { animation: enterR .55s var(--ease) both; }
+.pane.enter-left { animation: enterL .55s var(--ease) both; }
+.pane.leave-left { animation: leaveL .28s var(--ease) both; pointer-events: none; }
+.pane.leave-right { animation: leaveR .28s var(--ease) both; pointer-events: none; }
+.pane.dragging { transition: none; }
+.pane.settle { transition: transform .5s var(--ease), opacity .5s var(--ease); }
+@keyframes enterR { from { opacity: 0; transform: translateX(80px) rotateY(-6deg) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes enterL { from { opacity: 0; transform: translateX(-80px) rotateY(6deg) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes leaveL { to { opacity: 0; transform: translateX(-60px) rotateY(5deg) scale(.97); } }
+@keyframes leaveR { to { opacity: 0; transform: translateX(60px) rotateY(-5deg) scale(.97); } }
+.swipe-hint { display: none; text-align: center; font: 500 13px var(--font-display); color: var(--text-3); margin-top: 10px; }
+@media (hover: none) { .swipe-hint { display: block; } }
+@keyframes swap { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.cap { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; font-size: 17px; padding-inline: 4px; }
+.cap b { font: 600 17px var(--font-display); color: var(--ink); }
+.cap span { color: var(--text-2); }
+.lightbox { position: fixed; inset: 0; z-index: 90; background: rgba(20,24,28,.78); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); display: grid; place-items: center; padding: 24px; cursor: zoom-out; animation: fadein .25s var(--ease) both; }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: min(1600px, 96vw); max-height: 92vh; border-radius: 14px; box-shadow: 0 40px 120px rgba(0,0,0,.5); animation: pop .35s var(--ease) both; }
+@keyframes fadein { from { opacity: 0; } }
+
+/* ---------- Chapter 4: founding ---------- */
+.statement { font-size: clamp(30px, 4.6vw, 56px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.12; max-width: 20ch; margin-inline: auto; text-align: center; }
+.perks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 96px; }
+.perk { display: grid; gap: 10px; padding-top: 22px; border-top: 1px solid var(--border); }
+.perk h3 { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+.perk p { color: var(--text-2); font-size: 17px; }
+.ask { margin-top: 64px; display: flex; align-items: center; justify-content: center; gap: 12px 28px; flex-wrap: wrap; color: var(--text-2); font-size: 17px; text-align: center; }
+.ask b { color: var(--text); font-weight: 600; }
+.next { margin-top: 120px; display: grid; justify-items: center; gap: 22px; text-align: center; }
+.mods { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.mod { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px; background: var(--white); border: 1px solid var(--border); font: 500 15px var(--font-display); color: var(--text); }
+.mod i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.mod.ai i { background: linear-gradient(135deg, var(--mint), var(--violet)); }
+.next p { color: var(--text-2); font-size: 17px; }
+
+/* ---------- Chapter 5: people ---------- */
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 64px; }
+.person { display: grid; justify-items: center; gap: 10px; text-align: center; }
+.portrait { width: 132px; height: 132px; border-radius: 50%; display: grid; place-items: center; font: 600 34px var(--font-display); color: #fff; box-shadow: 0 16px 40px rgba(20,40,30,.12); margin-bottom: 8px; }
+.person b { font: 600 19px var(--font-display); color: var(--ink); }
+.person span { font-size: 15px; color: var(--text-2); }
+.person span.portrait { color: #fff; font-size: 34px; }
+
+/* ---------- Form ---------- */
+.apply { max-width: 720px; margin-inline: auto; }
+.form-card { margin-top: 48px; background: var(--white); border: 1px solid var(--border); border-radius: 28px; padding: 36px; box-shadow: 0 30px 80px rgba(20,40,30,.08); }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+.field { display: grid; gap: 7px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label { font: 600 13px var(--font-display); color: var(--text); }
+input, select { width: 100%; height: 50px; padding: 0 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--white); font: 400 17px var(--font-body); color: var(--text); transition: border-color .15s, box-shadow .15s; }
+select { appearance: none; padding-right: 40px; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236B7280' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center / 12px; }
+input::placeholder { color: var(--text-3); }
+input:focus, select:focus { outline: none; border-color: var(--mint); box-shadow: 0 0 0 4px rgba(92,225,165,.2); }
+.invalid input, .invalid select { border-color: var(--danger); }
+.err { font-size: 13px; color: #DC2626; }
+.err:empty { display: none; }
+.form-foot { grid-column: 1 / -1; display: grid; gap: 14px; justify-items: center; margin-top: 8px; text-align: center; }
+.form-foot .btn { width: 100%; height: 54px; font-size: 17px; }
+.form-foot small { font-size: 13.5px; color: var(--text-3); }
+.form-foot small a { color: var(--text-2); }
+.btn[disabled] { opacity: .75; cursor: progress; }
+.spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(18,38,28,.25); border-top-color: var(--on-mint); animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.thanks { display: grid; justify-items: center; gap: 14px; text-align: center; padding: 24px 0 8px; }
+.thanks:not([hidden]) { animation: rise .7s var(--ease) both; }
+.thanks-mark { width: 68px; height: 68px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; animation: pop .6s var(--ease) both; }
+.thanks-mark svg { width: 30px; height: 30px; }
+.thanks h3 { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
+.thanks p { color: var(--text-2); max-width: 40ch; }
+.thanks .demo { font-size: 13px; color: var(--text-3); }
+@keyframes pop { from { transform: scale(.4); opacity: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* ---------- FAQ + footer ---------- */
+.faq { max-width: 760px; margin: 56px auto 0; border-top: 1px solid var(--border); }
+details { border-bottom: 1px solid var(--border); }
+summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0; font: 500 19px var(--font-display); color: var(--ink); }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: ""; width: 14px; height: 14px; flex: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1v10M1 6h10' stroke='%232D333A' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; transition: transform .35s var(--ease); }
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding-bottom: 24px; color: var(--text-2); max-width: 64ch; font-size: 17px; }
+details p a { color: var(--text); }
+footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 14px; color: var(--text-3); }
+.foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.foot-links a { color: var(--text-2); text-decoration: none; }
+.foot-links a:hover { color: var(--ink); }
+
+/* ---------- Mobile sticky CTA (glass) ---------- */
+.mcta { position: fixed; left: 16px; right: 16px; bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); z-index: 55; border-radius: 999px; padding: 7px 7px 7px 20px; display: none; align-items: center; justify-content: space-between; gap: 12px; transform: translateY(140%); transition: transform .5s var(--ease); }
+.mcta.show { transform: none; }
+.mcta span { font: 600 14px/1.25 var(--font-display); color: var(--ink); }
+.mcta .btn { height: 42px; padding: 0 18px; font-size: 14px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav.compact { max-width: 100%; }
+  .app { grid-template-columns: 1fr; }
+  .side { display: none; }
+  .twocol { grid-template-columns: 1fr; }
+  .twocol .panel:last-child { display: none; }
+  .story { grid-template-columns: 1fr; gap: 0; }
+  .story-intro { order: -2; }
+  .viz-col { order: -1; position: sticky; top: 72px; z-index: 2; height: 368px; margin-bottom: 8px; padding-top: 8px; background: var(--bg); }
+  .viz { position: relative; top: 0; height: 340px; }
+  .viz::after { content: ""; position: absolute; left: -20px; right: -20px; bottom: -28px; height: 28px; background: linear-gradient(var(--bg), transparent); }
+  .scene { padding: 16px; gap: 10px; }
+  .step { min-height: 60vh; padding-left: 20px; }
+  .perks, .team { grid-template-columns: 1fr; gap: 28px; }
+  .team { gap: 40px; }
+  .mcta { display: flex; }
+  .band { padding-block: 100px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .nav { padding-left: 14px; height: 54px; }
+  .nav-right .login { display: none; }
+  .hero { padding-block: 120px 24px; }
+  .hero-ctas { gap: 18px; }
+  .stage { margin-top: 44px; }
+  .app { padding: 7px; border-radius: 18px; }
+  .content { padding: 12px; }
+  .prog, .row .dept { display: none; }
+  .frag { font-size: 12px; }
+  .f-bubble { max-width: 180px; } .f-sticky { width: 120px; font-size: 14px; } .f-sheet td { padding: 5px 7px; }
+  .fx1, .fx3, .fx5 { --x: 27% !important; }
+  .fx2, .fx4, .fx6 { --x: 73% !important; }
+  .fx1 { --y: 36% !important; } .fx2 { --y: 46% !important; }
+  .f-mail { width: 200px; }
+  .viz-col { height: 330px; }
+  .viz { height: 310px; }
+  .kanban .col:nth-child(3) { display: none; }
+  .kanban { grid-template-columns: 1fr 1fr; }
+  .mover { width: calc((100% - 10px) / 2 - 18px); }
+  .win[data-scene="3"] .mover { transform: translateX(calc(100% + 28px)); }
+  .cal .d { min-height: 36px; }
+  .scene .from, .ag .chip { display: none; }
+  .cal .ev { font-size: 7.5px; padding: 1px 2px; }
+  .form-card { padding: 22px; border-radius: 22px; }
+  form { grid-template-columns: 1fr; }
+}
+.static .chaos { height: auto; }
+.static .chaos-stick { position: relative; height: auto; min-height: 760px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+  .chaos { height: auto; }
+  .chaos-stick { position: relative; height: auto; min-height: 760px; }
+  .step { opacity: 1; }
+}
+</style>
+<script>
+/* Image slots: try each source in turn (new export, then the current site's image),
+   and keep the designed placeholder if none load. */
+function atlasImgErr(img) { var f = img.getAttribute("data-fallback"); if (f) { img.removeAttribute("data-fallback"); img.src = f; } else { img.remove(); } }
+function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibling; if (ph) ph.hidden = true; if (img.parentElement) img.parentElement.classList.add("has-img"); }
+</script>
+
+</head>
+<body>
+<!-- ============ NAV ============ -->
+<div class="nav-shell">
+  <nav class="nav glass" id="nav" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Atlas Church Solutions, home"><img src="image_2.png" alt="" width="28" height="28" style="width:28px;height:28px;object-fit:contain"><b>Atlas</b></a>
+    <div class="nav-links" id="navLinks">
+      <span class="glider" aria-hidden="true"></span>
+      <a href="#how">How it works</a>
+      <a href="#screens">The app</a>
+      <a href="#founding">Founding churches</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <a class="login" href="https://app.atlaschurchsolutions.com/login">Log in</a>
+      <a class="btn btn-mint btn-sm" href="#apply">Let's talk</a>
+    </div>
+  </nav>
+</div>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero gutter">
+    <div class="hero-copy">
+      <span class="eyebrow" data-intro><span class="dot-live" aria-hidden="true"></span>Now inviting founding churches</span>
+      <h1 class="display" id="heroTitle">The invisible backbone <span class="grad">of your church.</span></h1>
+      <p class="lede" data-intro>One calm place for your staff's tasks, meetings, projects and plans.</p>
+      <div class="hero-ctas" data-intro>
+        <a class="btn btn-mint" href="#apply">Start a conversation</a>
+        <a class="link" href="#how">See how it works</a>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="app glass" id="heroApp" role="img" aria-label="Atlas Workspace showing a staff member's My Tasks page and a live staff huddle">
+        <aside class="side" aria-hidden="true">
+          <div class="org"><span class="org-tile">GC</span><span><b>Grace Community</b><small>Admin portal</small></span></div>
+          <span class="ni"><i></i>Dashboard</span>
+          <span class="ni"><i></i>Ministry Hub</span>
+          <span class="ni"><i></i>Directory</span>
+          <span class="ni" style="color:var(--text)"><i style="border-color:var(--blue);opacity:1"></i>Workspace</span>
+          <div class="ni-group">
+            <span class="ni">Announcements</span><span class="ni on">My Tasks</span><span class="ni">Huddles</span>
+            <span class="ni">Project Boards</span><span class="ni">Calendar</span><span class="ni">Library</span>
+          </div>
+          <span class="grow"></span>
+          <span class="ni"><i></i>What's coming</span>
+          <span class="ni"><i></i>Settings</span>
+        </aside>
+        <div class="main" aria-hidden="true">
+          <div class="topbar"><span class="crumb">Workspace / <b>My Tasks</b></span><span class="bell"></span><span class="av" style="background:var(--violet)">SM</span></div>
+          <div class="content">
+            <div class="ph">
+              <div><h4>My Tasks</h4><p>Everything on your plate this week</p></div>
+              <div class="prog"><svg class="ring" viewBox="0 0 36 36"><circle class="tr" cx="18" cy="18" r="15"/><circle class="arc" id="ring" cx="18" cy="18" r="15"/></svg><span><b id="doneN" style="color:var(--text)">2</b> of 5 done</span></div>
+              <span class="pbtn">New task</span>
+            </div>
+            <div class="twocol">
+              <div class="panel">
+                <div class="panel-h"><span class="tile"></span>Focus today<span class="cnt">3</span></div>
+                <div class="rows" id="heroRows">
+                  <div class="row"><span class="ck"></span><span class="t">Book Christmas Eve rehearsal with the band</span><span class="dept" style="--c:var(--violet)">Worship</span><span class="pill hi">High</span></div>
+                  <div class="row"><span class="ck"></span><span class="t">Send Advent sign-up to small group leaders</span><span class="dept" style="--c:var(--serve)">Groups</span><span class="pill md">Medium</span></div>
+                  <div class="row"><span class="ck"></span><span class="t">Upload new family welcome packet</span><span class="dept" style="--c:var(--care)">Kids</span><span class="pill lo">Low</span></div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="huddle">
+                  <div class="hr"><b>Tuesday staff huddle</b><span class="pill live">Live</span></div>
+                  <div class="hr" style="gap:6px"><span class="chip">10:00 AM</span><span class="chip">6 agenda items</span></div>
+                  <div class="stack"><span class="av" style="background:var(--blue)">JM</span><span class="av" style="background:var(--warning)">LD</span><span class="av" style="background:var(--care)">AR</span><span class="av" style="background:var(--text-3)">+3</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CHAPTER 1: CHAOS TO CALM ============ -->
+  <section class="chaos" id="why" aria-labelledby="chaosTitle">
+    <div class="chaos-stick">
+      <h2 class="headline chaos-head" id="chaosTitle"><span class="l1">Your week lives in a dozen places.</span><span class="l2">Atlas puts it in one.</span></h2>
+
+      <div class="frag f-bubble fx1" style="--x:17%;--y:40%;--r:-5deg" aria-hidden="true"><small>Staff group text</small>Who's opening the building Sunday??</div>
+      <div class="frag f-sheet fx2" style="--x:83%;--y:38%;--r:4deg" aria-hidden="true"><div>Volunteers_FINAL_v3.xlsx</div><table><tr><td>Greeters</td><td>???</td></tr><tr><td>Parking</td><td>Mark?</td></tr></table></div>
+      <div class="frag f-sticky fx3" style="--x:12%;--y:72%;--r:7deg" aria-hidden="true">Call the Johnsons!!</div>
+      <div class="frag f-mail fx4" style="--x:86%;--y:70%;--r:-3deg" aria-hidden="true"><b><span class="unread"></span>RE: RE: RE: Christmas Eve</b><span>So are we doing two services or three?</span></div>
+      <div class="frag f-cal fx5" style="--x:29%;--y:91%;--r:-2deg" aria-hidden="true"><b>Staff meeting (moved?)</b><span>Tue 10:00 AM</span></div>
+      <div class="frag f-vm fx6" style="--x:71%;--y:92%;--r:3deg" aria-hidden="true"><i></i>New voicemail, 0:47</div>
+
+      <div class="calm glass" id="calm">
+        <div class="panel">
+          <div class="panel-h"><span class="tile"></span>This week<span class="cnt">4</span></div>
+          <div class="rows">
+            <div class="row"><span class="ck"></span><span class="t">Open the building, Sunday 7:30 AM</span><span class="who">Mark</span></div>
+            <div class="row"><span class="ck"></span><span class="t">Call the Johnsons</span><span class="who">Pastor Dave</span></div>
+            <div class="row"><span class="ck"></span><span class="t">Christmas Eve: three services</span><span class="pill live" style="animation:none">Decided</span></div>
+            <div class="row"><span class="ck"></span><span class="t">Volunteer schedule</span><span class="who">In Library</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 2: ONE DECISION THROUGH ATLAS ============ -->
+  <section class="band gray gutter" id="how" aria-labelledby="howTitle">
+    <div class="wrap story">
+      <div class="story-intro center" data-reveal>
+        <span class="kicker">How it works</span>
+        <h2 class="headline" id="howTitle">Follow one decision<br>through Atlas.</h2>
+      </div>
+
+      <div class="steps" id="steps">
+        <div class="step on" data-step="1"><span class="kicker">Huddles</span><h3>It starts in Tuesday's staff meeting.</h3><p>Your team decides to add a 3 PM Christmas Eve service. It's written down where everyone can see it.</p></div>
+        <div class="step" data-step="2"><span class="kicker">My Tasks</span><h3>Every decision gets an owner.</h3><p>The action item lands on Sarah's list with a due date, so nobody has to remember who said they'd do it.</p></div>
+        <div class="step" data-step="3"><span class="kicker">Project Boards</span><h3>Big plans get a board.</h3><p>The service becomes a project the whole team can follow from idea to done.</p></div>
+        <div class="step" data-step="4"><span class="kicker">Calendar</span><h3>It's on everyone's calendar.</h3><p>One staff calendar, so the fellowship hall never gets double-booked again.</p></div>
+        <div class="step" data-step="5"><span class="kicker">Announcements</span><h3>And the whole staff hears it once.</h3><p>Post the update one time, pinned where everyone will see it.</p></div>
+      </div>
+
+      <div class="viz-col">
+        <div class="viz">
+          <div class="win" id="win" data-scene="1" role="img" aria-label="Atlas showing the current step: a huddle, a task, a project board, the calendar, then an announcement">
+            <div class="win-bar" aria-hidden="true">
+              <div class="crumbs">
+                <span class="c1">Workspace / <b>Huddles</b></span>
+                <span class="c2">Workspace / <b>My Tasks</b></span>
+                <span class="c3">Workspace / <b>Project Boards</b></span>
+                <span class="c4">Workspace / <b>Calendar</b></span>
+                <span class="c5">Workspace / <b>Announcements</b></span>
+              </div>
+              <span class="av" style="background:var(--violet);width:24px;height:24px;font-size:9px">SM</span>
+            </div>
+
+            <!-- Scene 1: huddle -->
+            <div class="scene s1" aria-hidden="true">
+              <div class="sc-h"><h4>Tuesday staff huddle</h4><span class="pill live">Live</span>
+                <span class="stack"><span class="av" style="background:var(--blue)">JM</span><span class="av" style="background:var(--warning)">LD</span><span class="av" style="background:var(--care)">AR</span></span></div>
+              <div class="agenda">
+                <div class="ag"><span class="n">1</span><span class="t">Fall budget review</span><span class="ck" style="background:var(--mint);border-color:var(--mint)"></span></div>
+                <div class="ag focus"><span class="n">2</span><span class="t">Christmas Eve plan</span><span class="chip">Discussing</span></div>
+                <div class="ag"><span class="n">3</span><span class="t">Welcome team training</span></div>
+              </div>
+              <div class="note">
+                <span class="lab">Notes</span>
+                <span>Attendance was full last year. Add a 3 PM family service.</span>
+                <div class="action"><span class="ck"></span><span class="t" style="flex:1">Plan the 3 PM service</span><span class="av" style="background:var(--violet);width:22px;height:22px;font-size:8.5px">SM</span></div>
+              </div>
+            </div>
+
+            <!-- Scene 2: my tasks -->
+            <div class="scene s2" aria-hidden="true">
+              <div class="sc-h"><h4>My Tasks</h4><span class="cnt">4</span></div>
+              <div class="rows" style="padding:0">
+                <div class="row newtask"><span class="ck"></span><span class="t">Plan the 3 PM Christmas Eve service</span><span class="from">From huddle</span><span class="pill hi">High</span></div>
+                <div class="row done"><span class="ck"></span><span class="t">Order Advent candles</span><span class="pill lo">Low</span></div>
+                <div class="row"><span class="ck"></span><span class="t">Confirm band for Dec 24</span><span class="pill md">Medium</span></div>
+                <div class="row"><span class="ck"></span><span class="t">Update kids check-in volunteers</span><span class="pill lo">Low</span></div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="chip">Due Nov 3</span><span class="chip">Assigned to Sarah</span><span class="chip">Worship</span></div>
+            </div>
+
+            <!-- Scene 3: board -->
+            <div class="scene s3" aria-hidden="true">
+              <div class="sc-h"><h4>Christmas Eve 2026</h4><span class="cnt">7</span></div>
+              <div class="kanban">
+                <div class="col" style="--c:var(--text-3)"><div class="col-h"><i></i>To do</div><div style="height:58px"></div><div class="kc">Print programs<div class="meta"><span class="pill lo">Low</span></div></div><div class="kc">Candle safety plan</div></div>
+                <div class="col" style="--c:var(--blue)"><div class="col-h"><i></i>In progress</div><div style="height:58px"></div><div class="kc">Book extra parking team<div class="meta"><span class="pill md">Medium</span><span class="av" style="background:var(--warning)">LD</span></div></div></div>
+                <div class="col" style="--c:var(--mint)"><div class="col-h"><i></i>Done</div><div class="kc">Choose sermon series<div class="meta"><span class="av" style="background:var(--blue)">JM</span></div></div><div class="kc">Reserve sanctuary</div></div>
+                <div class="kc mover">3 PM service<div class="meta"><span class="pill hi">High</span><span class="av" style="background:var(--violet)">SM</span></div></div>
+              </div>
+            </div>
+
+            <!-- Scene 4: calendar -->
+            <div class="scene s4" aria-hidden="true">
+              <div class="sc-h"><h4>December</h4><span class="chip">Month</span></div>
+              <div class="cal">
+                <span class="dh">SUN</span><span class="dh">MON</span><span class="dh">TUE</span><span class="dh">WED</span><span class="dh">THU</span><span class="dh">FRI</span><span class="dh">SAT</span>
+                <span class="d x"></span><span class="d x"></span><span class="d">1<span class="ev" style="--c:var(--blue)">Huddle</span></span><span class="d">2</span><span class="d">3</span><span class="d">4</span><span class="d">5</span>
+                <span class="d">6</span><span class="d">7</span><span class="d">8<span class="ev" style="--c:var(--blue)">Huddle</span></span><span class="d">9</span><span class="d">10<span class="ev" style="--c:var(--orange)">Choir</span></span><span class="d">11</span><span class="d">12</span>
+                <span class="d">13</span><span class="d">14</span><span class="d">15<span class="ev" style="--c:var(--blue)">Huddle</span></span><span class="d">16</span><span class="d">17</span><span class="d">18</span><span class="d">19<span class="ev" style="--c:var(--violet)">Kids party</span></span>
+                <span class="d">20</span><span class="d">21</span><span class="d">22<span class="ev" style="--c:var(--blue)">Huddle</span></span><span class="d">23<span class="ev" style="--c:var(--orange)">Rehearsal</span></span><span class="d big">24<span class="ev pop" style="--c:var(--mint-ink)">3 PM service</span><span class="ev" style="--c:var(--orange)">5 PM</span></span><span class="d">25</span><span class="d">26</span>
+              </div>
+            </div>
+
+            <!-- Scene 5: announcement -->
+            <div class="scene s5" aria-hidden="true">
+              <div class="sc-h"><h4>Announcements</h4><span class="chip">Pinned</span></div>
+              <div class="ann">
+                <div class="by"><span class="av" style="background:var(--blue)">DW</span><span><b>Pastor Dave</b> · to all staff</span></div>
+                <h5>Christmas Eve: three services this year</h5>
+                <p>We're adding a 3 PM family service. Sarah is leading the plan, and it's on the calendar. Thanks, team.</p>
+                <div class="seen"><span class="chip">General</span><span class="chip">Pinned as important</span><span style="margin-left:auto">Read more &middot; Save</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 3: REAL SCREENS ============ -->
+  <section class="band" id="screens" aria-labelledby="shotsTitle">
+    <div class="wrap gutter" data-reveal>
+      <div class="shots-head"><span class="kicker">The app, today</span><h2 class="headline" id="shotsTitle">Take a look around.</h2></div>
+      <div class="view-tabs-wrap"><div class="view-tabs" role="tablist" aria-label="App screens" id="viewTabs"><span class="pill-bg" aria-hidden="true"></span><button role="tab" id="vt-0" aria-controls="vp-0" aria-selected="true">My Tasks</button><button role="tab" id="vt-1" aria-controls="vp-1" aria-selected="false" tabindex="-1">Huddles</button><button role="tab" id="vt-2" aria-controls="vp-2" aria-selected="false" tabindex="-1">Project Boards</button><button role="tab" id="vt-3" aria-controls="vp-3" aria-selected="false" tabindex="-1">Calendar</button><button role="tab" id="vt-4" aria-controls="vp-4" aria-selected="false" tabindex="-1">Announcements</button><button role="tab" id="vt-5" aria-controls="vp-5" aria-selected="false" tabindex="-1">Ministry Hub</button></div></div>
+      <!-- SCREENSHOT SLOTS: drop files into shots/ with these names and they appear automatically.
+           Until then each slot shows the current site's screenshot, or the placeholder if neither exists.
+           Export at 1600x800 (2:1) WebP, ideally under 250 KB each. -->
+      <div class="viewer" id="viewer" tabindex="0" aria-roledescription="carousel" aria-label="App screens, swipe or use arrow keys">
+      <div class="pane" role="tabpanel" id="vp-0" aria-labelledby="vt-0">
+        <div class="shot" data-zoom><img src="shots/my-tasks.webp" data-fallback="My%20Tasks.jpg" alt="Atlas My Tasks page" width="1600" height="800" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><div class="slot"><div><b>My Tasks</b><code>shots/my-tasks.webp</code></div></div><span class="zoom-hint glass">Click to enlarge</span></div>
+        <p class="cap"><b>My Tasks.</b><span>Everyone knows what's theirs.</span></p>
+      </div>
+      <div class="pane" role="tabpanel" id="vp-1" aria-labelledby="vt-1" hidden>
+        <div class="shot" data-zoom><img src="shots/huddles.webp" data-fallback="Team%20Huddles.jpg" alt="Atlas Huddles page" width="1600" height="800" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><div class="slot"><div><b>Huddles</b><code>shots/huddles.webp</code></div></div><span class="zoom-hint glass">Click to enlarge</span></div>
+        <p class="cap"><b>Huddles.</b><span>Meetings that end with a plan.</span></p>
+      </div>
+      <div class="pane" role="tabpanel" id="vp-2" aria-labelledby="vt-2" hidden>
+        <div class="shot" data-zoom><img src="shots/project-boards.webp" data-fallback="Project%20Boards.jpg" alt="Atlas Project Boards page" width="1600" height="800" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><div class="slot"><div><b>Project Boards</b><code>shots/project-boards.webp</code></div></div><span class="zoom-hint glass">Click to enlarge</span></div>
+        <p class="cap"><b>Project Boards.</b><span>Big plans, step by step.</span></p>
+      </div>
+      <div class="pane" role="tabpanel" id="vp-3" aria-labelledby="vt-3" hidden>
+        <div class="shot" data-zoom><img src="shots/calendar.webp" data-fallback="Calendar.jpg" alt="Atlas Calendar page" width="1600" height="800" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><div class="slot"><div><b>Calendar</b><code>shots/calendar.webp</code></div></div><span class="zoom-hint glass">Click to enlarge</span></div>
+        <p class="cap"><b>Calendar.</b><span>One schedule for the whole staff.</span></p>
+      </div>
+      <div class="pane" role="tabpanel" id="vp-4" aria-labelledby="vt-4" hidden>
+        <div class="shot" data-zoom><img src="shots/announcements.webp" data-fallback="Announcements.jpg" alt="Atlas Announcements page" width="1600" height="800" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><div class="slot"><div><b>Announcements</b><code>shots/announcements.webp</code></div></div><span class="zoom-hint glass">Click to enlarge</span></div>
+        <p class="cap"><b>Announcements.</b><span>Say it once.</span></p>
+      </div>
+      <div class="pane" role="tabpanel" id="vp-5" aria-labelledby="vt-5" hidden>
+        <div class="shot" data-zoom><img src="shots/library.webp" data-fallback="Ministry%20Hub.jpg" alt="Atlas Ministry Hub page" width="1600" height="800" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><div class="slot"><div><b>Ministry Hub</b><code>shots/library.webp</code></div></div><span class="zoom-hint glass">Click to enlarge</span></div>
+        <p class="cap"><b>Ministry Hub.</b><span>Every ministry, at a glance.</span></p>
+      </div>
+      </div>
+      <p class="swipe-hint">Swipe to see more screens</p>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 4: FOUNDING ============ -->
+  <section class="band gray gutter" id="founding" aria-labelledby="foundTitle">
+    <div class="wrap">
+      <div class="center" style="gap:28px">
+        <span class="kicker" data-reveal>Founding churches</span>
+        <h2 class="statement" id="foundTitle">We're inviting a handful of churches to build Atlas with us.</h2>
+      </div>
+      <div class="perks">
+        <div class="perk" data-reveal><h3>Free while we build.</h3><p>Use Atlas with your whole staff at no cost during the founding period.</p></div>
+        <div class="perk" data-reveal><h3>A founding rate that stays.</h3><p>Yours for as long as you stay subscribed. We'll share it when we talk.</p></div>
+        <div class="perk" data-reveal><h3>A direct line to us.</h3><p>Text or email the founders and hear back from the people building it.</p></div>
+      </div>
+      <p class="ask" data-reveal><span><b>What we ask in return:</b> use it for your real week, tell us honestly what's working, and join a short monthly call.</span></p>
+
+      <div class="next" data-reveal>
+        <span class="kicker">What's next</span>
+        <div class="mods">
+          <span class="mod" style="--c:var(--blue)"><i></i>Messages</span>
+          <span class="mod" style="--c:var(--serve)"><i></i>Serve</span>
+          <span class="mod" style="--c:var(--care)"><i></i>Care</span>
+          <span class="mod ai"><i></i>Atlas AI</span>
+          <span class="mod" style="--c:var(--violet)"><i></i>Workflows</span>
+        </div>
+        <p>Founding churches help decide what we build next.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 5: PEOPLE ============ -->
+  <section class="band gutter" id="team" aria-labelledby="teamTitle">
+    <div class="wrap">
+      <div class="center" data-reveal>
+        <span class="kicker">Who's behind it</span>
+        <h2 class="headline" id="teamTitle">Built by people who've<br>served on church staff.</h2>
+        <p class="lede" style="max-width:40ch">We lived the Monday-morning scramble. Atlas is the tool we wished we'd had.</p>
+      </div>
+      <!-- PORTRAITS: team/lucas.webp, team/ben.webp, team/josiah.webp (square, 400x400). Falls back to the current About-page photos, then initials. -->
+      <div class="team">
+        <div class="person" data-reveal><img class="portrait" src="team/lucas.webp" data-fallback="image_5.jpg" alt="Lucas Dial" width="132" height="132" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><span class="portrait" style="background:linear-gradient(135deg,var(--mint),var(--mint-deep))">LD</span><b>Lucas Dial</b><span>Founder &amp; CEO</span></div>
+        <div class="person" data-reveal><img class="portrait" src="team/ben.webp" data-fallback="image_3.jpg" alt="Ben Rozelle" width="132" height="132" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><span class="portrait" style="background:linear-gradient(135deg,#60A5FA,var(--blue))">BR</span><b>Ben Rozelle</b><span>Co-founder &amp; CTO</span></div>
+        <div class="person" data-reveal><img class="portrait" src="team/josiah.webp" data-fallback="image_4.jpg" alt="Josiah Miller" width="132" height="132" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><span class="portrait" style="background:linear-gradient(135deg,#F9A8D4,var(--care))">JM</span><b>Josiah Miller</b><span>Co-founder &amp; CMO</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FORM ============ -->
+  <section class="band gray gutter" id="apply" aria-labelledby="applyTitle">
+    <div class="apply">
+      <div class="center" data-reveal>
+        <h2 class="headline" id="applyTitle">Let's talk.</h2>
+        <p class="lede">Tell us a little about your church. A founder will reach out within two business days.</p>
+      </div>
+      <div class="form-card" data-reveal>
+        <form id="lead" novalidate>
+          <div class="field"><label for="firstname">First name</label><input id="firstname" name="firstname" autocomplete="given-name" required><span class="err" aria-live="polite"></span></div>
+          <div class="field"><label for="lastname">Last name</label><input id="lastname" name="lastname" autocomplete="family-name" required><span class="err" aria-live="polite"></span></div>
+          <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@yourchurch.org"><span class="err" aria-live="polite"></span></div>
+          <div class="field full"><label for="company">Church name</label><input id="company" name="company" autocomplete="organization" required><span class="err" aria-live="polite"></span></div>
+          <div class="field"><label for="jobtitle">Your role</label>
+            <select id="jobtitle" name="jobtitle" required><option value="">Choose one</option><option>Lead or senior pastor</option><option>Executive pastor</option><option>Associate or ministry pastor</option><option>Church administrator</option><option>Operations or office staff</option><option>Communications</option><option>Other</option></select><span class="err" aria-live="polite"></span></div>
+          <div class="field"><label for="staff_size">Staff team size</label>
+            <select id="staff_size" name="staff_size" required><option value="">Choose one</option><option>1 to 3</option><option>4 to 8</option><option>9 to 15</option><option>16 or more</option></select><span class="err" aria-live="polite"></span></div>
+          <div class="form-foot">
+            <button class="btn btn-mint" type="submit" id="submit">Request a conversation</button>
+            <small>No commitment. We only use this to reach out about Atlas. <a href="legal.html">Privacy policy</a></small>
+          </div>
+        </form>
+        <div class="thanks" id="thanks" hidden>
+          <span class="thanks-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#12261C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 id="thanksTitle" tabindex="-1">Thanks. We'll be in touch.</h3>
+          <p>One of the founders will email you within two business days to find a time to talk.</p>
+          <p class="demo" id="demo" hidden>Preview mode: nothing was sent. Add the HubSpot portal and form IDs to connect this form.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="band gutter" id="faq" aria-labelledby="faqTitle" style="padding-bottom:100px">
+    <div class="center" data-reveal><h2 class="title" id="faqTitle">Questions</h2></div>
+    <div class="faq">
+      <details><summary>Is Atlas ready to use today?</summary><p>Yes. Atlas Workspace (tasks, huddles, announcements, project boards, calendar, library, dashboard and directory) is built and in use. Messages, Serve, Care, Atlas AI and Workflows are still being built.</p></details>
+      <details><summary>What does it cost?</summary><p>Founding churches use Atlas free during the founding period, then keep a founding rate for as long as they stay subscribed. We share the details when we talk.</p></details>
+      <details><summary>Do we have to stop using Planning Center?</summary><p>No. Planning Center runs your Sunday. Atlas is for the staff work that happens Monday through Friday, and the two sit side by side.</p></details>
+      <details><summary>How is our church's information protected?</summary><p>Only people you invite can see your church's workspace. Every service that handles your data is listed on our <a href="sub-processors.html">sub-processors page</a>, and we're glad to walk through it on a call.</p></details>
+    </div>
+  </section>
+
+  <footer class="wrap gutter">
+    <span>&copy; 2026 Atlas Church Solutions</span>
+    <div class="foot-links"><a href="about.html">About</a><a href="legal.html">Privacy Policy</a><a href="sub-processors.html">Sub-processors</a><a href="contact-us.html">Contact</a><a href="https://app.atlaschurchsolutions.com/login">Log in</a></div>
+  </footer>
+</main>
+
+<div class="lightbox" id="lightbox" hidden><img alt=""></div>
+<div class="mcta glass" id="mcta"><span>Become a founding church</span><a class="btn btn-mint" href="#apply">Let's talk</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  /* HubSpot: fill in portalId and formId (HubSpot > Marketing > Forms > Embed).
+     firstname, lastname, email, company and jobtitle are standard HubSpot properties;
+     staff_size needs a matching property on the form. While empty, the form runs in preview mode. */
+  var HUBSPOT = { portalId: "", formId: "" };
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGsap = !!(window.gsap && window.ScrollTrigger);
+  if (!hasGsap || reduce) document.documentElement.classList.add("static");
+
+  /* ---------- Nav tightens, mobile CTA appears ---------- */
+  var nav = document.getElementById("nav"), mcta = document.getElementById("mcta");
+  var apply = document.getElementById("apply");
+  function onScroll() {
+    var y = window.scrollY;
+    nav.classList.toggle("compact", y > 40);
+    var formTop = apply.getBoundingClientRect().top;
+    mcta.classList.toggle("show", y > window.innerHeight * 0.9 && formTop > window.innerHeight * 0.6);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* ---------- Hero app: tasks tick off on a loop ---------- */
+  var rows = document.querySelectorAll("#heroRows .row"), ring = document.getElementById("ring"), doneN = document.getElementById("doneN");
+  function paint(n) { rows.forEach(function (r, i) { r.classList.toggle("done", i < n); }); doneN.textContent = 2 + n; ring.style.strokeDashoffset = 94.25 * (1 - (2 + n) / 5); }
+  paint(0);
+  if (!reduce) { var k = 0; setTimeout(function tick() { k = k >= rows.length ? 0 : k + 1; paint(k); setTimeout(tick, k === rows.length ? 3200 : 1700); }, 2600); }
+
+  /* ---------- Story: which step is in the middle of the screen ---------- */
+  var win = document.getElementById("win"), steps = document.querySelectorAll(".step");
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      steps.forEach(function (s) { s.classList.toggle("on", s === e.target); });
+      win.setAttribute("data-scene", e.target.getAttribute("data-step"));
+    });
+  }, { rootMargin: window.innerWidth <= 900 ? "-64% 0px -26% 0px" : "-45% 0px -45% 0px" });
+  steps.forEach(function (s) { io.observe(s); });
+
+  /* ---------- Screens viewer ---------- */
+  var vtabs = Array.prototype.slice.call(document.querySelectorAll("#viewTabs [role=tab]")), pillBg = document.querySelector("#viewTabs .pill-bg");
+  function movePill(t) { pillBg.style.width = t.offsetWidth + "px"; pillBg.style.transform = "translateX(" + t.offsetLeft + "px)"; }
+  var viewer = document.getElementById("viewer"), vcur = 0, vbusy = false;
+  function pick(t, focus) {
+    var i = vtabs.indexOf(t); if (i === vcur || vbusy) { movePill(t); return; }
+    var dir = i > vcur ? 1 : -1, oldP = document.getElementById(vtabs[vcur].getAttribute("aria-controls")), newP = document.getElementById(t.getAttribute("aria-controls"));
+    vtabs.forEach(function (x) { var on = x === t; x.setAttribute("aria-selected", on ? "true" : "false"); x.tabIndex = on ? 0 : -1; });
+    movePill(t); if (focus) t.focus(); t.scrollIntoView({ block: "nearest", inline: "nearest" });
+    vcur = i;
+    if (reduce) { oldP.hidden = true; newP.hidden = false; return; }
+    vbusy = true; viewer.style.minHeight = oldP.offsetHeight + "px";
+    oldP.className = "pane " + (dir > 0 ? "leave-left" : "leave-right");
+    setTimeout(function () {
+      oldP.hidden = true; oldP.className = "pane"; oldP.style.transform = ""; oldP.style.opacity = "";
+      newP.hidden = false; newP.className = "pane " + (dir > 0 ? "enter-right" : "enter-left");
+      setTimeout(function () { newP.className = "pane"; viewer.style.minHeight = ""; vbusy = false; }, 560);
+    }, 240);
+  }
+  /* Swipe or drag the preview to move between screens */
+  (function () {
+    var sx = 0, sy = 0, dx = 0, active = null, dragging = false, axis = null;
+    viewer.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    viewer.addEventListener("pointerdown", function (e) { if (vbusy || e.button) return; try { viewer.setPointerCapture(e.pointerId); } catch (x) {} viewer.dataset.dragged = ""; sx = e.clientX; sy = e.clientY; dx = 0; axis = null; active = document.getElementById(vtabs[vcur].getAttribute("aria-controls")); dragging = true; });
+    window.addEventListener("pointermove", function (e) {
+      if (!dragging || !active) return;
+      var mx = e.clientX - sx, my = e.clientY - sy;
+      if (!axis) { if (Math.abs(mx) < 8 && Math.abs(my) < 8) return; axis = Math.abs(mx) > Math.abs(my) ? "x" : "y"; }
+      if (axis !== "x") return;
+      dx = mx; var w = viewer.offsetWidth || 1, edge = (vcur === 0 && dx > 0) || (vcur === vtabs.length - 1 && dx < 0);
+      var move = dx * (edge ? 0.18 : 0.45);
+      active.classList.add("dragging"); active.classList.remove("settle");
+      active.style.transform = "translateX(" + move + "px) rotateY(" + (-move / w * 14) + "deg)";
+      active.style.opacity = String(Math.max(.55, 1 - Math.abs(move) / w * 1.2));
+      viewer.dataset.dragged = Math.abs(dx) > 10 ? "1" : "";
+    }, { passive: true });
+    function end() {
+      if (!dragging) return; dragging = false; if (!active) return;
+      var a = active; active = null;
+      if (axis === "x" && Math.abs(dx) > 70) {
+        var n = vtabs[vcur + (dx < 0 ? 1 : -1)];
+        if (n) { a.classList.remove("dragging"); a.style.transform = ""; a.style.opacity = ""; pick(n); return; }
+      }
+      a.classList.remove("dragging"); a.classList.add("settle"); a.style.transform = ""; a.style.opacity = "";
+      setTimeout(function () { a.classList.remove("settle"); }, 500);
+    }
+    window.addEventListener("pointerup", end); window.addEventListener("pointercancel", end);
+    viewer.addEventListener("keydown", function (e) { if (e.key === "ArrowRight" && vtabs[vcur + 1]) pick(vtabs[vcur + 1]); if (e.key === "ArrowLeft" && vtabs[vcur - 1]) pick(vtabs[vcur - 1]); });
+  })();
+  vtabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { pick(t); });
+    t.addEventListener("keydown", function (e) { var n = null; if (e.key === "ArrowRight") n = vtabs[(i + 1) % vtabs.length]; if (e.key === "ArrowLeft") n = vtabs[(i - 1 + vtabs.length) % vtabs.length]; if (n) { e.preventDefault(); pick(n, true); } });
+  });
+  movePill(vtabs[0]); window.addEventListener("resize", function () { movePill(vtabs.filter(function (t) { return t.getAttribute("aria-selected") === "true"; })[0]); });
+  var lb = document.getElementById("lightbox"), lbImg = lb.querySelector("img");
+  document.querySelectorAll("[data-zoom]").forEach(function (el) { el.addEventListener("click", function () { if (viewer.dataset.dragged) { viewer.dataset.dragged = ""; return; } var im = el.querySelector("img.ok"); if (!im) return; lbImg.src = im.src; lbImg.alt = im.alt; lb.hidden = false; document.body.style.overflow = "hidden"; }); });
+  function closeLb() { lb.hidden = true; document.body.style.overflow = ""; }
+  lb.addEventListener("click", closeLb); document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+
+  /* ---------- Nav: sliding hover pill ---------- */
+  var navLinks = document.getElementById("navLinks"), glider = navLinks.querySelector(".glider");
+  navLinks.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("mouseenter", function () { glider.style.width = a.offsetWidth + "px"; glider.style.transform = "translateX(" + a.offsetLeft + "px)"; navLinks.classList.add("has-glide"); });
+    a.addEventListener("focus", function () { glider.style.width = a.offsetWidth + "px"; glider.style.transform = "translateX(" + a.offsetLeft + "px)"; navLinks.classList.add("has-glide"); });
+  });
+  navLinks.addEventListener("mouseleave", function () { navLinks.classList.remove("has-glide"); });
+  navLinks.addEventListener("focusout", function () { navLinks.classList.remove("has-glide"); });
+
+  /* ---------- Scroll motion (GSAP) ---------- */
+  if (hasGsap && !reduce) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero: words rise out of a blur, then the app frame settles flat as you scroll.
+    var title = document.getElementById("heroTitle");
+    (function split(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var s = document.createElement("span"); s.className = "w"; s.textContent = part; frag.appendChild(s);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) { split(n); }
+      });
+    })(title);
+    title.querySelectorAll(".grad .w").forEach(function (w) { w.classList.add("grad"); });
+
+    var intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+    intro.from(".hero [data-intro]:first-child", { y: 12, opacity: 0, duration: .7 })
+         .from(title.querySelectorAll(".w"), { y: 36, opacity: 0, filter: "blur(14px)", duration: 1.1, stagger: .07 }, "-=.4")
+         .from(".hero .lede, .hero .hero-ctas", { y: 18, opacity: 0, duration: .8, stagger: .1 }, "-=.7")
+         .from("#heroApp", { y: 80, opacity: 0, duration: 1.3, ease: "expo.out" }, "-=.6");
+
+    gsap.fromTo("#heroApp", { rotateX: 16, scale: .9 }, {
+      rotateX: 0, scale: 1, ease: "none",
+      scrollTrigger: { trigger: "#heroApp", start: "top 92%", end: "top 18%", scrub: .6 }
+    });
+
+    // Chaos to calm: scattered fragments fly into one Atlas list.
+    var stick = document.querySelector(".chaos-stick"), calm = document.getElementById("calm");
+    var frags = gsap.utils.toArray(".frag");
+    function toCalm(el, axis) {
+      var a = el.getBoundingClientRect(), b = calm.getBoundingClientRect();
+      // compensate for any transform already applied
+      var cur = gsap.getProperty(el, axis);
+      return axis === "x" ? (b.left + b.width / 2) - (a.left + a.width / 2) + cur : (b.top + b.height / 2) - (a.top + a.height / 2) + cur;
+    }
+    frags.forEach(function (el) { gsap.set(el, { xPercent: -50, yPercent: -50, x: 0, y: 0, rotation: parseFloat(el.style.getPropertyValue('--r')) || 0 }); });
+    gsap.set(calm, { xPercent: -50, yPercent: -50, x: 0, opacity: 0, scale: .82, y: 40 });
+    gsap.set(calm.querySelectorAll(".row"), { opacity: 0, x: -14 });
+    gsap.set(".chaos-head .l1", { color: getComputedStyle(document.documentElement).getPropertyValue("--ink") });
+    var tl = gsap.timeline({ scrollTrigger: { trigger: ".chaos", start: "top top", end: "bottom bottom", scrub: .8, invalidateOnRefresh: true } });
+    tl.from(frags, { y: function (i) { return i % 2 ? 40 : -40; }, opacity: 0, scale: .9, duration: .5, stagger: .05 })
+      .to({}, { duration: .4 })
+      .to(frags, { x: function (i, el) { return toCalm(el, "x"); }, y: function (i, el) { return toCalm(el, "y"); }, scale: .35, opacity: 0, duration: 1.1, rotation: 0, ease: "power2.in", stagger: .04 })
+      .to(calm, { opacity: 1, scale: 1, y: 0, duration: .8, ease: "back.out(1.4)" }, "-=.45")
+      .to(".chaos-head .l1", { color: "#C9CDD3", duration: .6 }, "<")
+      .to(".chaos-head .l2", { color: "#1F2328", duration: .6 }, "<")
+      .to(calm.querySelectorAll(".row"), { opacity: 1, x: 0, duration: .5, stagger: .12 }, "-=.2")
+      .to(calm.querySelectorAll(".row .ck"), { backgroundColor: "#5CE1A5", borderColor: "#5CE1A5", duration: .2, stagger: .1 }, "-=.1")
+      .to({}, { duration: .5 });
+
+    // Founding statement: words light up as you read.
+    var st = document.getElementById("foundTitle");
+    st.innerHTML = st.textContent.split(" ").map(function (w) { return '<span class="w">' + w + "</span>"; }).join(" ");
+    gsap.fromTo(st.querySelectorAll(".w"), { opacity: .16 }, { opacity: 1, stagger: .1, ease: "none", scrollTrigger: { trigger: st, start: "top 82%", end: "bottom 45%", scrub: true } });
+
+    // Everything else eases up out of a light blur once.
+    gsap.utils.toArray("[data-reveal]").forEach(function (el) {
+      gsap.from(el, { y: 48, opacity: 0, filter: "blur(8px)", duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+    });
+
+
+    window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+  }
+
+  /* ---------- Form ---------- */
+  var form = document.getElementById("lead"), btn = document.getElementById("submit"), thanks = document.getElementById("thanks");
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function setErr(f, msg) { var w = f.closest(".field"); w.classList.toggle("invalid", !!msg); w.querySelector(".err").textContent = msg || ""; f.setAttribute("aria-invalid", msg ? "true" : "false"); }
+  function validate() {
+    var first = null;
+    form.querySelectorAll("[required]").forEach(function (f) {
+      var v = f.value.trim(), m = "";
+      if (!v) m = f.tagName === "SELECT" ? "Choose an option." : "Required.";
+      else if (f.type === "email" && !EMAIL.test(v)) m = "Enter an email like name@church.org.";
+      setErr(f, m); if (m && !first) first = f;
+    });
+    return first;
+  }
+  form.querySelectorAll("[required]").forEach(function (f) { f.addEventListener("input", function () { if (f.closest(".field").classList.contains("invalid")) validate(); }); f.addEventListener("change", function () { if (f.closest(".field").classList.contains("invalid")) validate(); }); });
+  function hutk() { var m = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/); return m ? m[1] : undefined; }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = validate(); if (bad) { bad.focus(); return; }
+    btn.disabled = true; btn.innerHTML = '<span class="spin" aria-hidden="true"></span>Sending';
+    var fields = []; new FormData(form).forEach(function (v, k) { v = String(v).trim(); if (v) fields.push({ objectTypeId: "0-1", name: k, value: v }); });
+    var live = HUBSPOT.portalId && HUBSPOT.formId;
+    var send = live
+      ? fetch("https://api.hsforms.com/submissions/v3/integration/submit/" + HUBSPOT.portalId + "/" + HUBSPOT.formId, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: document.title } }) }).then(function (r) { if (!r.ok) throw new Error(r.status); })
+      : new Promise(function (r) { setTimeout(r, 900); });
+    send.then(function () {
+      document.getElementById("thanksTitle").textContent = "Thanks, " + form.firstname.value.trim() + ". We'll be in touch.";
+      document.getElementById("demo").hidden = !!live;
+      form.hidden = true; thanks.hidden = false; document.getElementById("thanksTitle").focus();
+      if (hasGsap) ScrollTrigger.refresh();
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = "Request a conversation";
+      form.querySelector(".form-foot small").innerHTML = '<span style="color:#DC2626">We couldn’t send that. Check your connection and try again, or use our <a href="Contact-Us.html">contact page</a>.</span>';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
