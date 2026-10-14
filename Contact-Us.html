@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact Us - Atlas Church Solutions</title>
+<meta name="description" content="Whether you have a question about our tools or need support for your ministry, the Atlas Church Solutions team is ready to connect.">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Atlas Church Solutions">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: Apple-style chapters, alternating white and #F4F5F7 bands.
+   Glass only on floating controls (nav, mobile CTA); content stays solid.
+   Tokens from atlas-app/DESIGN.md & index-v2.html. Light only, like the app. */
+:root {
+  color-scheme: light;
+  --white: #FFFFFF;
+  --bg: #F4F5F7;
+  --border: #E5E7EB;
+  --ink: #1F2328;            /* headline ink: a touch deeper than text-primary for display sizes */
+  --text: #2D333A;           /* DESIGN.md text-primary */
+  --text-2: #6B7280;         /* DESIGN.md text-secondary */
+  --text-3: #9CA3AF;         /* DESIGN.md text-tertiary */
+  --ghost: #C9CDD3;
+  --mint: #5CE1A5;           /* DESIGN.md primary */
+  --mint-hover: #4DD395;     /* DESIGN.md primary-hover */
+  --mint-tint: #A0F1C8;      /* DESIGN.md primary-tint */
+  --mint-deep: #3DB882;      /* DESIGN.md primary-gradient-to */
+  --mint-ink: #059669;       /* DESIGN.md success-strong */
+  --mint-subtle: rgba(92, 225, 165, 0.12);
+  --accent-subtle-bg: rgba(92, 225, 165, 0.08);
+  --on-mint: #12261C;
+  --blue: #3B82F6;           /* DESIGN.md workspace-accent & focus-ring */
+  --blue-hover: #2563EB;     /* DESIGN.md workspace-accent-hover */
+  --serve: #10B981;          /* DESIGN.md module-serve / success */
+  --care: #EC4899;           /* DESIGN.md module-care */
+  --violet: #8B5CF6;         /* DESIGN.md status-accent */
+  --orange: #F97316;         /* DESIGN.md status-live */
+  --danger: #EF4444;         /* DESIGN.md danger */
+  --danger-strong: #DC2626;  /* DESIGN.md danger-strong */
+  --warning: #F59E0B;        /* DESIGN.md warning */
+  --warning-strong: #D97706; /* DESIGN.md warning-strong */
+  --success-bg: #D1FAE5;
+  --warning-bg: #FEF3C7;
+  --danger-bg: #FEF2F2;
+  --hover-tint: rgba(45, 51, 58, 0.05);
+  --pressed-tint: rgba(45, 51, 58, 0.08);
+  --line: rgba(45, 51, 58, 0.07);
+  --glass: rgba(255, 255, 255, 0.75);
+  --glass-light: rgba(255, 255, 255, 0.5);
+  --glass-edge: rgba(255, 255, 255, 0.85);
+  --glass-blur: blur(24px) saturate(160%);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(20, 40, 30, 0.03);
+  --shadow-md: 0 8px 24px rgba(20, 40, 30, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 24px 64px rgba(20, 40, 30, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --page-wash: radial-gradient(circle at 8% 12%, rgba(92, 225, 165, 0.16) 0%, transparent 45%), radial-gradient(circle at 92% 16%, rgba(160, 241, 200, 0.22) 0%, transparent 42%);
+  --font-display: 'Poppins', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --wrap: 1120px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 96px; scroll-behavior: smooth; }
+body { margin: 0; background: var(--white); color: var(--text); font: 400 18px/1.55 var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 8px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+.gutter { padding-inline: 20px; }
+
+/* ---------- Type scale ---------- */
+.display { font-size: clamp(38px, 6vw, 72px); font-weight: 600; line-height: 1.04; letter-spacing: -0.04em; }
+.headline { font-size: clamp(30px, 4.6vw, 52px); font-weight: 600; line-height: 1.08; letter-spacing: -0.035em; }
+.title { font-size: clamp(24px, 3vw, 36px); font-weight: 600; line-height: 1.15; letter-spacing: -0.025em; }
+.lede { font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--text-2); }
+.kicker { font: 600 13px/1.2 var(--font-display); letter-spacing: 0.04em; text-transform: uppercase; color: var(--mint-ink); display: inline-block; }
+.micro-label { font: 600 11px/1.2 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+.grad { background: linear-gradient(95deg, var(--mint-deep) 0%, var(--mint) 55%, var(--mint-deep) 110%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- Glass + buttons ---------- */
+.glass { background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-edge); box-shadow: var(--glass-shadow); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .glass { background: var(--white); border-color: var(--border); } }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; white-space: nowrap; font: 600 15px/1 var(--font-display); transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .12s var(--ease), box-shadow .2s var(--ease); }
+.btn:active { transform: scale(0.97); }
+.btn-mint { position: relative; overflow: hidden; isolation: isolate; background: var(--mint); color: var(--on-mint); transition: color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease); }
+.btn-mint::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(135deg, #1F2328, #2D333A); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+.btn-mint:hover { color: var(--mint); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(31,35,40,.18); }
+.btn-mint:hover::before { transform: scaleX(1); }
+.btn-mint:active { transform: scale(.97); }
+.btn-secondary { background: var(--white); color: var(--text); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.btn-secondary:hover { background: var(--bg); }
+.btn-ghost { background: transparent; color: var(--text-2); height: 36px; padding: 0 14px; border-radius: 12px; font: 600 13px/1 var(--font-display); }
+.btn-ghost:hover { background: var(--hover-tint); color: var(--text); }
+.btn-ghost:active { background: var(--pressed-tint); transform: scale(0.97); }
+.btn-sm { height: 36px; padding: 0 16px; font-size: 14px; }
+
+.link { font: 500 16px var(--font-display); color: var(--mint-ink); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+.link::after { content: "\203A"; font-size: 1.3em; line-height: 1; transform: translateY(-1px); transition: transform .2s var(--ease); }
+.link:hover::after { transform: translate(3px, -1px); }
+
+/* ---------- Nav: floating glass pill that tightens on scroll ---------- */
+.nav-shell { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: 0; right: 0; z-index: 60; display: flex; justify-content: center; padding-inline: 16px; pointer-events: none; }
+.nav { pointer-events: auto; width: 100%; max-width: 1080px; height: 60px; border-radius: 999px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px 0 18px; transition: max-width .5s var(--ease), height .5s var(--ease); }
+.nav.compact { max-width: 780px; height: 54px; }
+.brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.brand b { font: 700 18px var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
+.nav-links { position: relative; display: flex; gap: 2px; }
+.nav-links .glider { position: absolute; top: 0; left: 0; height: 100%; width: 0; border-radius: 999px; background: rgba(45,51,58,.07); opacity: 0; transition: transform .4s var(--ease), width .4s var(--ease), opacity .25s; pointer-events: none; }
+.nav-links.has-glide .glider { opacity: 1; }
+.nav-links a { position: relative; z-index: 1; text-decoration: none; font: 500 14px var(--font-display); color: var(--text-2); padding: 8px 12px; border-radius: 999px; transition: color .15s, background-color .15s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a[aria-current="page"] { color: var(--ink); font-weight: 600; background: rgba(92, 225, 165, 0.14); }
+.nav-right { display: flex; align-items: center; gap: 4px; }
+.nav-right .login { font: 500 14px var(--font-display); color: var(--text-2); text-decoration: none; padding: 8px 12px; border-radius: 999px; transition: color .15s, background-color .15s; }
+.nav-right .login:hover { color: var(--ink); background: var(--hover-tint); }
+
+/* ---------- Page Hero & Bands ---------- */
+.page-hero { position: relative; padding-block: 148px 72px; text-align: center; overflow: hidden; background: var(--page-wash), var(--white); border-bottom: 1px solid var(--border); }
+.page-hero > * { position: relative; }
+.hero-copy { display: grid; justify-items: center; gap: 18px; max-width: 780px; margin-inline: auto; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--accent-subtle-bg); border: 1px solid rgba(92, 225, 165, 0.28); font: 600 11px/1 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint-ink); }
+.dot-live { width: 6px; height: 6px; border-radius: 50%; background: var(--serve); position: relative; }
+
+.band { padding-block: 104px; }
+.band.gray { background: var(--bg); }
+.center { text-align: center; display: grid; justify-items: center; gap: 16px; }
+
+/* ---------- DESIGN.md Shared Primitives ---------- */
+.icon-tile { width: 40px; height: 40px; border-radius: 12px; background: var(--accent-subtle-bg); border: 1px solid rgba(92, 225, 165, 0.22); display: inline-grid; place-items: center; color: var(--mint-ink); flex: none; }
+.meta-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); font: 600 12px/1.2 var(--font-body); color: var(--text-2); text-decoration: none; }
+.status-pill { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 10px; border-radius: 999px; background: var(--success-bg); border: 1px solid rgba(16, 185, 129, 0.22); font: 700 10px/1.2 var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--mint-ink); }
+.count-pill { display: inline-flex; align-items: center; justify-content: center; height: 20px; padding: 0 8px; border-radius: 999px; background: var(--white); border: 1px solid var(--border); font: 600 12px/1.2 var(--font-display); font-variant-numeric: tabular-nums; color: var(--text-2); }
+
+/* ---------- Footer & Mobile Sticky CTA ---------- */
+footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 14px; color: var(--text-3); }
+.foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.foot-links a { color: var(--text-2); text-decoration: none; transition: color .15s; }
+.foot-links a:hover { color: var(--ink); }
+
+.mcta { position: fixed; left: 16px; right: 16px; bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); z-index: 55; border-radius: 999px; padding: 7px 7px 7px 20px; display: none; align-items: center; justify-content: space-between; gap: 12px; transform: translateY(140%); transition: transform .5s var(--ease); }
+.mcta.show { transform: none; }
+.mcta span { font: 600 14px/1.25 var(--font-display); color: var(--ink); }
+.mcta .btn { height: 42px; padding: 0 18px; font-size: 14px; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav.compact { max-width: 100%; }
+  .mcta { display: flex; }
+  .band { padding-block: 76px; }
+  .page-hero { padding-block: 124px 56px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .nav { padding-left: 14px; height: 54px; }
+  .nav-right .login { display: none; }
+  .page-hero { padding-block: 112px 44px; }
+  footer { flex-direction: column; text-align: center; justify-content: center; }
+  .foot-links { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+
+/* ---------- Contact Us Specific Styles ---------- */
+.contact-us-hero {
+  position: relative;
+  padding-block: 148px 56px;
+  text-align: center;
+  background: var(--page-wash), var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.contact-us-hero .hero-copy {
+  max-width: 680px;
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+.contact-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+.contact-chips .meta-chip {
+  transition: border-color .15s, background-color .15s, color .15s;
+}
+.contact-chips a.meta-chip:hover {
+  background: var(--white);
+  border-color: var(--mint);
+  color: var(--ink);
+}
+
+.form-section {
+  background: var(--bg);
+  padding-block: 64px 104px;
+}
+.form-container {
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+}
+.atlas-form {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: clamp(20px, 4vw, 36px);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+}
+.atlas-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.atlas-form-header div {
+  display: grid;
+  gap: 4px;
+}
+.atlas-form-header h2 {
+  font: 700 18px/1.3 var(--font-display);
+  color: var(--ink);
+}
+.atlas-form-header p {
+  font-size: 14px;
+  color: var(--text-2);
+}
+.atlas-form iframe {
+  display: block;
+  width: 100%;
+  min-height: 850px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--white);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<div class="nav-shell">
+  <nav class="nav glass" id="nav" aria-label="Main">
+    <a class="brand" href="index.html" aria-label="Atlas Church Solutions, home"><img src="image_2.png" alt="Atlas Logo" width="28" height="28" style="width:28px;height:28px;object-fit:contain"><b>Atlas</b></a>
+    <div class="nav-links" id="navLinks">
+      <span class="glider" aria-hidden="true"></span>
+      <a href="Index.html#how">How it works</a>
+      <a href="Index.html#screens">The app</a>
+      <a href="About.html">About</a>
+      <a href="Legal.html">Privacy</a>
+      <a href="Contact-Us.html" aria-current="page">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a class="login" href="https://app.atlaschurchsolutions.com/login">Log in</a>
+      <a class="btn btn-mint btn-sm" href="Index.html#apply">Let's talk</a>
+    </div>
+  </nav>
+</div>
+
+
+<main id="top" class="scrollable-content">
+  <!-- ============ HERO ============ -->
+  <header class="contact-us-hero gutter">
+    <div class="hero-copy" data-reveal>
+      <div class="eyebrow contact-us-eyebrow"><span class="dot-live" aria-hidden="true"></span>Get in Touch</div>
+      <h1 class="display">We're here to <span class="grad">help.</span></h1>
+      <p class="lede">Whether you have a question about our tools or need support for your ministry, our team is ready to connect.</p>
+      <div class="contact-chips">
+        <a class="meta-chip" href="mailto:support@atlaschurchsolutions.com">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          support@atlaschurchsolutions.com
+        </a>
+        <a class="meta-chip" href="index.html#apply">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Founding church inquiry &rarr;
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ EMBEDDED FORM CARD ============ -->
+  <section class="form-section gutter" aria-label="Contact form">
+    <div class="form-container">
+      <div class="atlas-form" data-reveal>
+        <div class="atlas-form-header">
+          <div>
+            <h2>Send us a message</h2>
+            <p>Fill out the form below and one of the founders will get back to you promptly.</p>
+          </div>
+          <span class="status-pill">Direct to Founders</span>
+        </div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdq203yVq8dfoLCCJSDKWdCUp-P-idi8fmSYN0oFKgP9fUCQA/viewform?embedded=true" width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0" title="Contact Atlas Church Solutions">Loading…</iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap gutter">
+    <div class="footer-copyright">&copy; 2026 Atlas Church Solutions. All rights reserved.</div>
+    <div class="foot-links footer-links">
+      <a href="Index.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Legal.html">Privacy Policy</a>
+      <a href="Sub-processors.html">Sub-processors</a>
+      <a href="Contact-Us.html">Contact Us</a>
+      <a href="https://app.atlaschurchsolutions.com/login">Log in</a>
+    </div>
+  </footer>
+</main>
+
+<div class="mcta glass" id="mcta"><span>Become a founding church</span><a class="btn btn-mint" href="index.html#apply">Let's talk</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGsap = !!(window.gsap && window.ScrollTrigger);
+
+  /* ---------- Nav tightens, mobile CTA appears ---------- */
+  var nav = document.getElementById("nav"), mcta = document.getElementById("mcta");
+  function onScroll() {
+    var y = window.scrollY;
+    if (nav) nav.classList.toggle("compact", y > 40);
+    if (mcta) mcta.classList.toggle("show", y > 320);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Nav: sliding hover pill ---------- */
+  var navLinks = document.getElementById("navLinks");
+  if (navLinks) {
+    var glider = navLinks.querySelector(".glider");
+    navLinks.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("mouseenter", function () { glider.style.width = a.offsetWidth + "px"; glider.style.transform = "translateX(" + a.offsetLeft + "px)"; navLinks.classList.add("has-glide"); });
+      a.addEventListener("focus", function () { glider.style.width = a.offsetWidth + "px"; glider.style.transform = "translateX(" + a.offsetLeft + "px)"; navLinks.classList.add("has-glide"); });
+    });
+    navLinks.addEventListener("mouseleave", function () { navLinks.classList.remove("has-glide"); });
+    navLinks.addEventListener("focusout", function () { navLinks.classList.remove("has-glide"); });
+  }
+
+  /* ---------- Scroll motion (GSAP) ---------- */
+  if (hasGsap && !reduce) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray("[data-reveal]").forEach(function (el) {
+      gsap.from(el, { y: 36, opacity: 0, filter: "blur(6px)", duration: 0.95, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+    });
+    window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+  }
+})();
+</script>
+</body>
+</html>
