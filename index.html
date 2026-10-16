@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Atlas Church Solutions | Become a founding church</title>
 <meta name="description" content="The invisible backbone of your church. One calm place for your staff's tasks, meetings, projects and plans. Now inviting founding churches.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Atlas Church Solutions">
+<meta property="og:title" content="Atlas Church Solutions | Become a founding church">
+<meta property="og:description" content="The invisible backbone of your church. One calm place for your staff's tasks, meetings, projects and plans. Now inviting founding churches.">
+<meta property="og:url" content="https://www.atlaschurchsolutions.com/">
+<meta property="og:image" content="https://www.atlaschurchsolutions.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.atlaschurchsolutions.com/">
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -489,7 +499,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
       <a href="#screens">The app</a>
       <a href="#founding">Founding churches</a>
       <a href="#faq">FAQ</a>
-      <a href="about.html">About</a>
+      <a href="/about">About</a>
     </div>
     <div class="nav-right">
       <a class="login" href="https://app.atlaschurchsolutions.com/login">Log in</a>
@@ -762,7 +772,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
         <div class="person" data-reveal><img class="portrait" src="team/ben.webp" data-fallback="image_3.jpg" alt="Ben Rozelle" width="132" height="132" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><span class="portrait" style="background:linear-gradient(135deg,#60A5FA,var(--blue))">BR</span><b>Ben Rozelle</b><span>Co-founder &amp; CTO</span></div>
         <div class="person" data-reveal><img class="portrait" src="team/josiah.webp" data-fallback="image_4.jpg" alt="Josiah Miller" width="132" height="132" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><span class="portrait" style="background:linear-gradient(135deg,#F9A8D4,var(--care))">JM</span><b>Josiah Miller</b><span>Co-founder &amp; CMO</span></div>
       </div>
-      <div class="team-more" data-reveal><a class="btn btn-line" href="about.html">Meet the team</a></div>
+      <div class="team-more" data-reveal><a class="btn btn-line" href="/about">Meet the team</a></div>
     </div>
   </section>
 
@@ -785,7 +795,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
             <select id="staff_size" name="staff_size" required><option value="">Choose one</option><option>1 to 3</option><option>4 to 8</option><option>9 to 15</option><option>16 or more</option></select><span class="err" aria-live="polite"></span></div>
           <div class="form-foot">
             <button class="btn btn-mint" type="submit" id="submit">Request a conversation</button>
-            <small>No commitment. We only use this to reach out about Atlas. <a href="legal.html">Privacy policy</a></small>
+            <small>No commitment. We only use this to reach out about Atlas. <a href="/legal">Privacy policy</a></small>
           </div>
         </form>
         <div class="thanks" id="thanks" hidden>
@@ -806,13 +816,13 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
       <details><summary>What does it cost?</summary><p>Founding churches get 90 days free, then a founding rate for as long as they stay subscribed. We share the details when we talk.</p></details>
       <details><summary>Is there a contract?</summary><p>No long-term contract. Cancel anytime, and admins can export your church&rsquo;s data whenever they like.</p></details>
       <details><summary>Do we have to stop using Planning Center?</summary><p>No. Planning Center runs your Sunday. Atlas is for the staff work that happens Monday through Friday, and the two sit side by side.</p></details>
-      <details><summary>How is our church's information protected?</summary><p>Only people you invite can see your church's workspace. Every service that handles your data is listed on our <a href="sub-processors.html">sub-processors page</a>, and we're glad to walk through it on a call.</p></details>
+      <details><summary>How is our church's information protected?</summary><p>Only people you invite can see your church's workspace. Every service that handles your data is listed on our <a href="/sub-processors">sub-processors page</a>, and we're glad to walk through it on a call.</p></details>
     </div>
   </section>
 
   <footer class="wrap gutter">
     <span>&copy; 2026 Atlas Church Solutions</span>
-    <div class="foot-links"><a href="about.html">About</a><a href="legal.html">Privacy Policy</a><a href="sub-processors.html">Sub-processors</a><a href="contact-us.html">Contact</a><a href="https://app.atlaschurchsolutions.com/login">Log in</a></div>
+    <div class="foot-links"><a href="/about">About</a><a href="/legal">Privacy Policy</a><a href="/sub-processors">Sub-processors</a><a href="/contact-us">Contact</a><a href="https://app.atlaschurchsolutions.com/login">Log in</a></div>
   </footer>
 </main>
 
@@ -1050,7 +1060,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
       if (hasGsap) ScrollTrigger.refresh();
     }).catch(function () {
       btn.disabled = false; btn.textContent = "Request a conversation";
-      form.querySelector(".form-foot small").innerHTML = '<span style="color:#DC2626">We couldn’t send that. Check your connection and try again, or use our <a href="contact-us.html">contact page</a>.</span>';
+      form.querySelector(".form-foot small").innerHTML = '<span style="color:#DC2626">We couldn’t send that. Check your connection and try again, or use our <a href="/contact-us">contact page</a>.</span>';
     });
   });
 })();
