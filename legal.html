@@ -378,13 +378,19 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
 
 @media (max-width: 900px) {
   .legal-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
   }
   .page-sidebar {
-    position: static;
-    padding: 12px;
+    position: sticky;
+    top: 78px;
+    z-index: 5;
+    min-width: 0;
+    max-width: 100%;
+    padding: 8px;
+    border-radius: 999px;
   }
+  .sidebar-header { display: none; }
   .sidebar-header {
     padding: 2px 6px 8px;
   }
@@ -397,9 +403,15 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
   #sidebar-links::-webkit-scrollbar { display: none; }
   #sidebar-links a {
     white-space: nowrap;
-    padding: 8px 12px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
   }
+  #sidebar-links a.active::after { display: none; }
 }
+.content-section code { font: 500 .9em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--bg); padding: 1px 6px; border-radius: 6px; }
+.content-section a { color: var(--mint-ink, #059669); overflow-wrap: anywhere; }
+.content-section h2, .content-section h3, .content-section p, .content-section li { overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -414,7 +426,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <a href="index.html#screens">The app</a>
       <a href="about.html">About</a>
       <a href="legal.html" aria-current="page">Privacy</a>
-      <a href="Contact-Us.html">Contact</a>
+      <a href="contact-us.html">Contact</a>
     </div>
     <div class="nav-right">
       <a class="login" href="https://app.atlaschurchsolutions.com/login">Log in</a>
@@ -455,230 +467,274 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <div id="privacy-policy" class="content-section">
         <div class="section-top">
           <h2>Privacy Policy</h2>
-          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;April 2026</span>
+          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;October 15, 2026</span>
         </div>
 
-        <h3>1. Introduction</h3>
-        <p>Atlas Church Solutions ("we," "us," or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our church management software platform (the "Services"). Because we provide B2B software for churches, it is important to distinguish our two roles regarding data:</p>
+        <h3>1. Who we are</h3>
+        <p>Atlas Church Solutions [legal entity name] ("Atlas," "we") provides a church operations platform at app.atlaschurchsolutions.com and a website at atlaschurchsolutions.com (together, the "Services"). This policy explains what we collect, why, who helps us process it, how long we keep it, and your choices.</p>
+
+        <h3>2. Our two roles</h3>
         <ul>
-          <li><strong>As a Data Controller:</strong> We collect business information from church administrators (our direct customers) to manage billing, support, and communication.</li>
-          <li><strong>As a Data Processor:</strong> We process congregant and member data solely on behalf of the church. The church remains the Data Controller of this information.</li>
+          <li><strong>For church data, the church is in charge.</strong> When a church uses Atlas, the church decides what goes in: staff profiles, member records, events, tasks, files, huddle notes and recordings. The church is the data controller; Atlas processes that data on the church's behalf and only to provide the Services (see our <a href="#dpa">Data Processing Agreement</a>).</li>
+          <li><strong>For our own business data, Atlas is in charge.</strong> This covers church admin account and billing details, website visitors, and people who contact us.</li>
         </ul>
 
-        <h3>2. Information We Collect</h3>
-        <p><strong>A. From Church Administrators (Our Customers):</strong> When you create an account, request a demo, or contact us, we collect personal information such as your name, email address, phone number, payment/billing information, and church name. We also automatically collect device and usage data (like IP addresses and browser types) through cookies (see our Cookie Policy for details).</p>
-        <p><strong>B. On Behalf of Churches (Member Data):</strong> Churches use our platform to store data about their members. This may include:</p>
+        <h3>3. What we collect</h3>
         <ul>
-          <li>Contact information (names, emails, phone numbers, addresses).</li>
-          <li>Special categories of data, such as religious affiliation, prayer requests, or pastoral care notes.</li>
-          <li>Financial giving records.</li>
-          <li>Volunteer schedules and background check statuses.</li>
-          <li>Children's check-in data and youth group rosters.</li>
-        </ul>
-        <p>Atlas Church Solutions does not own this member data. We only process it according to the church's instructions to provide the Services.</p>
-
-        <h3>3. Children's Privacy (COPPA Compliance)</h3>
-        <p>We recognize that churches process data regarding minors, including children under the age of 13, for Sunday school check-ins, youth groups, and event registrations. Atlas Church Solutions does not directly solicit or collect information from children. All data regarding children is inputted by church staff or by parents/guardians acting through the church. The Church (the Data Controller) is strictly responsible for obtaining verifiable parental consent under the Children's Online Privacy Protection Act (COPPA) before collecting and entering a child's data into our Services. We treat all children's data with the highest security standards. Atlas will never use children's data for any purpose other than providing the requested Services to the church, nor will we condition participation on the collection of more information than is reasonably necessary.</p>
-
-        <h3>4. How We Use the Data</h3>
-        <p>We use the information we collect as a Data Controller to: Provide, operate, and maintain our Services. Process payments and manage subscriptions. Send transactional emails, security alerts, and support messages. Improve our platform through aggregated, anonymized analytics. This aggregated, anonymized data cannot be re-identified, is never attributed back to individual churches or members, and is not used to train public AI models.</p>
-        <p>We use the data we process on behalf of churches only to deliver the requested features (e.g., sending automated follow-ups, generating care journals, and processing donations) as instructed by the church.</p>
-
-        <h3>5. Sharing Your Information</h3>
-        <p>We do not sell personal data to third parties. We may share information with:</p>
-        <ul>
-          <li><strong>Subprocessors:</strong> Trusted third-party service providers who assist us in operating our platform (e.g., AWS for hosting, Stripe for payments). View our full <a href="sub-processors.html">List of Subprocessors</a>.</li>
-          <li><strong>Legal Compliance:</strong> Law enforcement or regulatory bodies if required by law or subpoena.</li>
+          <li><strong>Account and billing:</strong> name, email, church name, role, password (stored hashed by our authentication provider), and billing details. Card numbers are collected and stored by Stripe; Atlas never sees the full number.</li>
+          <li><strong>Church content:</strong> anything your church adds, including people records, departments, calendars, announcements, tasks, project boards, files, and huddles (agendas, notes, decisions, action items).</li>
+          <li><strong>Huddle recordings and AI output</strong> (only if your church turns on Atlas AI): audio recordings, transcripts, AI-drafted summaries, suggested decisions and action items, and follow-up flags. See section 5.</li>
+          <li><strong>Usage and device data:</strong> standard server logs kept by our hosting and database providers (such as IP address, browser type and the pages requested), used to keep the Services running and secure. Atlas does not use analytics, advertising or error-monitoring tools, and the app sets only the essential cookies needed to keep you signed in.</li>
+          <li><strong>Website and inquiries:</strong> information you submit through our website forms (name, email, church, role, staff size, and any message you write). Our website does not use analytics or tracking cookies.</li>
         </ul>
 
-        <h3>6. Data Retention</h3>
-        <p>We retain Administrator data for as long as your account is active or as needed to provide you Services and comply with legal obligations. Member data uploaded by the church is retained until the church deletes it or terminates their account. Upon termination, churches have 30 days to export their data before it is permanently deleted from our servers.</p>
+        <h3>4. How we use it</h3>
+        <p>To provide and secure the Services; to process subscriptions and payments; to send account, security, invitation and notification emails; to respond to support requests; to follow up on website inquiries; and to improve the Services using aggregated information that doesn't identify individuals or churches. <strong>We do not sell personal data, and we do not use church content to train AI models.</strong></p>
 
-        <h3>7. Security</h3>
-        <p>We implement industry-standard security measures, including TLS/SSL encryption for data in transit and at rest, strict access controls, and regular security assessments. While we strive to protect your data, no system is 100% secure, and we cannot guarantee absolute security. In the event of a security breach involving Church Administrator data, we will notify affected administrators promptly.</p>
-
-        <h3>8. Your Privacy Rights</h3>
-        <p>Depending on your location (e.g., California under CCPA/CPRA, or Europe under GDPR), you have the right to: (1) know and access your personal data, (2) correct inaccurate data, (3) delete your data, (4) request data portability (export), (5) opt-out of the sale or sharing of your data (though we do not sell your data), and (6) not be discriminated against for exercising these rights. We will respond to all verifiable privacy rights requests within 45 days.</p>
+        <h3>5. Atlas AI and huddle recordings</h3>
+        <p>Atlas AI is off unless a church admin accepts the Atlas AI Terms. When it's on:</p>
         <ul>
-          <li><strong>Church Administrators:</strong> Contact us directly at <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a> to exercise these rights.</li>
-          <li><strong>Church Members:</strong> Because your church is the Data Controller, please direct any requests regarding your personal data (such as deleting your profile or viewing your giving records) to your church administration. We will assist the church in fulfilling your request.</li>
+          <li><strong>Transcription:</strong> huddle audio is sent to <strong>OpenAI</strong> to be transcribed.</li>
+          <li><strong>Summaries:</strong> transcripts and huddle notes are sent to <strong>Anthropic</strong> to draft a summary, decisions, action items and follow-up flags. Huddle summaries are only ever processed by Anthropic.</li>
+          <li><strong>Backup processing for some features:</strong> for certain other AI features, if Anthropic can't be used (for example, when a church's AI allowance runs out), Atlas may send the request to OpenAI instead. Features that can surface sensitive pastoral content, including huddle summaries, never do this; they stop instead.</li>
+          <li><strong>Provider terms:</strong> both providers process this data under their business/API terms. As of October 14, 2026, both state that they do not train their models on API data by default, and that they keep API inputs and outputs for a limited period (generally up to 30 days) to provide the service and detect abuse, longer only where required by law or, for Anthropic, where content is flagged under its usage policy.</li>
+          <li><strong>Who sees it inside the church:</strong> recordings, transcripts and draft summaries are visible to the huddle organizer and church admins. Other attendees see a summary only after the organizer accepts it. Follow-up flags are visible to the huddle organizer only. Church admins can export all of the church's data, including transcripts and accepted summaries from every huddle, private ones included. Exports don't include audio recordings or follow-up flags.</li>
+          <li><strong>Follow-up flags</strong> are prompts for pastoral attention, not a diagnosis, a crisis service, or a guarantee that anything concerning will be noticed.</li>
+          <li><strong>Consent:</strong> the person who starts a recording is responsible for telling those present. Atlas shows a recording indicator while recording.</li>
+          <li><strong>Turning it off:</strong> an admin can turn AI off at any time; after that, nothing new is sent to AI providers.</li>
         </ul>
 
-        <h3>9. Contact Us</h3>
-        <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at: Email: <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a></p>
+        <h3>6. Who we share it with</h3>
+        <p>We share personal data only with service providers that help us run Atlas ("subprocessors"), under contracts that limit their use to providing their service to us; when required by law; to protect the safety of people or the Services; or as part of a merger or sale of the business, with notice. Our current subprocessors are:</p>
+        <ul>
+          <li><strong>Supabase:</strong> database, authentication, file and recording storage. All Service data. United States (AWS us-west-2).</li>
+          <li><strong>Vercel:</strong> application and website hosting. Requests and logs. United States.</li>
+          <li><strong>Stripe:</strong> payments and subscriptions. Billing contact and payment details. United States.</li>
+          <li><strong>OpenAI:</strong> huddle audio transcription, and backup text processing for some AI features (AI on only). United States.</li>
+          <li><strong>Anthropic:</strong> huddle summaries (AI on only). Transcripts, huddle notes, attendee names. United States.</li>
+          <li><strong>Resend:</strong> transactional and notification email. Name, email, message content. United States.</li>
+          <li><strong>HubSpot:</strong> website inquiry and contact forms (marketing website only, not the app). Form submissions. United States.</li>
+        </ul>
+        <p>The full list, with links to each provider's privacy policy, lives on our <a href="sub-processors.html">sub-processors page</a>. We'll give churches notice before adding a new one, as described in the Data Processing Agreement.</p>
+
+        <h3>7. How long we keep it</h3>
+        <ul>
+          <li><strong>Huddle recordings:</strong> deleted automatically after the plan's retention period (30 days on Workspace), or sooner if the organizer or an admin deletes them.</li>
+          <li><strong>Transcripts:</strong> deleted together with their recording, on the same schedule.</li>
+          <li><strong>Accepted summaries, decisions and action items:</strong> kept until the church deletes them.</li>
+          <li><strong>Follow-up flags:</strong> deleted 90 days after the huddle.</li>
+          <li><strong>Other church content:</strong> kept while the church's account is active. After an account closes, the church has 30 days to export its data; after that it is permanently deleted from our systems, and from backups within 30 days.</li>
+          <li><strong>Billing records:</strong> kept as long as tax and accounting law requires.</li>
+          <li><strong>AI providers:</strong> see section 5.</li>
+        </ul>
+
+        <h3>8. Security</h3>
+        <p>We encrypt data in transit (TLS) and at rest, keep recordings in private storage reachable only through our servers, restrict access by role, and limit Atlas staff access to what's needed to support you. No system is perfectly secure. If a breach affects your data, we'll notify affected churches without undue delay and as the law requires.</p>
+
+        <h3>9. Children</h3>
+        <p>Atlas is for church staff and isn't directed to children. Churches may store information about children in their ministries; the church is responsible for having the right to do so, including any parental consent the law requires. We use that information only to provide the Services to the church. Churches should avoid recording huddles in ways that capture children's sensitive information unless they have a clear need and the appropriate consent.</p>
+
+        <h3>10. Your rights and choices</h3>
+        <p>Depending on where you live, you may have the right to access, correct, delete or export your personal data, and to object to or limit certain processing. We don't sell or "share" personal data for cross-context advertising.</p>
+        <ul>
+          <li><strong>Church admins and website visitors:</strong> email <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a>. We'll respond within 45 days.</li>
+          <li><strong>Church members and staff:</strong> your church controls your data. Ask your church first; we'll help them respond.</li>
+        </ul>
+        <p>Admins can export the church's data from Settings at any time.</p>
+
+        <h3>11. Where data is processed</h3>
+        <p>Atlas and its subprocessors process data in the United States. If you use Atlas from outside the U.S., your data will be transferred to the U.S.</p>
+
+        <h3>12. Changes</h3>
+        <p>We'll post updates here and change the date above. For material changes, we'll email church admins at least 30 days before they take effect. Changes to how Atlas AI handles data also require an admin to accept the updated AI Terms before AI continues.</p>
+
+        <h3>13. Contact</h3>
+        <p><a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a> &middot; [mailing address]</p>
       </div>
 
       <div id="tos" class="content-section">
         <div class="section-top">
           <h2>Terms of Service</h2>
-          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;April 2026</span>
+          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;October 15, 2026</span>
         </div>
 
-        <h3>1. Agreement to Terms &amp; Incorporated Policies</h3>
-        <p>By accessing and using the products and services provided by Atlas Church Solutions (collectively, the "Services"), you accept and agree to be bound by these terms. These Terms of Service explicitly incorporate our Privacy Policy, Cookie Policy, Acceptable Use Policy (AUP), and Data Processing Agreement (DPA). If you do not agree to these terms, please do not use the Services.</p>
+        <h3>1. Agreement</h3>
+        <p>These Terms are a contract between Atlas Church Solutions [legal entity name] ("Atlas," "we") and the church or organization that creates an Atlas account ("Church," "you"). The person who signs up confirms they're authorized to accept these Terms for the Church. These Terms include our <a href="#privacy-policy">Privacy Policy</a>, <a href="#aup">Acceptable Use Policy</a>, <a href="#cookie-policy">Cookie Policy</a>, <a href="#dpa">Data Processing Agreement</a> and, if the Church turns on Atlas AI, the Atlas AI Terms shown in the app. If you don't agree, don't use the Services.</p>
 
-        <h3>2. Data Roles &amp; Responsibilities</h3>
-        <p>In providing the Services, Atlas Church Solutions acts as the "Data Processor," while your church/organization acts as the "Data Controller." You are solely responsible for obtaining all necessary consents from your congregants, members, and staff to collect and upload their personal data into our Services, including explicit parental consent for any data pertaining to minors/children under the age of 13.</p>
+        <h3>2. Accounts and users</h3>
+        <p>The Church's admins control who has access and what role each person has. Each user needs their own login; don't share passwords. You're responsible for activity under your Church's accounts and must tell us right away at <a href="mailto:security@atlaschurchsolutions.com">security@atlaschurchsolutions.com</a> about any unauthorized use. Users must be at least 18 years old.</p>
 
-        <h3>3. Service Access &amp; License</h3>
-        <p>Atlas Church Solutions grants you a non-exclusive, non-transferable, revocable right to access and use our SaaS platform solely for your organization's internal ministry operations. This license may be revoked if you materially breach these Terms or our Acceptable Use Policy. Under this access, you may not:</p>
+        <h3>3. Data roles</h3>
+        <p>The Church is the data controller for the content it puts into Atlas, and Atlas processes it on the Church's behalf. The Church is responsible for having the right to add that content, including consent from members, staff and, for minors, parents or guardians where the law requires.</p>
+
+        <h3>4. Plans, trials and billing</h3>
         <ul>
-          <li>Modify, copy, or create derivative works based on the Services.</li>
-          <li>Attempt to decompile or reverse engineer any software contained within the Services.</li>
-          <li>Use the Services to provide managed services to third-party organizations not affiliated with your church.</li>
+          <li><strong>Card required.</strong> A payment card is collected to start every trial.</li>
+          <li><strong>Free trial.</strong> New churches get a 30-day free trial of Workspace. When the trial ends, the card is charged $49.99 per month unless the Church cancels before the trial ends. Canceling before the trial ends costs nothing. One free trial per church.</li>
+          <li><strong>Founding church code.</strong> A valid founding code gives 90 days free instead of 30, and then 40% off Workspace ($29.99 per month) for as long as the Church's subscription stays active. The founding price applies to the Workspace plan and continues as long as your subscription stays active. It ends if you cancel, and isn't available on a new subscription. Founding codes can't be combined with other offers and have no cash value.</li>
+          <li><strong>Renewal.</strong> Subscriptions renew automatically each month until canceled. You authorize us (through Stripe) to charge the card on file.</li>
+          <li><strong>Cancellation.</strong> Cancel any time in Settings. Access continues to the end of the paid month; we don't give refunds or credits for partial months, except where the law requires.</li>
+          <li><strong>Failed payments.</strong> If a payment fails, we'll retry and notify you. If it still fails, we may limit the account to read-only and later cancel the subscription.</li>
+          <li><strong>Price changes.</strong> We'll give at least 30 days' notice by email before a price change takes effect.</li>
+          <li><strong>Taxes.</strong> Prices don't include taxes; you're responsible for any that apply.</li>
+          <li><strong>AI allowance.</strong> Plans include an AI usage allowance. When it runs out, AI features pause, or for some features switch to a backup model, until the next billing period. Unused allowance doesn't roll over.</li>
         </ul>
 
-        <h3>4. User Content &amp; Ownership</h3>
-        <p>You retain all ownership rights to the data, information, and materials you upload to the Services ("User Content"). By uploading User Content, you grant Atlas Church Solutions a limited, worldwide, royalty-free license to host, transmit, and display your data solely as necessary to provide the Services to you and your organization.</p>
+        <h3>5. Your content</h3>
+        <p>You keep ownership of everything your Church puts into Atlas. You give us a limited license to host, copy, process and display it only as needed to provide, secure and support the Services, including sending it to the subprocessors listed in our Privacy Policy. We don't sell it and don't use it to train AI models.</p>
 
-        <h3>5. Uptime &amp; Maintenance</h3>
-        <p>We will make commercially reasonable efforts to make the Services available 24 hours a day, 7 days a week. Services may be temporarily unavailable for scheduled maintenance, for which we will provide reasonable prior notice.</p>
+        <h3>6. Atlas AI</h3>
+        <p>Atlas AI is optional and off until a Church admin accepts the Atlas AI Terms. AI output can be inaccurate or incomplete, and the Church is responsible for reviewing it before relying on it. Follow-up flags are prompts for pastoral attention, not a substitute for pastoral care, professional counseling or emergency services, and Atlas doesn't guarantee that any concern will be flagged. The person who records a huddle is responsible for notifying those present and for complying with recording-consent laws. An admin can turn AI off at any time.</p>
 
-        <h3>6. User Accounts &amp; Security</h3>
-        <p>You are responsible for safeguarding the password used to access the Services and for any activities or actions under your password. You must notify us immediately at <a href="mailto:security@atlaschurchsolutions.com">security@atlaschurchsolutions.com</a> upon becoming aware of any breach of security or unauthorized use of your account.</p>
+        <h3>7. Acceptable use</h3>
+        <p>Use of the Services must follow the <a href="#aup">Acceptable Use Policy</a>.</p>
 
-        <h3>7. Payment &amp; Billing</h3>
-        <ul>
-          <li><strong>Fees &amp; Billing:</strong> You agree to pay all fees associated with your selected subscription plan. Subscriptions are billed on a recurring basis (monthly or annually) as selected during sign-up.</li>
-          <li><strong>Refunds:</strong> Unless otherwise stated at the time of purchase, payments are non-refundable. You may cancel your subscription at any time, and you will continue to have access to the service through the end of your current billing period.</li>
-          <li><strong>Price Changes:</strong> We reserve the right to change our fees with 30 days' notice to you.</li>
-        </ul>
+        <h3>8. License and restrictions</h3>
+        <p>We give the Church a non-exclusive, non-transferable right to use the Services for its own ministry operations during its subscription. You may not copy, resell or reverse-engineer the Services, use them to run services for unaffiliated organizations, or try to get around usage limits or security.</p>
 
-        <h3>8. Warranty Disclaimer</h3>
-        <p>THE SERVICES ARE PROVIDED ON AN "AS-IS" AND "AS AVAILABLE" BASIS. ATLAS CHURCH SOLUTIONS MAKES NO WARRANTIES, EXPRESSED OR IMPLIED, AND HEREBY DISCLAIMS ALL OTHER WARRANTIES INCLUDING, WITHOUT LIMITATION, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT OF INTELLECTUAL PROPERTY.</p>
+        <h3>9. Availability and changes</h3>
+        <p>We work to keep the Services available but don't guarantee uninterrupted service. We'll give reasonable notice of planned maintenance when we can. We may improve or change features; if we remove a core feature you pay for, we'll tell you in advance.</p>
 
-        <h3>9. Indemnification</h3>
-        <p>You agree to indemnify and hold harmless Atlas Church Solutions against any claims, damages, or legal actions arising from your misuse of the platform, your violation of these Terms, or any claims related to the data you upload (including lack of consent). Atlas Church Solutions agrees to indemnify you against claims that our software directly infringes when used as authorized under these Terms on the intellectual property rights of a third party.</p>
+        <h3>10. Data export and deletion</h3>
+        <p>Admins can export the Church's data at any time. After a subscription ends, the account may become read-only, and the Church has 30 days to export. After that we permanently delete the Church's data, as described in the Privacy Policy.</p>
 
-        <h3>10. Limitation of Liability</h3>
-        <p>To the maximum extent permitted by law, Atlas Church Solutions shall not be liable for any indirect, incidental, special, or consequential damages (including loss of profits or data) arising out of your use of the Services. Our total liability for any claim shall not exceed the amount paid by you to Atlas Church Solutions in the 12 months preceding the claim.</p>
+        <h3>11. Suspension and termination</h3>
+        <p>We may suspend access, after notice where practical, for a serious or repeated breach of these Terms or the Acceptable Use Policy, for non-payment, or to prevent harm. You may close your account at any time.</p>
 
-        <h3>11. Suspension and Termination</h3>
-        <p>We may suspend your access to the Services without liability if you violate our Acceptable Use Policy, pending an investigation. We may terminate your account entirely for material or repeated breaches of these Terms. Upon termination, your right to use the Services will cease. You will have a 30-day window to export your User Content before it is permanently deleted from our systems.</p>
+        <h3>12. Disclaimers</h3>
+        <p>THE SERVICES, INCLUDING AI OUTPUT, ARE PROVIDED "AS IS" AND "AS AVAILABLE." TO THE EXTENT THE LAW ALLOWS, WE DISCLAIM ALL IMPLIED WARRANTIES, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.</p>
 
-        <h3>12. Force Majeure</h3>
-        <p>Atlas Church Solutions shall not be liable for any failure or delay in performance due to causes beyond our reasonable control, including natural disasters, acts of God, cyberattacks, or infrastructure outages.</p>
+        <h3>13. Limitation of liability</h3>
+        <p>To the extent the law allows, Atlas isn't liable for indirect, incidental, special or consequential damages, or lost data or profits. Our total liability for all claims is limited to the amount the Church paid us in the 12 months before the claim.</p>
 
-        <h3>13. Modifications to Terms</h3>
-        <p>We may modify these Terms of Service at any time. We will notify you of material changes via email at least 30 days in advance. Your continued use of the Services after the effective date constitutes your acceptance of the updated terms.</p>
+        <h3>14. Indemnification</h3>
+        <p>You'll defend and indemnify Atlas against third-party claims arising from your content, your recordings (including lack of consent), or your breach of these Terms. We'll defend you against third-party claims that the Services, used as permitted, infringe their intellectual property.</p>
 
-        <h3>14. Governing Law &amp; Dispute Resolution</h3>
-        <p>These terms are governed by the laws of the State of Florida. Any dispute arising from these Terms or the Services shall be resolved through binding arbitration administered by the American Arbitration Association (AAA) in accordance with its Commercial Arbitration Rules. Arbitration may be conducted remotely or in Florida. Atlas Church Solutions will cover arbitration filing fees for claims under $10,000 unless the arbitrator determines the claim is frivolous. Prior to arbitration, parties must engage in a 30-day informal dispute resolution process. You agree to waive any right to participate in a class action lawsuit or class-wide arbitration.</p>
+        <h3>15. Changes to these Terms</h3>
+        <p>We'll email Church admins at least 30 days before material changes take effect. Continuing to use the Services after that means you accept them.</p>
 
-        <h3>15. Contact Information</h3>
-        <p>If you have any questions about these Terms, please contact us at <a href="mailto:support@atlaschurchsolutions.com">support@atlaschurchsolutions.com</a>.</p>
+        <h3>16. Governing law and disputes</h3>
+        <p>Florida law governs. Disputes go first to 30 days of informal resolution, then to binding arbitration under the AAA Commercial Arbitration Rules, held remotely or in Florida. Atlas pays filing fees for claims under $10,000 unless the claim is frivolous. Claims are brought individually, not as a class.</p>
 
-        <h3>16. Survival</h3>
-        <p>Sections 4 (User Content &amp; Ownership), 8 (Warranty Disclaimer), 9 (Indemnification), 10 (Limitation of Liability), 14 (Governing Law &amp; Dispute Resolution), and any confidentiality obligations shall survive the termination or expiration of these Terms.</p>
+        <h3>17. General</h3>
+        <p>These Terms are the whole agreement on this subject. If a part is unenforceable, the rest stands. Sections 5, 10, 12, 13, 14 and 16 survive termination.</p>
+
+        <h3>18. Contact</h3>
+        <p><a href="mailto:support@atlaschurchsolutions.com">support@atlaschurchsolutions.com</a> &middot; [mailing address]</p>
       </div>
 
       <div id="aup" class="content-section">
         <div class="section-top">
           <h2>Acceptable Use Policy</h2>
-          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;April 2026</span>
+          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;October 15, 2026</span>
         </div>
 
-        <h3>1. Purpose &amp; Incorporation</h3>
-        <p>This Acceptable Use Policy ("AUP") applies to all users of Atlas Church Solutions services and is expressly incorporated into our Terms of Service. The purpose of this policy is to ensure that our Services are used in a responsible, legal, and ethical manner that does not harm Atlas Church Solutions, other users, or third parties.</p>
+        <h3>1. Purpose</h3>
+        <p>This Acceptable Use Policy ("AUP") applies to everyone who uses Atlas Church Solutions and is part of our Terms of Service. It exists so the Services are used in a responsible, legal and ethical way that doesn't harm Atlas, other churches, or anyone else.</p>
 
-        <h3>2. Prohibited Activities &amp; Content</h3>
+        <h3>2. Prohibited activities and content</h3>
         <p>You agree not to use the Services for:</p>
         <ul>
           <li>Any unlawful purpose or activity that violates local, state, national, or international law.</li>
           <li>Harassment, threats, intimidation, abusive behavior, or discriminatory practices directed at any individual or group.</li>
-          <li>Transmission of spam, unsolicited commercial communications, or mass mailings; Phishing, social engineering, or fraudulent activities.</li>
-          <li>Hacking, cracking, or attempting to gain unauthorized access to the Services, other systems, or sharing access credentials with unauthorized personnel.</li>
+          <li>Spam, unsolicited commercial communications, mass mailings, phishing, social engineering, or fraud.</li>
+          <li>Hacking, cracking, or attempting to gain unauthorized access to the Services or other systems, or sharing login credentials with people who aren't authorized.</li>
           <li>Uploading third-party copyrighted content (such as sermon videos, licensed music, or curriculum materials) without the appropriate licenses or permissions.</li>
-          <li>Uploading content that is illegal, obscene, profane, defamatory, libelous, or contains child sexual abuse material.</li>
-          <li>Uploading content that contains malware, viruses, worms, or other malicious code; or violates anyone's privacy or confidentiality.</li>
+          <li>Uploading content that is illegal, obscene, defamatory, or that contains child sexual abuse material.</li>
+          <li>Uploading content that contains malware or other malicious code, or that violates anyone's privacy or confidentiality.</li>
         </ul>
 
-        <h3>3. Church &amp; Member Data Prohibitions</h3>
-        <p>Given the highly sensitive nature of church management data, you strictly agree NOT to:</p>
+        <h3>3. Church and member data</h3>
+        <p>Because church data is sensitive, you also agree not to:</p>
         <ul>
-          <li>Use member data for commercial purposes outside of the church's direct ministry operations (e.g., using a congregation list to market a personal business).</li>
-          <li>Share, sell, or distribute member data or congregation lists to third parties without explicit member consent.</li>
-          <li>Export or feed member data into external Artificial Intelligence (AI) tools, Large Language Models (LLMs), or third-party automated processing pipelines without explicit authorization.</li>
+          <li>Use member data for commercial purposes outside the church's own ministry operations (for example, using a congregation list to market a personal business).</li>
+          <li>Share, sell, or distribute member data or congregation lists to third parties without the members' consent.</li>
+          <li>Export member data from Atlas into AI tools or automated systems outside Atlas without your church's authorization. Using Atlas AI features after a church admin accepts the Atlas AI Terms is authorized.</li>
         </ul>
 
-        <h3>4. Infrastructure Protection</h3>
+        <h3>4. Recording</h3>
+        <p>You agree not to record a huddle without telling the people present, or to record conversations people reasonably expect to be confidential (such as counseling) without their clear agreement. The person who starts a recording is responsible for complying with recording-consent laws where the participants are.</p>
+
+        <h3>5. Infrastructure protection</h3>
         <p>You agree not to:</p>
         <ul>
-          <li>Scrape, crawl, or systematically access our Services without prior written permission.</li>
-          <li>Use automated tools or bots to access the Services in a manner that strains our infrastructure.</li>
-          <li>Conduct denial-of-service (DoS) or distributed denial-of-service (DDoS) attacks or reverse engineer any portion of the Services.</li>
+          <li>Scrape, crawl, or systematically access the Services without our written permission.</li>
+          <li>Use automated tools or bots to access the Services in a way that strains our infrastructure.</li>
+          <li>Conduct denial-of-service attacks or reverse-engineer any part of the Services.</li>
         </ul>
 
-        <h3>5. Enforcement &amp; Consequences</h3>
-        <p>Atlas Church Solutions reserves the right to monitor user activity and take legal action to protect its rights. If we detect a violation of this AUP, we will generally provide written notice and a reasonable cure period. However, we reserve the right to immediately suspend or terminate service without prior notice if the violation poses an immediate threat of harm to our platform, our users, or the public. If you encounter behavior that violates this AUP, please report it to <a href="mailto:security@atlaschurchsolutions.com">security@atlaschurchsolutions.com</a>.</p>
+        <h3>6. Enforcement</h3>
+        <p>If we find a violation of this AUP, we'll generally give written notice and a reasonable time to fix it. We may suspend or end access immediately, without notice, if a violation poses an immediate threat to the platform, other users, or the public. To report behavior that violates this AUP, email <a href="mailto:security@atlaschurchsolutions.com">security@atlaschurchsolutions.com</a>.</p>
       </div>
 
       <div id="dpa" class="content-section">
         <div class="section-top">
           <h2>Data Processing Agreement</h2>
-          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;April 2026</span>
+          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;October 15, 2026</span>
         </div>
 
-        <h3>1. Scope and Purpose</h3>
-        <p>This Data Processing Agreement ("DPA") is entered into between Atlas Church Solutions ("Service Provider") and the Customer. This DPA applies when Customer is a controller of personal data and Service Provider processes such personal data on behalf of the Customer in the course of providing the Services. By accepting the Terms of Service, the Customer is entering into a legally binding bilateral agreement that incorporates this DPA. "Personal Data" has the meaning given in applicable data protection laws, including the CCPA and GDPR.</p>
+        <h3>1. Scope and purpose</h3>
+        <p>This Data Processing Agreement ("DPA") is between Atlas Church Solutions ("Atlas") and the church or organization using the Services ("Customer"). It applies whenever the Customer is a controller of personal data and Atlas processes that data on the Customer's behalf to provide the Services. By accepting the Terms of Service, the Customer enters into this DPA. "Personal Data" has the meaning given in applicable data protection laws, including the CCPA and GDPR.</p>
 
-        <h3>2. Sub-processors</h3>
-        <p>Service Provider shall not engage sub-processors without prior specific or general written authorization from Customer. Service Provider shall inform Customer of any new or replacement sub-processors at least 30 days prior to the sub-processor beginning to process Personal Data, giving Customer the opportunity to object to the engagement of new sub-processors. Customers may object in writing by emailing <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a> within 30 days of notification. If a Customer objects and Atlas Church Solutions cannot accommodate the objection, the Customer may terminate the affected Services and receive a pro-rated refund for any prepaid, unused fees. You can view our current list of active sub-processors at <a href="sub-processors.html">atlaschurchsolutions.com/sub-processors</a>.</p>
+        <h3>2. Description of the processing</h3>
+        <ul>
+          <li><strong>Subject matter:</strong> providing the Atlas church operations platform to the Customer.</li>
+          <li><strong>Duration:</strong> the Customer's subscription, plus the 30-day export window after it ends.</li>
+          <li><strong>Nature and purpose:</strong> storing, organizing, displaying and backing up the Customer's content so its staff can use it; sending notification emails; and, when the Customer turns on Atlas AI, transcribing huddle recordings and drafting summaries.</li>
+          <li><strong>Types of data:</strong> names, contact details, roles and departments; events, tasks, announcements, project boards and files; huddle agendas, notes, decisions and action items; and, with Atlas AI on, huddle audio recordings, transcripts, AI-drafted summaries and follow-up flags.</li>
+          <li><strong>Categories of people:</strong> the Customer's staff, volunteers, members, attendees and others the Customer chooses to record in Atlas.</li>
+        </ul>
 
-        <h3>3. Data Processor Obligations &amp; Confidentiality</h3>
-        <p>Service Provider agrees to process Personal Data only on documented instructions from the Customer. Service Provider shall ensure that all personnel authorized to process Personal Data are bound by appropriate and strict confidentiality obligations.</p>
+        <h3>3. Subprocessors</h3>
+        <p>Atlas uses the subprocessors listed on our <a href="sub-processors.html">sub-processors page</a>, and the Customer authorizes them by accepting these terms. Atlas will tell Customers at least 30 days before a new or replacement subprocessor begins processing Personal Data, so they can object. Customers may object in writing to <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a> within 30 days of the notice. If Atlas can't accommodate an objection, the Customer may end the affected Services and receive a pro-rated refund of any prepaid, unused fees.</p>
 
-        <h3>4. Data Subject Rights Assistance</h3>
-        <p>Service Provider shall, taking into account the nature of the processing, assist Customer by appropriate technical and organizational measures in fulfilling the Customer's obligation to respond to Data Subject rights requests (including rights of access, rectification, erasure/deletion, restriction, and portability). If a church member requests deletion of their data directly from Atlas Church Solutions, we will promptly redirect the request to the Customer and cooperate to execute the Customer's instructions.</p>
+        <h3>4. Atlas's obligations and confidentiality</h3>
+        <p>Atlas processes Personal Data only on the Customer's documented instructions, which include the Terms of Service, this DPA and the Customer's use of the Services. Everyone at Atlas who can access Personal Data is bound by confidentiality obligations.</p>
 
-        <h3>5. Data Security</h3>
-        <p>Service Provider implements and maintains encryption of Personal Data in transit (TLS/SSL) and at rest. We also maintain access controls limiting access to authorized personnel only, conduct regular security assessments, align our security practices with the NIST Cybersecurity Framework, and are actively working toward formal SOC 2 Type II compliance. We also maintain comprehensive incident response procedures.</p>
+        <h3>5. Helping with data subject requests</h3>
+        <p>Atlas will help the Customer respond to requests from individuals to access, correct, delete, restrict or export their Personal Data, using the tools in the Services (including admin export) and reasonable additional help. If an individual contacts Atlas directly, we'll pass the request to the Customer and follow the Customer's instructions.</p>
 
-        <h3>6. Data Breach Notification</h3>
-        <p>In case of a Personal Data breach, Service Provider shall notify Customer without undue delay and in no case later than 72 hours after becoming aware of the breach. Service Provider shall provide Customer with sufficient information to allow Customer to notify relevant authorities and affected Data Subjects.</p>
+        <h3>6. Security</h3>
+        <p>Atlas encrypts Personal Data in transit (TLS) and at rest, keeps huddle recordings in private storage reachable only through Atlas's servers, restricts access by role inside the Services, and limits Atlas staff access to what's needed to operate and support the Services. Atlas will keep these measures in place and improve them over time.</p>
 
-        <h3>7. Cross-Border Data Transfers</h3>
-        <p>If any infrastructure, staff, or sub-processors are located outside the Customer's country (or process data of non-US church members), Service Provider shall ensure such transfers are legitimized through appropriate safeguards, such as Standard Contractual Clauses (SCCs) or other legally recognized transfer mechanisms.</p>
+        <h3>7. Breach notification</h3>
+        <p>If Atlas becomes aware of a Personal Data breach affecting the Customer's data, Atlas will notify the Customer without undue delay and no later than 72 hours after becoming aware of it, with enough information for the Customer to notify authorities and affected individuals as required.</p>
 
-        <h3>8. Return or Deletion of Data at Termination</h3>
-        <p>Upon termination or expiration of the Services, Customer will have a 30-day window to export their User Content. After this 30-day window, Service Provider shall, at Customer's choice, either return all Personal Data to the Customer or certifiably destroy it, unless applicable law requires continued storage. Service Provider will confirm in writing which option was taken upon request.</p>
+        <h3>8. Where data is processed</h3>
+        <p>Atlas and its subprocessors process Personal Data in the United States. Where the law requires safeguards for transferring Personal Data from another country to the U.S., Atlas will rely on appropriate mechanisms such as Standard Contractual Clauses.</p>
 
-        <h3>9. Audit Rights</h3>
-        <p>Service Provider shall make available to Customer all information necessary to demonstrate compliance with this DPA. Service Provider shall allow for and contribute to audits and inspections by Customer or Customer's mandated independent auditor. In lieu of on-site audits, Service Provider may offer to provide recent SOC 2 reports or comprehensive security questionnaire responses to satisfy this requirement.</p>
+        <h3>9. Return or deletion of data</h3>
+        <p>When the Services end, the Customer has 30 days to export its content. After that, Atlas permanently deletes the Customer's Personal Data from its systems, and from backups within a further 30 days, unless the law requires Atlas to keep it. Atlas will confirm deletion in writing on request.</p>
+
+        <h3>10. Showing compliance</h3>
+        <p>Atlas will give the Customer the information reasonably needed to show that it is meeting this DPA, including answers to a security questionnaire. Where the law gives the Customer a right to audit, Atlas will cooperate with reasonable, pre-arranged audits that don't disrupt the Services or expose other customers' data.</p>
       </div>
 
       <div id="cookie-policy" class="content-section">
         <div class="section-top">
           <h2>Cookie Policy</h2>
-          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;April 2026</span>
+          <span class="meta-chip"><strong>Last Updated:</strong>&nbsp;October 15, 2026</span>
         </div>
 
-        <h3>1. What Are Cookies?</h3>
-        <p>Cookies are small text files that are stored on your device when you visit a website or use an app. They are widely used to make websites and apps work more efficiently and to provide information to the website or app owners.</p>
+        <h3>1. What cookies are</h3>
+        <p>Cookies are small text files stored on your device by a website or app. Atlas uses them only to keep the Services working, and the short list below is everything we set.</p>
 
-        <h3>2. Types of Cookies We Use</h3>
-        <p>We use the following types of cookies on the Atlas Church Solutions website and Services:</p>
+        <h3>2. Our website (atlaschurchsolutions.com)</h3>
+        <p>The website sets no tracking or analytics cookies and shows no cookie banner, because there is nothing to consent to. When you submit a form, it goes directly to HubSpot, which receives what you entered and your IP address. The website also loads fonts from Google Fonts and an animation library (GSAP) from cdnjs, a content delivery network run by Cloudflare; those providers see your IP address when the files load, as with any website resource.</p>
+
+        <h3>3. The Atlas app (app.atlaschurchsolutions.com)</h3>
+        <p>The app sets essential cookies only:</p>
         <ul>
-          <li><strong>Essential/Necessary Cookies:</strong> These cookies are required for the website to function properly. They enable core functionality such as session management, user authentication, and security features. Without these cookies, the Services cannot operate properly.</li>
-          <li><strong>Functional Cookies:</strong> These cookies remember your preferences and choices to provide a more personalized experience (e.g., language preference or theme selection).</li>
-          <li><strong>Analytical Cookies:</strong> These cookies help us understand how users interact with our website and Services. We use tools such as Google Analytics to collect and analyze usage data. This helps us improve our Services and understand user behavior patterns.</li>
+          <li><strong>Supabase authentication cookies</strong> (names beginning <code>sb-</code>): keep you signed in. Cleared when you sign out, or after the session expires.</li>
+          <li><strong>atlas_pending_email</strong>: remembers the email address you used to start signing up, for one day, so the next step can find your account.</li>
         </ul>
+        <p>We don't use analytics, advertising or error-monitoring cookies in the app.</p>
 
-        <h3>3. Third-Party Cookies &amp; Consent</h3>
-        <p>Some non-essential cookies are set by third-party services we use, including Google Analytics. We request your explicit consent before placing non-essential cookies on your device via our universal cookie consent banner, regardless of your geographic location. You may adjust your preferences or withdraw your consent at any time.</p>
+        <h3>4. Controlling cookies</h3>
+        <p>You can block or delete cookies in your browser's settings. If you block the essential cookies above, you won't be able to stay signed in to the app. We don't currently respond to "Do Not Track" signals, because we don't track.</p>
 
-        <h3>4. How to Control Cookies</h3>
-        <p>You can control and manage cookies in several ways: (a) <strong>Browser Settings:</strong> Most browsers allow you to refuse cookies or alert you when a cookie is being sent. Instructions for controlling cookies in popular browsers can be found at <a href="http://www.allaboutcookies.org" target="_blank" rel="noopener">www.allaboutcookies.org</a>; (b) <strong>Opt-Out Tools:</strong> You can opt-out of Google Analytics tracking by installing the Google Analytics Opt-Out Browser Add-on; (c) <strong>Do Not Track:</strong> If your browser supports Do Not Track (DNT) signals, you can enable this feature, though we do not currently respond to DNT signals.</p>
-
-        <h3>5. Policy Updates &amp; Contact</h3>
-        <p>We will notify you of material changes to this policy by updating the date at the top of this page or via a prominent notice on our website. If you have questions about this Cookie Policy, please contact us at <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a>.</p>
-
-        <h3>6. Cookie Inventory</h3>
-        <p>[CUSTOMIZE: Below is an example framework. You will populate this table with your specific cookies prior to full launch.]</p>
-        <ul>
-          <li><strong>_ga (Google Analytics)</strong> | Type: Analytical | Duration: 2 years | Purpose: Tracks aggregate user behavior.</li>
-          <li><strong>session_id</strong> | Type: Essential | Duration: Session | Purpose: Maintains secure login state.</li>
-        </ul>
+        <h3>5. Changes and contact</h3>
+        <p>If we add a cookie, we'll list it here and update the date at the top of this section. Questions: <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a>.</p>
       </div>
 
       <div class="subprocessor-card">
@@ -700,7 +756,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <a href="about.html">About</a>
       <a href="legal.html">Privacy Policy</a>
       <a href="sub-processors.html">Sub-processors</a>
-      <a href="Contact-Us.html">Contact Us</a>
+      <a href="contact-us.html">Contact Us</a>
       <a href="https://app.atlaschurchsolutions.com/login">Log in</a>
     </div>
   </footer>

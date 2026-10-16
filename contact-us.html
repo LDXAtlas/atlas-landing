@@ -244,14 +244,35 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
   font-size: 14px;
   color: var(--text-2);
 }
-.atlas-form iframe {
-  display: block;
-  width: 100%;
-  min-height: 850px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--white);
-}
+.lead-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+.field { display: grid; gap: 7px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label { font: 600 13px var(--font-display); color: var(--text); }
+.field label .opt { font-weight: 500; color: var(--text-3); }
+.field input, .field select, .field textarea { width: 100%; padding: 0 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--white); font: 400 17px var(--font-body); color: var(--text); transition: border-color .15s, box-shadow .15s; }
+.field input, .field select { height: 50px; }
+.field textarea { height: auto; min-height: 140px; padding: 14px 16px; line-height: 1.5; resize: vertical; }
+.field select { appearance: none; padding-right: 40px; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236B7280' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center / 12px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-3); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--mint); box-shadow: 0 0 0 4px rgba(92,225,165,.2); }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #EF4444; }
+.err { font-size: 13px; color: #DC2626; }
+.err:empty { display: none; }
+.form-foot { grid-column: 1 / -1; display: grid; gap: 14px; justify-items: center; margin-top: 8px; text-align: center; }
+.form-foot .btn { width: 100%; height: 54px; font-size: 17px; }
+.form-foot small { font-size: 13.5px; color: var(--text-3); }
+.form-foot small a { color: var(--text-2); }
+.btn[disabled] { opacity: .75; cursor: progress; }
+.spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(18,38,28,.25); border-top-color: var(--on-mint); animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.thanks { display: grid; justify-items: center; gap: 14px; text-align: center; padding: 24px 0 8px; }
+.thanks[hidden] { display: none; }
+.thanks-mark { width: 68px; height: 68px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; }
+.thanks-mark svg { width: 30px; height: 30px; }
+.thanks h3 { font: 600 26px/1.2 var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
+.thanks p { color: var(--text-2); max-width: 40ch; }
+.thanks .demo { font-size: 13px; color: var(--text-3); }
+@media (max-width: 560px) { .lead-form { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -266,11 +287,11 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <a href="index.html#screens">The app</a>
       <a href="about.html">About</a>
       <a href="legal.html">Privacy</a>
-      <a href="contact-Us.html" aria-current="page">Contact</a>
+      <a href="contact-us.html" aria-current="page">Contact</a>
     </div>
     <div class="nav-right">
       <a class="login" href="https://app.atlaschurchsolutions.com/login">Log in</a>
-      <a class="btn btn-mint btn-sm" href="Index.html#apply">Let's talk</a>
+      <a class="btn btn-mint btn-sm" href="index.html#apply">Let's talk</a>
     </div>
   </nav>
 </div>
@@ -307,7 +328,25 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
           </div>
           <span class="status-pill">Direct to Founders</span>
         </div>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdq203yVq8dfoLCCJSDKWdCUp-P-idi8fmSYN0oFKgP9fUCQA/viewform?embedded=true" width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0" title="Contact Atlas Church Solutions">Loading…</iframe>
+        <form class="lead-form" id="contactForm" novalidate>
+          <div class="field"><label for="firstname">First name</label><input id="firstname" name="firstname" autocomplete="given-name" required><span class="err" aria-live="polite"></span></div>
+          <div class="field"><label for="lastname">Last name</label><input id="lastname" name="lastname" autocomplete="family-name" required><span class="err" aria-live="polite"></span></div>
+          <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@yourchurch.org"><span class="err" aria-live="polite"></span></div>
+          <div class="field"><label for="company">Church or organization <span class="opt">(optional)</span></label><input id="company" name="company" autocomplete="organization"></div>
+          <div class="field"><label for="contact_reason">What's this about?</label>
+            <select id="contact_reason" name="contact_reason" required><option value="">Choose one</option><option>General question</option><option>Founding church program</option><option>Support with my account</option><option>Press or partnership</option><option>Something else</option></select><span class="err" aria-live="polite"></span></div>
+          <div class="field full"><label for="message">Message</label><textarea id="message" name="message" required placeholder="How can we help?"></textarea><span class="err" aria-live="polite"></span></div>
+          <div class="form-foot">
+            <button class="btn btn-mint" type="submit" id="contactSubmit">Send message</button>
+            <small>We only use this to reply to you. <a href="legal.html#privacy-policy">Privacy policy</a></small>
+          </div>
+        </form>
+        <div class="thanks" id="contactThanks" hidden>
+          <span class="thanks-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#12261C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 id="contactThanksTitle" tabindex="-1">Thanks. We'll be in touch.</h3>
+          <p>One of the founders will reply within two business days.</p>
+          <p class="demo" id="contactDemo" hidden>Preview mode: nothing was sent. Add the HubSpot portal and form IDs to connect this form.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -319,7 +358,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <a href="about.html">About</a>
       <a href="legal.html">Privacy Policy</a>
       <a href="sub-processors.html">Sub-processors</a>
-      <a href="contact-Us.html">Contact Us</a>
+      <a href="contact-us.html">Contact Us</a>
       <a href="https://app.atlaschurchsolutions.com/login">Log in</a>
     </div>
   </footer>
@@ -364,6 +403,66 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
     });
     window.addEventListener("load", function () { ScrollTrigger.refresh(); });
   }
+})();
+</script>
+
+<script>
+(function () {
+  /* HubSpot: "General contact" form. Standard properties: firstname, lastname, email, company, message.
+     contact_reason needs a custom dropdown property with the same internal name. Blank IDs = preview mode. */
+  var HUBSPOT = { portalId: "246126781", formId: "8f08139b-bd1a-48bb-bcef-2f8517a309c0" };
+  function hsSubmit(body) {
+    var hosts = ["api.hsforms.com", "api-na2.hsforms.com"];
+    function attempt(i) {
+      return fetch("https://" + hosts[i] + "/submissions/v3/integration/submit/" + HUBSPOT.portalId + "/" + HUBSPOT.formId, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+        .then(function (r) {
+          if (r.ok) return r;
+          return r.text().then(function (t) {
+            console.error("[Atlas form] HubSpot " + hosts[i] + " responded " + r.status + ": " + t);
+            if (r.status === 404 && i + 1 < hosts.length) return attempt(i + 1);
+            throw new Error(r.status);
+          });
+        }, function (err) {
+          console.error("[Atlas form] Could not reach " + hosts[i], err);
+          if (i + 1 < hosts.length) return attempt(i + 1);
+          throw err;
+        });
+    }
+    return attempt(0);
+  }
+  var form = document.getElementById("contactForm"), btn = document.getElementById("contactSubmit"), thanks = document.getElementById("contactThanks");
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function setErr(f, msg) { var w = f.closest(".field"); w.classList.toggle("invalid", !!msg); var e = w.querySelector(".err"); if (e) e.textContent = msg || ""; f.setAttribute("aria-invalid", msg ? "true" : "false"); }
+  function validate() {
+    var first = null;
+    form.querySelectorAll("[required]").forEach(function (f) {
+      var v = f.value.trim(), m = "";
+      if (!v) m = f.tagName === "SELECT" ? "Choose an option." : "Required.";
+      else if (f.type === "email" && !EMAIL.test(v)) m = "Enter an email like name@church.org.";
+      setErr(f, m); if (m && !first) first = f;
+    });
+    return first;
+  }
+  form.querySelectorAll("[required]").forEach(function (f) { ["input", "change"].forEach(function (ev) { f.addEventListener(ev, function () { if (f.closest(".field").classList.contains("invalid")) validate(); }); }); });
+  function hutk() { var m = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/); return m ? m[1] : undefined; }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = validate(); if (bad) { bad.focus(); return; }
+    btn.disabled = true; btn.innerHTML = '<span class="spin" aria-hidden="true"></span>Sending';
+    var fields = []; new FormData(form).forEach(function (v, k) { v = String(v).trim(); if (v) fields.push({ objectTypeId: "0-1", name: k, value: v }); });
+    var live = HUBSPOT.portalId && HUBSPOT.formId;
+    var send = live
+      ? hsSubmit({ fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: document.title } })
+      : new Promise(function (r) { setTimeout(r, 900); });
+    send.then(function () {
+      document.getElementById("contactThanksTitle").textContent = "Thanks, " + form.firstname.value.trim() + ". We'll be in touch.";
+      document.getElementById("contactDemo").hidden = !!live;
+      form.hidden = true; thanks.hidden = false; document.getElementById("contactThanksTitle").focus();
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = "Send message";
+      form.querySelector(".form-foot small").innerHTML = '<span style="color:#DC2626">We couldn\u2019t send that. Check your connection and try again, or email support@atlaschurchsolutions.com.</span>';
+    });
+  });
 })();
 </script>
 </body>

@@ -213,6 +213,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
   max-width: 860px;
   margin-inline: auto;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
@@ -411,7 +412,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <a href="index.html#screens">The app</a>
       <a href="about.html">About</a>
       <a href="legal.html" aria-current="page">Privacy</a>
-      <a href="contact-Us.html">Contact</a>
+      <a href="contact-us.html">Contact</a>
     </div>
     <div class="nav-right">
       <a class="login" href="https://app.atlaschurchsolutions.com/login">Log in</a>
@@ -428,7 +429,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <a href="legal.html" class="back-link">&larr; Back to Legal Center</a>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <span class="eyebrow"><span class="dot-live" aria-hidden="true"></span>Data Processing</span>
-        <span class="meta-chip"><strong>Last Updated: 04/02/2026</strong></span>
+        <span class="meta-chip"><strong>Last Updated: October 15, 2026</strong></span>
       </div>
       <h1 class="display">List of Subprocessors</h1>
     </div>
@@ -439,8 +440,8 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
     <div class="page-content content-section">
 
       <div class="intro-card" data-reveal>
-        <p><strong>Last Updated: 04/02/2026</strong></p>
-        <p>This is the current list of all third-party service providers ("Subprocessors") who process personal data on behalf of Atlas Church Solutions. This list is subject to change. Atlas Church Solutions will notify customers of material changes and provide an opportunity to object to new subprocessors in accordance with applicable data protection laws.</p>
+        <p><strong>Last Updated: October 15, 2026</strong></p>
+        <p>These are the third-party services that process personal data on behalf of Atlas Church Solutions. The AI providers only receive data from churches that have turned on Atlas AI. We give churches at least 30 days' notice before adding a new subprocessor, with the chance to object, as set out in our <a href="legal.html#dpa">Data Processing Agreement</a>.</p>
       </div>
 
       <!-- DESIGN.md Data Table Summary -->
@@ -456,34 +457,39 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
             </thead>
             <tbody>
               <tr>
-                <td>Cloud Infrastructure &amp; Hosting</td>
-                <td><strong>Vercel, GitHub</strong></td>
-                <td>Application hosting, deployment, and cloud infrastructure</td>
+                <td>Database, authentication and storage</td>
+                <td><strong>Supabase</strong></td>
+                <td>Database, user sign-in, file and huddle-recording storage. All Service data. United States (AWS us-west-2). <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td>
               </tr>
               <tr>
-                <td>Payment Processing</td>
+                <td>Hosting</td>
+                <td><strong>Vercel</strong></td>
+                <td>Hosts the Atlas app and this website. Request logs. United States. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></td>
+              </tr>
+              <tr>
+                <td>Payments</td>
                 <td><strong>Stripe</strong></td>
-                <td>Payment processing and billing (Privacy Policy: <a href="https://stripe.com/privacy" target="_blank" rel="noopener">https://stripe.com/privacy</a>)</td>
+                <td>Subscriptions and card payments. Billing contact and payment details; Atlas never sees full card numbers. United States. <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td>
               </tr>
               <tr>
-                <td>Analytics</td>
-                <td><strong>Google Analytics, Google Search Console</strong></td>
-                <td>Aggregated usage analytics and search performance</td>
+                <td>AI: transcription</td>
+                <td><strong>OpenAI</strong></td>
+                <td>Transcribes huddle audio, and provides backup text processing for some AI features. Only when a church has turned on Atlas AI. United States. <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></td>
               </tr>
               <tr>
-                <td>Email &amp; Communication</td>
-                <td><strong>Sender.net</strong></td>
-                <td>Transactional and marketing emails</td>
+                <td>AI: summaries</td>
+                <td><strong>Anthropic</strong></td>
+                <td>Drafts huddle summaries, decisions, action items and follow-up flags from transcripts and notes. Only when a church has turned on Atlas AI. United States. <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td>
               </tr>
               <tr>
-                <td>Security &amp; Monitoring</td>
-                <td><strong>Cloudflare, Sentry</strong></td>
-                <td>DDoS protection and security; system monitoring and alerting</td>
+                <td>Email</td>
+                <td><strong>Resend</strong></td>
+                <td>Sends account, invitation and notification emails. Name, email address, message content. United States. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></td>
               </tr>
               <tr>
-                <td>Development &amp; Operations</td>
-                <td><strong>GitHub, Liner</strong></td>
-                <td>Code repository and deployment; application logging and debugging</td>
+                <td>Website forms</td>
+                <td><strong>HubSpot</strong></td>
+                <td>Receives submissions from the forms on this website (not the app). Name, email, church, role, message. United States. <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></td>
               </tr>
             </tbody>
           </table>
@@ -493,55 +499,60 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <!-- Category Cards with exact original headings & list items -->
       <div class="sub-grid" data-reveal>
         <div class="sub-card">
-          <h3>Cloud Infrastructure &amp; Hosting</h3>
+          <h3>Database, authentication and storage</h3>
           <ul>
-            <li><span><strong>Vercel, GitHub</strong></span></li>
+            <li><span><strong>Supabase</strong> - Database, user sign-in, file and huddle-recording storage. All Service data. United States (AWS us-west-2).</span></li>
           </ul>
         </div>
 
         <div class="sub-card">
-          <h3>Payment Processing</h3>
+          <h3>Hosting</h3>
           <ul>
-            <li><span><strong>Stripe</strong> - Payment processing and billing (Privacy Policy: <a href="https://stripe.com/privacy" target="_blank" rel="noopener">https://stripe.com/privacy</a>)</span></li>
+            <li><span><strong>Vercel</strong> - Hosts the Atlas app and this website. Request logs. United States.</span></li>
           </ul>
         </div>
 
         <div class="sub-card">
-          <h3>Analytics</h3>
+          <h3>Payments</h3>
           <ul>
-            <li><span><strong>Google Analytics</strong></span></li>
-            <li><span><strong>Google Search Console</strong></span></li>
+            <li><span><strong>Stripe</strong> - Subscriptions and card payments. Billing contact and payment details; Atlas never sees full card numbers. United States.</span></li>
           </ul>
         </div>
 
         <div class="sub-card">
-          <h3>Email &amp; Communication</h3>
+          <h3>AI: transcription</h3>
           <ul>
-            <li><span><strong>Sender.net</strong> - Transactional and marketing emails</span></li>
+            <li><span><strong>OpenAI</strong> - Transcribes huddle audio, and provides backup text processing for some AI features. Only when a church has turned on Atlas AI. United States.</span></li>
           </ul>
         </div>
 
         <div class="sub-card">
-          <h3>Security &amp; Monitoring</h3>
+          <h3>AI: summaries</h3>
           <ul>
-            <li><span><strong>Cloudflare</strong> - DDoS protection and security</span></li>
-            <li><span><strong>Sentry</strong> - System monitoring and alerting</span></li>
+            <li><span><strong>Anthropic</strong> - Drafts huddle summaries, decisions, action items and follow-up flags from transcripts and notes. Only when a church has turned on Atlas AI. United States.</span></li>
           </ul>
         </div>
 
         <div class="sub-card">
-          <h3>Development &amp; Operations</h3>
+          <h3>Email</h3>
           <ul>
-            <li><span><strong>GitHub</strong> - Code repository and deployment</span></li>
-            <li><span><strong>Liner</strong> - Application logging and debugging</span></li>
+            <li><span><strong>Resend</strong> - Sends account, invitation and notification emails. Name, email address, message content. United States.</span></li>
           </ul>
         </div>
+
+        <div class="sub-card">
+          <h3>Website forms</h3>
+          <ul>
+            <li><span><strong>HubSpot</strong> - Receives submissions from the forms on this website (not the app). Name, email, church, role, message. United States.</span></li>
+          </ul>
+        </div>
+
       </div>
 
       <div class="obligations-card" data-reveal>
         <h3>Obligations</h3>
         <p><em>Note: All subprocessors are contractually obligated to protect personal data and comply with data protection laws including GDPR, CCPA, and other applicable regulations.</em></p>
-        <p>For questions about our subprocessors or to object to a new subprocessor, please contact <a href="mailto:Info@atlaschurchsolutions.com">Info@atlaschurchsolutions.com</a>.</p>
+        <p>For questions about our subprocessors or to object to a new subprocessor, please contact <a href="mailto:privacy@atlaschurchsolutions.com">privacy@atlaschurchsolutions.com</a>.</p>
       </div>
 
     </div>
@@ -554,7 +565,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
       <a href="about.html">About</a>
       <a href="legal.html">Privacy Policy</a>
       <a href="sub-processors.html">Sub-processors</a>
-      <a href="contact-Us.html">Contact Us</a>
+      <a href="contact-us.html">Contact Us</a>
       <a href="https://app.atlaschurchsolutions.com/login">Log in</a>
     </div>
   </footer>

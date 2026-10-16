@@ -95,7 +95,7 @@ img { max-width: 100%; display: block; }
 /* ---------- Nav: floating glass pill that tightens on scroll ---------- */
 .nav-shell { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: 0; right: 0; z-index: 60; display: flex; justify-content: center; padding-inline: 16px; pointer-events: none; }
 .nav { pointer-events: auto; width: 100%; max-width: 1080px; height: 60px; border-radius: 999px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px 0 18px; transition: max-width .5s var(--ease), height .5s var(--ease); }
-.nav.compact { max-width: 760px; height: 54px; }
+.nav.compact { max-width: 800px; height: 54px; }
 .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .logo-mark { width: 28px; height: 28px; border-radius: 8px; flex: none; background: linear-gradient(135deg, var(--mint), var(--mint-deep)); display: grid; place-items: center; box-shadow: inset 0 1px 1px rgba(255,255,255,.6); }
 .logo-mark::before { content: ""; width: 11px; height: 11px; border: 2.5px solid #fff; border-bottom: none; border-radius: 11px 11px 0 0; transform: translateY(2px); }
@@ -103,7 +103,7 @@ img { max-width: 100%; display: block; }
 .nav-links { position: relative; display: flex; gap: 2px; }
 .nav-links .glider { position: absolute; top: 0; left: 0; height: 100%; width: 0; border-radius: 999px; background: rgba(45,51,58,.07); opacity: 0; transition: transform .4s var(--ease), width .4s var(--ease), opacity .25s; pointer-events: none; }
 .nav-links.has-glide .glider { opacity: 1; }
-.nav-links a { text-decoration: none; font: 500 14px var(--font-display); color: var(--text-2); padding: 8px 12px; border-radius: 999px; transition: color .15s, background-color .15s; }
+.nav-links a { white-space: nowrap; text-decoration: none; font: 500 14px var(--font-display); color: var(--text-2); padding: 8px 12px; border-radius: 999px; transition: color .15s, background-color .15s; }
 .nav-links a { position: relative; z-index: 1; }
 .nav-links a:hover { color: var(--ink); }
 .nav-right { display: flex; align-items: center; gap: 4px; }
@@ -347,11 +347,20 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Chapter 5: people ---------- */
 .team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 64px; }
+.team-more { display: flex; justify-content: center; margin-top: 56px; }
+.btn-line { background: var(--white); color: var(--ink); border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .12s var(--ease), box-shadow .2s var(--ease); }
+.btn-line::after { content: "\203A"; font-size: 1.3em; line-height: 1; transform: translateY(-1px); transition: transform .2s var(--ease); }
+.btn-line:hover { background: var(--mint); border-color: var(--mint); color: var(--on-mint); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(61,184,130,.25); }
+.btn-line:hover::after { transform: translate(3px, -1px); }
 .person { display: grid; justify-items: center; gap: 10px; text-align: center; }
 .portrait { width: 132px; height: 132px; border-radius: 50%; display: grid; place-items: center; font: 600 34px var(--font-display); color: #fff; box-shadow: 0 16px 40px rgba(20,40,30,.12); margin-bottom: 8px; }
 .person b { font: 600 19px var(--font-display); color: var(--ink); }
 .person span { font-size: 15px; color: var(--text-2); }
 .person span.portrait { color: #fff; font-size: 34px; }
+.portrait { outline: 3px solid transparent; outline-offset: 0; transition: outline-color .25s var(--ease), outline-offset .25s var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+  .person:hover .portrait { outline-color: var(--mint); outline-offset: 4px; }
+}
 
 /* ---------- Form ---------- */
 .apply { max-width: 720px; margin-inline: auto; }
@@ -480,6 +489,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
       <a href="#screens">The app</a>
       <a href="#founding">Founding churches</a>
       <a href="#faq">FAQ</a>
+      <a href="about.html">About</a>
     </div>
     <div class="nav-right">
       <a class="login" href="https://app.atlaschurchsolutions.com/login">Log in</a>
@@ -552,7 +562,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
   <!-- ============ CHAPTER 1: CHAOS TO CALM ============ -->
   <section class="chaos" id="why" aria-labelledby="chaosTitle">
     <div class="chaos-stick">
-      <h2 class="headline chaos-head" id="chaosTitle"><span class="l1">Your week lives in a dozen places.</span><span class="l2">Atlas puts it in one.</span></h2>
+      <h2 class="headline chaos-head" id="chaosTitle"><span class="l1">Your work week lives in a dozen places.</span><span class="l2">Atlas puts it in one.</span></h2>
 
       <div class="frag f-bubble fx1" style="--x:17%;--y:40%;--r:-5deg" aria-hidden="true"><small>Staff group text</small>Who's opening the building Sunday??</div>
       <div class="frag f-sheet fx2" style="--x:83%;--y:38%;--r:4deg" aria-hidden="true"><div>Volunteers_FINAL_v3.xlsx</div><table><tr><td>Greeters</td><td>???</td></tr><tr><td>Parking</td><td>Mark?</td></tr></table></div>
@@ -718,11 +728,11 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
         <h2 class="statement" id="foundTitle">We're inviting a handful of churches to build Atlas with us.</h2>
       </div>
       <div class="perks">
-        <div class="perk" data-reveal><h3>Free while we build.</h3><p>Use Atlas with your whole staff at no cost during the founding period.</p></div>
+        <div class="perk" data-reveal><h3>90 days free.</h3><p>Use Atlas with your whole staff, free for your first 90 days.</p></div>
         <div class="perk" data-reveal><h3>A founding rate that stays.</h3><p>Yours for as long as you stay subscribed. We'll share it when we talk.</p></div>
         <div class="perk" data-reveal><h3>A direct line to us.</h3><p>Text or email the founders and hear back from the people building it.</p></div>
       </div>
-      <p class="ask" data-reveal><span><b>What we ask in return:</b> use it for your real week, tell us honestly what's working, and join a short monthly call.</span></p>
+      <p class="ask" data-reveal><span><b>What we ask in return:</b> use it for your real work week, tell us honestly what's working, and join a short monthly call.</span></p>
 
       <div class="next" data-reveal>
         <span class="kicker">What's next</span>
@@ -730,7 +740,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
           <span class="mod" style="--c:var(--blue)"><i></i>Messages</span>
           <span class="mod" style="--c:var(--serve)"><i></i>Serve</span>
           <span class="mod" style="--c:var(--care)"><i></i>Care</span>
-          <span class="mod ai"><i></i>Atlas AI</span>
+          <span class="mod ai"><i></i>Atlas AI chat</span>
           <span class="mod" style="--c:var(--violet)"><i></i>Workflows</span>
         </div>
         <p>Founding churches help decide what we build next.</p>
@@ -752,6 +762,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
         <div class="person" data-reveal><img class="portrait" src="team/ben.webp" data-fallback="image_3.jpg" alt="Ben Rozelle" width="132" height="132" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><span class="portrait" style="background:linear-gradient(135deg,#60A5FA,var(--blue))">BR</span><b>Ben Rozelle</b><span>Co-founder &amp; CTO</span></div>
         <div class="person" data-reveal><img class="portrait" src="team/josiah.webp" data-fallback="image_4.jpg" alt="Josiah Miller" width="132" height="132" onload="atlasImgOk(this)" onerror="atlasImgErr(this)"><span class="portrait" style="background:linear-gradient(135deg,#F9A8D4,var(--care))">JM</span><b>Josiah Miller</b><span>Co-founder &amp; CMO</span></div>
       </div>
+      <div class="team-more" data-reveal><a class="btn btn-line" href="about.html">Meet the team</a></div>
     </div>
   </section>
 
@@ -791,8 +802,9 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
   <section class="band gutter" id="faq" aria-labelledby="faqTitle" style="padding-bottom:100px">
     <div class="center" data-reveal><h2 class="title" id="faqTitle">Questions</h2></div>
     <div class="faq">
-      <details><summary>Is Atlas ready to use today?</summary><p>Yes. Atlas Workspace (tasks, huddles, announcements, project boards, calendar, library, dashboard and directory) is built and in use. Messages, Serve, Care, Atlas AI and Workflows are still being built.</p></details>
-      <details><summary>What does it cost?</summary><p>Founding churches use Atlas free during the founding period, then keep a founding rate for as long as they stay subscribed. We share the details when we talk.</p></details>
+      <details><summary>Is Atlas ready to use today?</summary><p>Yes. Atlas Workspace (tasks, huddles, announcements, project boards, calendar, library, dashboard and directory) is built and in use, and huddle recording with AI-drafted summaries is live for churches that turn it on. Summaries are drafts the huddle organizer reviews before anyone else sees them. Atlas AI chat, Messages, Serve, Care and Workflows are still being built.</p></details>
+      <details><summary>What does it cost?</summary><p>Founding churches get 90 days free, then a founding rate for as long as they stay subscribed. We share the details when we talk.</p></details>
+      <details><summary>Is there a contract?</summary><p>No long-term contract. Cancel anytime, and admins can export your church&rsquo;s data whenever they like.</p></details>
       <details><summary>Do we have to stop using Planning Center?</summary><p>No. Planning Center runs your Sunday. Atlas is for the staff work that happens Monday through Friday, and the two sit side by side.</p></details>
       <details><summary>How is our church's information protected?</summary><p>Only people you invite can see your church's workspace. Every service that handles your data is listed on our <a href="sub-processors.html">sub-processors page</a>, and we're glad to walk through it on a call.</p></details>
     </div>
@@ -814,7 +826,26 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
   /* HubSpot: fill in portalId and formId (HubSpot > Marketing > Forms > Embed).
      firstname, lastname, email, company and jobtitle are standard HubSpot properties;
      staff_size needs a matching property on the form. While empty, the form runs in preview mode. */
-  var HUBSPOT = { portalId: "", formId: "" };
+  var HUBSPOT = { portalId: "246126781", formId: "c293f662-09ec-45a2-a3d1-dd80a0d29804" };
+  function hsSubmit(body) {
+    var hosts = ["api.hsforms.com", "api-na2.hsforms.com"];
+    function attempt(i) {
+      return fetch("https://" + hosts[i] + "/submissions/v3/integration/submit/" + HUBSPOT.portalId + "/" + HUBSPOT.formId, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+        .then(function (r) {
+          if (r.ok) return r;
+          return r.text().then(function (t) {
+            console.error("[Atlas form] HubSpot " + hosts[i] + " responded " + r.status + ": " + t);
+            if (r.status === 404 && i + 1 < hosts.length) return attempt(i + 1);
+            throw new Error(r.status);
+          });
+        }, function (err) {
+          console.error("[Atlas form] Could not reach " + hosts[i], err);
+          if (i + 1 < hosts.length) return attempt(i + 1);
+          throw err;
+        });
+    }
+    return attempt(0);
+  }
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasGsap = !!(window.gsap && window.ScrollTrigger);
@@ -1010,7 +1041,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
     var fields = []; new FormData(form).forEach(function (v, k) { v = String(v).trim(); if (v) fields.push({ objectTypeId: "0-1", name: k, value: v }); });
     var live = HUBSPOT.portalId && HUBSPOT.formId;
     var send = live
-      ? fetch("https://api.hsforms.com/submissions/v3/integration/submit/" + HUBSPOT.portalId + "/" + HUBSPOT.formId, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: document.title } }) }).then(function (r) { if (!r.ok) throw new Error(r.status); })
+      ? hsSubmit({ fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: document.title } })
       : new Promise(function (r) { setTimeout(r, 900); });
     send.then(function () {
       document.getElementById("thanksTitle").textContent = "Thanks, " + form.firstname.value.trim() + ". We'll be in touch.";
@@ -1019,7 +1050,7 @@ function atlasImgOk(img) { img.classList.add("ok"); var ph = img.nextElementSibl
       if (hasGsap) ScrollTrigger.refresh();
     }).catch(function () {
       btn.disabled = false; btn.textContent = "Request a conversation";
-      form.querySelector(".form-foot small").innerHTML = '<span style="color:#DC2626">We couldn’t send that. Check your connection and try again, or use our <a href="Contact-Us.html">contact page</a>.</span>';
+      form.querySelector(".form-foot small").innerHTML = '<span style="color:#DC2626">We couldn’t send that. Check your connection and try again, or use our <a href="contact-us.html">contact page</a>.</span>';
     });
   });
 })();
