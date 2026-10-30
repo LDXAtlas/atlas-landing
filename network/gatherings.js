@@ -19,7 +19,7 @@ window.ATLAS_NETWORK = {
   gatherings: [
     {
       date: "2026-11-19",
-      title: "The first gathering",
+      title: "The first Table Gathering",
       summary: "Meet the table. Hear why we're starting this, see what one church is doing that works, and work through a real staff problem together.",
       sharing: null, // e.g. { name: "Pastor Name", church: "Church Name", topic: "How we run our weekly staff meeting" }
       agenda: [
@@ -34,7 +34,7 @@ window.ATLAS_NETWORK = {
     },
     {
       date: "2026-12-17",
-      title: "The December table",
+      title: "The December Table Gathering",
       summary: "Christmas week is close. Bring what's working, and what's not, as your team heads into the busiest services of the year.",
       sharing: null,
       agenda: [

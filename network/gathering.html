@@ -49,8 +49,9 @@
         <div class="btn-row" id="heroCtas"><a class="btn btn-mint" href="#rsvp">Save my seat</a><a class="btn btn-quiet" href="#plan">What happens</a></div>
       </div>
       <div class="art">
-        <img src="/network/table-illustration.png" width="760" height="701" alt="A round table with seven chairs pulled in and one mint chair pulled out, waiting for you.">
+        <img src="/network/table-animated.svg" width="488" height="488" alt="A round table with seven chairs pulled in and one mint chair pulled out, waiting for you.">
       </div>
+      <div class="countdown cd-slot" id="countdown" hidden></div>
     </div>
   </section>
 
@@ -58,7 +59,7 @@
   <section class="band" id="plan">
     <div class="wrap overview">
       <div class="about">
-        <span class="kicker" id="planKicker">The first gathering</span>
+        <span class="kicker" id="planKicker">The first Table Gathering</span>
         <h2 class="section-title" style="font-size:clamp(28px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-0.03em">Forty-five minutes. <span class="ghost" style="display:block">Nothing to buy.</span></h2>
         <p id="summary">Meet the table. Hear why we're starting this, see what one church is doing that works, and work through a real staff problem together.</p>
         <div class="sharing" id="sharing" hidden></div>
@@ -116,14 +117,14 @@
             <label class="check"><input type="checkbox" id="updates" checked><span>Keep me posted about future gatherings<small>One email a month with the next date. Nothing else.</small></span></label>
             <div class="foot">
               <button class="btn btn-mint" type="submit" id="rsvpSubmit">Save my seat</button>
-              <small>We'll email you a calendar invite with the Google Meet link. <a href="/legal#privacy-policy">Privacy policy</a></small>
+              <small>You'll get a calendar invite with the Google Meet link that saves to Google, Outlook or Apple Calendar. <a href="/legal#privacy-policy">Privacy policy</a></small>
             </div>
           </form>
 
           <div class="thanks" id="thanks" hidden>
             <span class="thanks-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#12261C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <h3 id="thanksTitle" tabindex="-1">You're in.</h3>
-            <p>Watch your inbox for a calendar invite from Lucas with the Google Meet link. We're glad you're coming.</p>
+            <p>Your calendar invite is on its way from <b style="color:var(--ink);font-weight:600">lucas@atlaschurchsolutions.com</b>, usually within a couple of hours. Tap <b style="color:var(--ink);font-weight:600">Yes</b> and it saves to Google, Outlook or Apple Calendar with the Google Meet link.</p>
             <span class="when" id="thanksWhen">Thursday, November 19 · 7:00 pm Eastern</span>
             <p class="demo" id="demo" hidden>Preview mode: nothing was sent.</p>
           </div>
@@ -173,10 +174,15 @@
   if (past) {
     $("eyebrow").classList.add("past"); $("eyebrow").lastChild.textContent = "This happened";
     $("bringRow").hidden = true;
-    $("heroCtas").innerHTML = '<a class="btn btn-mint" href="/network/table">See the next gathering</a><a class="btn btn-quiet" href="#recap">What came out of it</a>';
-    $("navRsvp").href = "/network/table"; $("navRsvp").textContent = "Next gathering";
+    $("heroCtas").innerHTML = '<a class="btn btn-mint" href="/network/table">See the next Table Gathering</a><a class="btn btn-quiet" href="#recap">What came out of it</a>';
+    $("navRsvp").href = "/network/table"; $("navRsvp").textContent = "Next Table Gathering";
     $("rsvp").hidden = true;
   }
+  if (!past) A.countdown($("countdown"), g, {
+    label: (A.all.length && A.all[0].date === g.date ? "The first Table Gathering" : "This Table Gathering") + " starts in",
+    // The call is over: reload once so the page moves on to the recap or the next gathering.
+    onEnd: function () { if (A.status(g) === "past") location.reload(); else $("countdown").hidden = true; }
+  });
   $("whenDate").textContent = LABEL;
   $("whenTime").textContent = TIME;
 
@@ -203,7 +209,7 @@
     $("ideas").innerHTML = (r.ideas || []).map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("");
     var n = A.next();
     if (n) {
-      $("afterNext").innerHTML = A.cal(n) + '<div class="meta"><span class="when">Next gathering · ' + esc(A.fmt(n.date)) + "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") +
+      $("afterNext").innerHTML = A.cal(n) + '<div class="meta"><span class="when">Next Table Gathering · ' + esc(A.fmt(n.date)) + "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") +
         '</p></div><div class="btn-row"><a class="btn btn-mint" href="/network/table#rsvp">Save my seat</a></div>';
       $("afterNext").hidden = false;
     }
@@ -269,6 +275,8 @@
     if (NETWORK_FORM_ID) {
       formId = NETWORK_FORM_ID;
       fields = base.concat([
+        { objectTypeId: "0-2", name: "name", value: val("company") }, // the form's required Company > Name field
+
         f("church_role", role.value),
         f("network_member", "true"),
         f("network_last_rsvp", g.date),
