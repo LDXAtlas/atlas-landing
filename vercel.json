@@ -2,8 +2,55 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/pricing", "destination": "/", "permanent": true },
-    { "source": "/learn-more", "destination": "/", "permanent": true },
-    { "source": "/Founder-Signup", "destination": "/#apply", "permanent": true }
+    {
+      "source": "/pricing",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/learn-more",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Founder-Signup",
+      "destination": "/#apply",
+      "permanent": true
+    },
+    {
+      "source": "/table",
+      "destination": "/network/table",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/network/table",
+      "destination": "/network/gathering"
+    },
+    {
+      "source": "/network/table/:date",
+      "destination": "/network/gathering"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/network/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/network",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pull up a chair at The Table - Atlas Network</title>
+<!-- Serves /network/table (always the next gathering) and /network/table/YYYY-MM-DD (one gathering). Unlisted: noindex, not in the site nav. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A monthly call for pastors and church staff to share what works and pray for each other. Save your seat.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Atlas Church Solutions">
+<meta property="og:title" content="Pull up a chair at The Table">
+<meta property="og:description" content="A monthly call for pastors and church staff to share what works and pray for each other. 45 minutes on Google Meet.">
+<meta property="og:image" content="https://www.atlaschurchsolutions.com/og-image.png">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/network/network.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="lockup" href="/network" aria-label="Atlas Network"><img src="/image_2.png" alt="" width="28" height="28"><b>Atlas</b><span>Network</span></a>
+    <nav aria-label="Network">
+      <a href="/network" class="hide-sm">All gatherings</a>
+      <a href="#rsvp" id="navRsvp">Save my seat</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="copy">
+        <span class="eyebrow" id="eyebrow"><i aria-hidden="true"></i><span>You're invited</span></span>
+        <h1 id="title">Pull up a chair at <span class="line2 grad">The Table.</span></h1>
+        <p class="lede" id="lede">A monthly call for pastors and church staff to share what works and pray for each other.</p>
+        <ul class="details" aria-label="Gathering details">
+          <li><small>When</small><div><strong id="whenDate">Thursday, November 19</strong><em id="whenTime">7:00 to 7:45 pm Eastern</em></div></li>
+          <li><small>Where</small><div><strong>Google Meet</strong><em>Cameras optional. Link comes with your calendar invite.</em></div></li>
+          <li id="bringRow"><small>Bring</small><div><strong>Yourself, and anyone on your staff</strong></div></li>
+        </ul>
+        <div class="btn-row" id="heroCtas"><a class="btn btn-mint" href="#rsvp">Save my seat</a><a class="btn btn-quiet" href="#plan">What happens</a></div>
+      </div>
+      <div class="art">
+        <img src="/network/table-illustration.png" width="760" height="701" alt="A round table with seven chairs pulled in and one mint chair pulled out, waiting for you.">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE PLAN ============ -->
+  <section class="band" id="plan">
+    <div class="wrap overview">
+      <div class="about">
+        <span class="kicker" id="planKicker">The first gathering</span>
+        <h2 class="section-title" style="font-size:clamp(28px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-0.03em">Forty-five minutes. <span class="ghost" style="display:block">Nothing to buy.</span></h2>
+        <p id="summary">Meet the table. Hear why we're starting this, see what one church is doing that works, and work through a real staff problem together.</p>
+        <div class="sharing" id="sharing" hidden></div>
+        <p style="font-size:15.5px"><b style="color:var(--ink);font-family:var(--font-display);font-weight:600">No pitch.</b> Hosted by Atlas Church Solutions, open to any church, whether you ever use our tools or not.</p>
+      </div>
+      <div>
+        <ol class="timeline" id="timeline" aria-label="Agenda"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECAP (after a gathering) ============ -->
+  <section class="band gray" id="recap" hidden>
+    <div class="wrap" style="max-width:820px">
+      <div class="section-head left">
+        <span class="kicker">From the table</span>
+        <h2>What came out of it.</h2>
+        <p id="recapNote"></p>
+      </div>
+      <ul class="ideas" id="ideas"></ul>
+      <div class="next-card" id="afterNext" style="margin-top:40px" hidden></div>
+    </div>
+  </section>
+
+  <!-- ============ RSVP ============ -->
+  <section class="band gray" id="rsvp">
+    <div class="wrap">
+      <div class="form-wrap">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h2>Save your seat</h2>
+              <p id="formFor">For Thursday, November 19 · 7:00 pm Eastern</p>
+            </div>
+            <span class="pill">Takes 30 seconds</span>
+          </div>
+
+          <form class="rsvp-form" id="rsvpForm" novalidate>
+            <div class="field"><label for="firstname">First name</label><input id="firstname" autocomplete="given-name" required><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="lastname">Last name</label><input id="lastname" autocomplete="family-name" required><span class="err" aria-live="polite"></span></div>
+            <div class="field full"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required placeholder="you@yourchurch.org"><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="company">Church name</label><input id="company" autocomplete="organization" required><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="role">Your role</label>
+              <select id="role" required>
+                <option value="">Choose one</option>
+                <option value="lead_pastor">Lead or senior pastor</option>
+                <option value="executive_pastor">Executive pastor</option>
+                <option value="associate_pastor">Associate or ministry pastor</option>
+                <option value="administrator">Church administrator</option>
+                <option value="operations">Operations or office staff</option>
+                <option value="communications">Communications</option>
+                <option value="other_staff">Other church staff</option>
+              </select><span class="err" aria-live="polite"></span></div>
+            <div class="field full"><label for="guests">Anyone from your staff joining you? <span class="opt">(optional)</span></label><textarea id="guests" placeholder="Names and emails, and we'll send them an invite too"></textarea></div>
+            <label class="check"><input type="checkbox" id="updates" checked><span>Keep me posted about future gatherings<small>One email a month with the next date. Nothing else.</small></span></label>
+            <div class="foot">
+              <button class="btn btn-mint" type="submit" id="rsvpSubmit">Save my seat</button>
+              <small>We'll email you a calendar invite with the Google Meet link. <a href="/legal#privacy-policy">Privacy policy</a></small>
+            </div>
+          </form>
+
+          <div class="thanks" id="thanks" hidden>
+            <span class="thanks-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#12261C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 id="thanksTitle" tabindex="-1">You're in.</h3>
+            <p>Watch your inbox for a calendar invite from Lucas with the Google Meet link. We're glad you're coming.</p>
+            <span class="when" id="thanksWhen">Thursday, November 19 · 7:00 pm Eastern</span>
+            <p class="demo" id="demo" hidden>Preview mode: nothing was sent.</p>
+          </div>
+        </div>
+
+        <div class="hosts">
+          <div class="faces"><img src="/team/josiah.webp" alt="Josiah"><img src="/team/lucas.webp" alt="Lucas"><img src="/team/ben.webp" alt="Ben"></div>
+          <p>Hosted by <b>Josiah</b>, with Lucas and Ben from Atlas.<br>Questions? <a href="mailto:support@atlaschurchsolutions.com">support@atlaschurchsolutions.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 Atlas Church Solutions</div>
+    <nav><a href="/network">Atlas Network</a><a href="/">Home</a><a href="/legal">Privacy Policy</a><a href="/contact-us">Contact Us</a></nav>
+  </div>
+</footer>
+
+<script src="/network/gatherings.js"></script>
+<script src="/network/network.js"></script>
+<script>
+(function () {
+  var A = window.AtlasNetwork, esc = A.esc;
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------- Which gathering? ---------- */
+  var m = location.pathname.match(/(\d{4}-\d{2}-\d{2})/);
+  var dated = !!m, g = dated ? A.find(m[1]) : A.next();
+
+  if (!g) { // unknown date: send people to the next one
+    location.replace("/network/table");
+    return;
+  }
+  var st = A.status(g), past = st === "past";
+  var LABEL = A.fmt(g.date), TIME = A.timeLabel(g);
+
+  /* ---------- Hero ---------- */
+  document.title = (dated ? g.title + " · " + A.fmt(g.date, { month: "long", day: "numeric" }) : "Pull up a chair at The Table") + " - Atlas Network";
+  if (dated) {
+    $("title").innerHTML = esc(g.title) + '. <span class="line2 ' + (past ? "ghost" : "grad") + '">' + esc(A.fmt(g.date, { month: "long", day: "numeric" })) + "</span>";
+    $("lede").textContent = past ? "This gathering has happened. Here's what we covered and what came out of it." : "The Table meets monthly: pastors and church staff sharing what works and praying for each other.";
+  }
+  if (st === "today") $("eyebrow").lastChild.textContent = "Today · you're invited";
+  if (past) {
+    $("eyebrow").classList.add("past"); $("eyebrow").lastChild.textContent = "This happened";
+    $("bringRow").hidden = true;
+    $("heroCtas").innerHTML = '<a class="btn btn-mint" href="/network/table">See the next gathering</a><a class="btn btn-quiet" href="#recap">What came out of it</a>';
+    $("navRsvp").href = "/network/table"; $("navRsvp").textContent = "Next gathering";
+    $("rsvp").hidden = true;
+  }
+  $("whenDate").textContent = LABEL;
+  $("whenTime").textContent = TIME;
+
+  /* ---------- Plan ---------- */
+  $("planKicker").textContent = g.title;
+  if (g.summary) $("summary").textContent = g.summary;
+  if (g.sharing && g.sharing.name) {
+    var initials = g.sharing.name.split(/\s+/).map(function (w) { return w[0]; }).slice(0, 2).join("");
+    $("sharing").innerHTML = '<span class="avatar">' + esc(initials) + '</span><div><small>Sharing what’s working</small><strong>' + esc(g.sharing.name) +
+      (g.sharing.church ? ", " + esc(g.sharing.church) : "") + "</strong>" + (g.sharing.topic ? "<em>" + esc(g.sharing.topic) + "</em>" : "") + "</div>";
+    $("sharing").hidden = false;
+  }
+  var total = 0, rows = (g.agenda || []).map(function (a) {
+    total += a.min || 0;
+    return '<li class="' + (/pray/i.test(a.title) ? "pray" : "") + '"><span class="m">' + (a.min ? a.min + " min" : "") + "</span><div><h3>" + esc(a.title) + "</h3><p>" + esc(a.text) + "</p></div></li>";
+  });
+  $("timeline").innerHTML = rows.join("") + (total ? '<li class="total"><span>Total</span><span>' + total + " minutes</span></li>" : "");
+
+  /* ---------- Recap ---------- */
+  if (past) {
+    $("recap").hidden = false;
+    var r = g.recap || {};
+    $("recapNote").textContent = r.note || (r.ideas && r.ideas.length ? "" : "The recap from this gathering is on its way.");
+    $("ideas").innerHTML = (r.ideas || []).map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("");
+    var n = A.next();
+    if (n) {
+      $("afterNext").innerHTML = A.cal(n) + '<div class="meta"><span class="when">Next gathering · ' + esc(A.fmt(n.date)) + "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") +
+        '</p></div><div class="btn-row"><a class="btn btn-mint" href="/network/table#rsvp">Save my seat</a></div>';
+      $("afterNext").hidden = false;
+    }
+  }
+
+  /* ---------- RSVP ---------- */
+  var START = TIME.replace(/ to [^ ]+/, ""); // "7:00 pm Eastern"
+  $("formFor").textContent = "For " + LABEL + " · " + START;
+  $("thanksWhen").textContent = LABEL + " · " + START;
+
+  /* HubSpot.
+     NETWORK_FORM_ID: the "Atlas Network RSVP" form. RSVPs land in their own properties and tag the contact network_member = true.
+     Until it's filled in, RSVPs go through the existing General contact form with the details in the message. */
+  var PORTAL = "246126781";
+  var NETWORK_FORM_ID = "2444b819-4f1c-45ae-96df-eb47823af3bd";
+  var GENERAL_FORM_ID = "8f08139b-bd1a-48bb-bcef-2f8517a309c0";
+
+  function hsSubmit(formId, body) {
+    var hosts = ["api.hsforms.com", "api-na2.hsforms.com"];
+    function attempt(i) {
+      return fetch("https://" + hosts[i] + "/submissions/v3/integration/submit/" + PORTAL + "/" + formId, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+        .then(function (r) {
+          if (r.ok) return r;
+          return r.text().then(function (t) {
+            console.error("[Atlas Network] HubSpot " + hosts[i] + " responded " + r.status + ": " + t);
+            if (r.status === 404 && i + 1 < hosts.length) return attempt(i + 1);
+            throw new Error(r.status);
+          });
+        }, function (err) {
+          console.error("[Atlas Network] Could not reach " + hosts[i], err);
+          if (i + 1 < hosts.length) return attempt(i + 1);
+          throw err;
+        });
+    }
+    return attempt(0);
+  }
+  function hutk() { var c = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/); return c ? c[1] : undefined; }
+
+  var form = $("rsvpForm"), btn = $("rsvpSubmit");
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function setErr(f, msg) { var w = f.closest(".field"); w.classList.toggle("invalid", !!msg); var e = w.querySelector(".err"); if (e) e.textContent = msg || ""; f.setAttribute("aria-invalid", msg ? "true" : "false"); }
+  function validate() {
+    var first = null;
+    form.querySelectorAll("[required]").forEach(function (f) {
+      var v = f.value.trim(), msg = "";
+      if (!v) msg = f.tagName === "SELECT" ? "Choose an option." : "Required.";
+      else if (f.type === "email" && !EMAIL.test(v)) msg = "Enter an email like name@church.org.";
+      setErr(f, msg); if (msg && !first) first = f;
+    });
+    return first;
+  }
+  form.querySelectorAll("[required]").forEach(function (f) { ["input", "change"].forEach(function (ev) { f.addEventListener(ev, function () { if (f.closest(".field").classList.contains("invalid")) validate(); }); }); });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = validate(); if (bad) { bad.focus(); return; }
+    btn.disabled = true; btn.innerHTML = '<span class="spin" aria-hidden="true"></span>Saving your seat';
+    function val(id) { return $(id).value.trim(); }
+    var role = $("role"), optIn = $("updates").checked, guests = val("guests");
+    function f(name, value) { return { objectTypeId: "0-1", name: name, value: value }; }
+    var base = [f("firstname", val("firstname")), f("lastname", val("lastname")), f("email", val("email")), f("company", val("company"))];
+    var formId, fields;
+    if (NETWORK_FORM_ID) {
+      formId = NETWORK_FORM_ID;
+      fields = base.concat([
+        f("church_role", role.value),
+        f("network_member", "true"),
+        f("network_last_rsvp", g.date),
+        f("network_updates_opt_in", optIn ? "true" : "false")
+      ]);
+      if (guests) fields.push(f("network_staff_joining", guests));
+    } else {
+      formId = GENERAL_FORM_ID;
+      fields = base.concat([
+        f("contact_reason", "Something else"),
+        f("message", ["THE TABLE RSVP · " + g.date + " (" + LABEL + ", " + START + ")", "Role: " + role.options[role.selectedIndex].text,
+          "Staff joining: " + (guests || "none listed"), "Keep me posted about future gatherings: " + (optIn ? "Yes" : "No")].join("\n"))
+      ]);
+    }
+    var live = !/[?&]preview\b/.test(location.search);
+    var send = live
+      ? hsSubmit(formId, { fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: "Atlas Network RSVP · " + g.date } })
+      : new Promise(function (r) { setTimeout(r, 800); });
+    send.then(function () {
+      $("thanksTitle").textContent = "You're in, " + val("firstname") + ".";
+      $("demo").hidden = live;
+      form.hidden = true; $("thanks").hidden = false; $("thanksTitle").focus();
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = "Save my seat";
+      form.querySelector(".foot small").innerHTML = '<span style="color:#DC2626">We couldn’t save that. Check your connection and try again, or email support@atlaschurchsolutions.com.</span>';
+    });
+  });
+})();
+</script>
+</body>
+</html>
