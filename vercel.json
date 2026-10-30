@@ -29,7 +29,7 @@
       "destination": "/network/gathering"
     },
     {
-      "source": "/network/table/:date",
+      "source": "/network/table/:date(\\d{4}-\\d{2}-\\d{2})",
       "destination": "/network/gathering"
     }
   ],

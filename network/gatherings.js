@@ -6,7 +6,7 @@
      /network/table/2026-11-19   one gathering's page (recap once it's happened)
 
    To add a gathering: copy an entry, change the date and words. That's it.
-   To cancel one: delete it, or set  cancelled: true.
+   To cancel one: set  cancelled: true  (keep the entry, so that date is never shown).
    Dates are Eastern time. Default time is 7:00 to 7:45 pm.
    Prayer requests are never written here (prayer is for churches, never about them).
    ============================================================ */

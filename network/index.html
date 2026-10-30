@@ -60,30 +60,40 @@
     </div>
   </section>
 
-  <!-- ============ HOW IT WORKS ============ -->
-  <section class="band" id="how">
+  <!-- ============ HOW IT WORKS: place cards on a table ============ -->
+  <section class="band setting" id="how">
     <div class="wrap">
       <div class="section-head">
-        <h2>Pastors are lonelier than ever. <span class="ghost">So we're setting a table.</span></h2>
-        <p>Once a month, church staff from different churches pull up a chair on Google Meet. One church shares what's working, we work through a real problem together, and we pray for each other's churches.</p>
+        <h2>Every church has something to share. <span class="ghost">Come bring yours.</span></h2>
+        <p>Once a month, pastors and church staff from different churches gather on Google Meet. One church shares what's working, we think through a real problem together, and we pray for each other's churches.</p>
       </div>
-      <div class="pillars">
-        <div class="pillar">
-          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-          <h3>Third Thursday, 45 minutes</h3>
-          <p>7:00 pm Eastern on Google Meet. Short enough to fit a full week. Cameras optional.</p>
-        </div>
-        <div class="pillar">
-          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span>
-          <h3>Practical, not a pitch</h3>
-          <p>Real systems from real churches. Nobody leaves empty-handed, whether you ever use our tools or not.</p>
-        </div>
-        <div class="pillar">
-          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.3l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
-          <h3>Free, and stays free</h3>
-          <p>Bring anyone on your staff. Bring another church. The table gets better with every chair.</p>
-        </div>
+      <div class="placecards">
+        <article class="placecard">
+          <div class="pc-top">
+          <span class="pc-seat">Seat 01</span>
+          <span class="pc-label">Every third Thursday</span>
+          <h3>45 minutes. <span>7 pm Eastern.</span></h3>
+          </div>
+          <div class="pc-foot"><p>Short enough to fit a full week. Google Meet, cameras optional.</p></div>
+        </article>
+        <article class="placecard mint">
+          <div class="pc-top">
+          <span class="pc-seat">Seat 02</span>
+          <span class="pc-label">Bring a question</span>
+          <h3>Leave with <span>an idea.</span></h3>
+          </div>
+          <div class="pc-foot"><p>Real systems from real churches. Nobody leaves empty-handed, whether you ever use our tools or not.</p></div>
+        </article>
+        <article class="placecard">
+          <div class="pc-top">
+          <span class="pc-seat">Seat 03</span>
+          <span class="pc-label">Everyone's welcome</span>
+          <h3>Free, <span>and it stays free.</span></h3>
+          </div>
+          <div class="pc-foot"><p>Bring anyone on your staff, or another church. The table gets better with every chair.</p></div>
+        </article>
       </div>
+      <div class="tabletop" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -122,16 +132,17 @@
   if (n) {
     var detail = n.generated ? "/network/table" : A.url(n);
     document.getElementById("nextCard").innerHTML = A.cal(n) +
-      '<div class="meta"><span class="when">' + (A.status(n) === "today" ? "Tonight" : "Next Table Gathering") + " · " + esc(A.fmt(n.date)) + " · " + esc(A.timeLabel(n).replace(/ to [^ ]+/, "")) +
+      '<div class="meta"><span class="when">' + (A.status(n) === "today" ? "Tonight" : "Next Table Gathering") + " · " + esc(A.fmt(n.date)) + " · " + esc(A.startLabel(n)) +
       "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") + '</p><div class="countdown compact" id="hubCountdown" hidden></div></div>' +
       '<div class="btn-row"><a class="btn btn-mint" href="/network/table#rsvp">Save my seat</a><a class="btn btn-quiet" href="' + detail + '">Details</a></div>';
   }
-  if (n) A.countdown(document.getElementById("hubCountdown"), n, { label: "Starts in", onEnd: function () { if (A.status(n) === "past") location.reload(); else document.getElementById("hubCountdown").hidden = true; } });
+  if (n) A.countdown(document.getElementById("hubCountdown"), n, { label: "Starts in", onEnd: function () { if (A.status(n) === "past" && !document.getElementById("nextCard").contains(document.activeElement)) location.reload(); else document.getElementById("hubCountdown").hidden = true; } });
   function row(g, past) {
-    return '<li><a href="' + A.url(g) + '">' + A.cal(g, past ? "past" : "") + '<span class="t"><strong>' + esc(g.title) + "</strong><em>" +
-      esc(A.fmt(g.date)) + (past ? "" : " · " + esc(A.timeLabel(g).replace(/ to [^ ]+/, ""))) + '</em></span><span class="go">' + (past ? "Recap" : "Details") + "</span></a></li>";
+    return '<li><a href="' + (g.generated ? "/network/table" : A.url(g)) + '">' + A.cal(g, past ? "past" : "") + '<span class="t"><strong>' + esc(g.title) + "</strong><em>" +
+      esc(A.fmt(g.date)) + (past ? "" : " · " + esc(A.startLabel(g))) + '</em></span><span class="go">' + (past ? "Recap" : "Details") + "</span></a></li>";
   }
   var up = A.upcoming(), past = A.past();
+  if (!up.length && n) up = [n]; // nothing listed yet: show the generated third-Thursday date, same as the card above
   document.getElementById("upcoming").innerHTML = up.length ? up.map(function (g) { return row(g, false); }).join("") : '<li class="empty">The next date is on its way. Check back soon.</li>';
   if (past.length) { document.getElementById("past").innerHTML = past.map(function (g) { return row(g, true); }).join(""); document.getElementById("pastWrap").hidden = false; }
 })();
