@@ -36,7 +36,7 @@
 <main>
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="wrap hero-grid">
+    <div class="wrap hero-grid has-cd">
       <div class="copy">
         <span class="eyebrow" id="eyebrow"><i aria-hidden="true"></i><span>You're invited</span></span>
         <h1 id="title">Pull up a chair at <span class="line2 grad">The Table.</span></h1>
@@ -115,6 +115,7 @@
               </select><span class="err" aria-live="polite"></span></div>
             <div class="field full"><label for="guests">Anyone from your staff joining you? <span class="opt">(optional)</span></label><textarea id="guests" placeholder="Names and emails, and we'll send them an invite too"></textarea></div>
             <label class="check"><input type="checkbox" id="updates" checked><span>Keep me posted about future gatherings<small>One email a month with the next date. Nothing else.</small></span></label>
+            <p class="form-error" id="formError" role="alert" tabindex="-1" hidden></p>
             <div class="foot">
               <button class="btn btn-mint" type="submit" id="rsvpSubmit">Save my seat</button>
               <small>You'll get a calendar invite with the Google Meet link that saves to Google, Outlook or Apple Calendar. <a href="/legal#privacy-policy">Privacy policy</a></small>
@@ -181,7 +182,12 @@
   if (!past) A.countdown($("countdown"), g, {
     label: (A.all.length && A.all[0].date === g.date ? "The first Table Gathering" : "This Table Gathering") + " starts in",
     // The call is over: reload once so the page moves on to the recap or the next gathering.
-    onEnd: function () { if (A.status(g) === "past") location.reload(); else $("countdown").hidden = true; }
+    onEnd: function () {
+      // Never reload under someone who is filling in the form or reading their confirmation.
+      var f = $("rsvpForm"), busy = !$("thanks").hidden || f.contains(document.activeElement) ||
+        Array.prototype.some.call(f.querySelectorAll("input:not([type=checkbox]), select, textarea"), function (x) { return x.value.trim(); });
+      if (A.status(g) === "past" && !busy) location.reload(); else $("countdown").hidden = true;
+    }
   });
   $("whenDate").textContent = LABEL;
   $("whenTime").textContent = TIME;
@@ -216,7 +222,11 @@
   }
 
   /* ---------- RSVP ---------- */
-  var START = TIME.replace(/ to [^ ]+/, ""); // "7:00 pm Eastern"
+  var START = A.startLabel(g); // "7:00 pm Eastern"
+  /* Once a call has started, RSVPs are for the next one (an invite couldn't arrive in time). */
+  var target = g;
+  if (st === "today" && Date.now() >= A.startsAt(g)) { var nx = A.after(g); if (nx) target = nx; }
+  if (target !== g) { LABEL = A.fmt(target.date); START = A.startLabel(target); $("rsvp").querySelector(".card-head h2").textContent = "Save a seat at the next one"; }
   $("formFor").textContent = "For " + LABEL + " · " + START;
   $("thanksWhen").textContent = LABEL + " · " + START;
 
@@ -250,6 +260,7 @@
 
   var form = $("rsvpForm"), btn = $("rsvpSubmit");
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.querySelectorAll(".field").forEach(function (w) { var f = w.querySelector("input, select, textarea"), e = w.querySelector(".err"); if (f && e) { e.id = f.id + "Err"; f.setAttribute("aria-describedby", e.id); e.removeAttribute("aria-live"); } });
   function setErr(f, msg) { var w = f.closest(".field"); w.classList.toggle("invalid", !!msg); var e = w.querySelector(".err"); if (e) e.textContent = msg || ""; f.setAttribute("aria-invalid", msg ? "true" : "false"); }
   function validate() {
     var first = null;
@@ -266,6 +277,7 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var bad = validate(); if (bad) { bad.focus(); return; }
+    $("formError").hidden = true;
     btn.disabled = true; btn.innerHTML = '<span class="spin" aria-hidden="true"></span>Saving your seat';
     function val(id) { return $(id).value.trim(); }
     var role = $("role"), optIn = $("updates").checked, guests = val("guests");
@@ -279,7 +291,7 @@
 
         f("church_role", role.value),
         f("network_member", "true"),
-        f("network_last_rsvp", g.date),
+        f("network_last_rsvp", target.date),
         f("network_updates_opt_in", optIn ? "true" : "false")
       ]);
       if (guests) fields.push(f("network_staff_joining", guests));
@@ -287,13 +299,13 @@
       formId = GENERAL_FORM_ID;
       fields = base.concat([
         f("contact_reason", "Something else"),
-        f("message", ["THE TABLE RSVP · " + g.date + " (" + LABEL + ", " + START + ")", "Role: " + role.options[role.selectedIndex].text,
+        f("message", ["THE TABLE RSVP · " + target.date + " (" + LABEL + ", " + START + ")", "Role: " + role.options[role.selectedIndex].text,
           "Staff joining: " + (guests || "none listed"), "Keep me posted about future gatherings: " + (optIn ? "Yes" : "No")].join("\n"))
       ]);
     }
     var live = !/[?&]preview\b/.test(location.search);
     var send = live
-      ? hsSubmit(formId, { fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: "Atlas Network RSVP · " + g.date } })
+      ? hsSubmit(formId, { fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: "Atlas Network RSVP · " + target.date } })
       : new Promise(function (r) { setTimeout(r, 800); });
     send.then(function () {
       $("thanksTitle").textContent = "You're in, " + val("firstname") + ".";
@@ -301,7 +313,8 @@
       form.hidden = true; $("thanks").hidden = false; $("thanksTitle").focus();
     }).catch(function () {
       btn.disabled = false; btn.textContent = "Save my seat";
-      form.querySelector(".foot small").innerHTML = '<span style="color:#DC2626">We couldn’t save that. Check your connection and try again, or email support@atlaschurchsolutions.com.</span>';
+      $("formError").innerHTML = 'We couldn’t save that. Check your connection and try again, or email <a href="mailto:support@atlaschurchsolutions.com">support@atlaschurchsolutions.com</a>.';
+      $("formError").hidden = false; $("formError").focus();
     });
   });
 })();
