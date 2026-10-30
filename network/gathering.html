@@ -269,6 +269,8 @@
     if (NETWORK_FORM_ID) {
       formId = NETWORK_FORM_ID;
       fields = base.concat([
+        { objectTypeId: "0-2", name: "name", value: val("company") }, // the form's required Company > Name field
+
         f("church_role", role.value),
         f("network_member", "true"),
         f("network_last_rsvp", g.date),
