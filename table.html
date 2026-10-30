@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pull up a chair at The Table - Atlas Network</title>
+<!-- Unlisted page: shared by invitation only. Not in the nav, not in search. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A monthly call for pastors and church staff to share what works and pray for each other. Save your seat.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Atlas Church Solutions">
+<meta property="og:title" content="Pull up a chair at The Table">
+<meta property="og:description" content="A monthly call for pastors and church staff to share what works and pray for each other. 45 minutes on Google Meet.">
+<meta property="og:image" content="https://www.atlaschurchsolutions.com/og-image.png">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Atlas Network · The Table RSVP. Tokens from atlas-app/DESIGN.md, same as the rest of the site. */
+:root {
+  color-scheme: light;
+  --white: #FFFFFF; --bg: #F4F5F7; --border: #E5E7EB; --line: #EEF0F2;
+  --ink: #1F2328; --text: #2D333A; --text-2: #6B7280; --text-3: #9CA3AF; --ghost: #C9CDD3;
+  --mint: #5CE1A5; --mint-tint: #A0F1C8; --mint-deep: #3DB882; --mint-ink: #059669; --on-mint: #12261C;
+  --accent-subtle-bg: rgba(92, 225, 165, 0.08);
+  --blue: #3B82F6;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(20,40,30,.03);
+  --shadow-xl: 0 24px 64px rgba(20,40,30,.08), 0 2px 6px rgba(0,0,0,.03);
+  --page-wash: radial-gradient(circle at 8% 10%, rgba(92,225,165,.16) 0%, transparent 42%), radial-gradient(circle at 94% 22%, rgba(160,241,200,.24) 0%, transparent 40%);
+  --font-display: 'Poppins', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--white); color: var(--text); font: 400 18px/1.55 var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 8px; }
+.wrap { max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+.grad { background: linear-gradient(95deg, var(--mint-deep) 0%, var(--mint) 55%, var(--mint-deep) 110%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- Top bar: lockup only, no site nav (invitation page) ---------- */
+.top { position: absolute; top: 0; left: 0; right: 0; z-index: 5; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.lockup img { width: 28px; height: 28px; object-fit: contain; }
+.lockup b { font: 700 18px var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
+.lockup span { padding-left: 10px; border-left: 1px solid var(--border); font: 600 14px var(--font-display); color: var(--mint-ink); }
+.top .home { font: 500 14px var(--font-display); color: var(--text-2); text-decoration: none; padding: 8px 12px; border-radius: 999px; }
+.top .home:hover { color: var(--ink); background: rgba(45,51,58,.05); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; background: var(--page-wash), var(--white); padding-block: 132px 72px; border-bottom: 1px solid var(--border); overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+.copy { display: grid; gap: 20px; justify-items: start; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--accent-subtle-bg); border: 1px solid rgba(92,225,165,.28); font: 600 11px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--mint-ink); }
+.eyebrow i { width: 6px; height: 6px; border-radius: 50%; background: #10B981; }
+h1 { font-size: clamp(40px, 6vw, 68px); font-weight: 600; line-height: 1.04; letter-spacing: -0.04em; }
+h1 .line2 { display: block; }
+.lede { font-size: clamp(18px, 2vw, 21px); line-height: 1.5; color: var(--text-2); max-width: 34ch; }
+.details { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 0; width: 100%; max-width: 460px; background: var(--white); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow-sm); overflow: hidden; }
+.details li { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: baseline; padding: 14px 18px; border-top: 1px solid var(--line); }
+.details li:first-child { border-top: 0; }
+.details small { font: 600 11px/1.2 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
+.details strong { font: 600 16px/1.35 var(--font-display); color: var(--ink); }
+.details em { display: block; font: 400 14px/1.4 var(--font-body); font-style: normal; color: var(--text-2); margin-top: 2px; }
+.art { position: relative; display: grid; place-items: center; }
+.art::before { content: ""; position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(160,241,200,.35) 0%, rgba(160,241,200,0) 68%); }
+.art img { position: relative; width: min(460px, 100%); height: auto; }
+.scroll-cta { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 26px; border-radius: 999px; background: var(--mint); color: var(--on-mint); text-decoration: none; font: 600 16px/1 var(--font-display); transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.scroll-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(61,184,130,.28); }
+
+/* ---------- What happens ---------- */
+.band { padding-block: 88px; }
+.band.gray { background: var(--bg); }
+.section-head { display: grid; gap: 10px; justify-items: center; text-align: center; margin-bottom: 40px; }
+.section-head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
+.section-head h2 .ghost { color: var(--ghost); display: block; }
+.section-head p { color: var(--text-2); max-width: 48ch; }
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.step { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 22px; display: grid; gap: 10px; align-content: start; box-shadow: var(--shadow-sm); }
+.step .min { font: 600 12px/1 var(--font-display); color: var(--mint-ink); letter-spacing: .02em; }
+.step h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.step p { font-size: 15.5px; line-height: 1.5; color: var(--text-2); }
+.step.mint { background: linear-gradient(160deg, rgba(92,225,165,.14), rgba(160,241,200,.06)); border-color: rgba(92,225,165,.35); }
+.promise { margin-top: 22px; text-align: center; font: 500 15px/1.5 var(--font-display); color: var(--text-2); }
+.promise b { color: var(--ink); font-weight: 600; }
+
+/* ---------- Form ---------- */
+.form-wrap { max-width: 720px; margin-inline: auto; }
+.card { background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: clamp(22px, 4vw, 38px); box-shadow: var(--shadow-xl); }
+.card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-bottom: 20px; margin-bottom: 22px; border-bottom: 1px solid var(--border); }
+.card-head h2 { font: 700 20px/1.3 var(--font-display); }
+.card-head p { font-size: 15px; color: var(--text-2); margin-top: 3px; }
+.pill { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; background: #D1FAE5; border: 1px solid rgba(16,185,129,.22); font: 700 10.5px/1 var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: var(--mint-ink); white-space: nowrap; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+.field { display: grid; gap: 7px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label { font: 600 13px var(--font-display); color: var(--text); }
+.field label .opt { font-weight: 500; color: var(--text-3); }
+.field input, .field select, .field textarea { width: 100%; padding: 0 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--white); font: 400 17px var(--font-body); color: var(--text); transition: border-color .15s, box-shadow .15s; }
+.field input, .field select { height: 50px; }
+.field textarea { min-height: 92px; padding: 13px 16px; line-height: 1.5; resize: vertical; }
+.field select { appearance: none; padding-right: 40px; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236B7280' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center / 12px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-3); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--mint); box-shadow: 0 0 0 4px rgba(92,225,165,.2); }
+.field.invalid input, .field.invalid select { border-color: #EF4444; }
+.err { font-size: 13px; color: #DC2626; }
+.err:empty { display: none; }
+.check { grid-column: 1 / -1; display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); cursor: pointer; }
+.check input { appearance: none; flex: none; width: 22px; height: 22px; margin: 1px 0 0; border-radius: 7px; border: 1.5px solid var(--ghost); background: var(--white); display: grid; place-items: center; cursor: pointer; transition: background-color .15s, border-color .15s; }
+.check input:checked { background: var(--mint); border-color: var(--mint); }
+.check input:checked::after { content: ""; width: 10px; height: 6px; border: solid var(--on-mint); border-width: 0 0 2.2px 2.2px; transform: translateY(-1px) rotate(-45deg); }
+.check span { font-size: 15.5px; line-height: 1.45; color: var(--text); }
+.check span small { display: block; font-size: 13.5px; color: var(--text-2); }
+.foot { grid-column: 1 / -1; display: grid; gap: 12px; justify-items: center; text-align: center; margin-top: 6px; }
+.btn { width: 100%; height: 56px; border: 0; border-radius: 999px; background: var(--mint); color: var(--on-mint); font: 600 17px/1 var(--font-display); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; position: relative; overflow: hidden; isolation: isolate; transition: color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease); }
+.btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(135deg, #1F2328, #2D333A); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+.btn:hover { color: var(--mint); box-shadow: 0 10px 24px rgba(31,35,40,.18); }
+.btn:hover::before { transform: scaleX(1); }
+.btn:active { transform: scale(.98); }
+.btn[disabled] { opacity: .75; cursor: progress; }
+.foot small { font-size: 13.5px; color: var(--text-3); }
+.foot small a { color: var(--text-2); }
+.spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(18,38,28,.25); border-top-color: var(--on-mint); animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.thanks { display: grid; justify-items: center; gap: 14px; text-align: center; padding: 18px 0 6px; }
+.thanks-mark { width: 68px; height: 68px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; }
+.thanks-mark svg { width: 30px; height: 30px; }
+.thanks h3 { font: 600 28px/1.2 var(--font-display); letter-spacing: -0.02em; }
+.thanks p { color: var(--text-2); max-width: 42ch; }
+.thanks .when { font: 600 15px/1.4 var(--font-display); color: var(--ink); padding: 10px 16px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); }
+.demo { font-size: 13px; color: var(--text-3); }
+
+/* ---------- Hosts + footer ---------- */
+.hosts { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 40px; color: var(--text-2); font-size: 15.5px; text-align: left; }
+.faces { display: flex; }
+.faces img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bg); margin-left: -10px; }
+.faces img:first-child { margin-left: 0; }
+.hosts b { color: var(--ink); font-weight: 600; }
+footer { border-top: 1px solid var(--border); }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 32px 44px; font-size: 14px; color: var(--text-3); }
+footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+footer a { color: var(--text-2); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+@media (max-width: 900px) {
+  .hero { padding-block: 104px 56px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .art { order: -1; }
+  .art img { width: min(320px, 82%); }
+  .flow { grid-template-columns: 1fr 1fr; }
+  .band { padding-block: 64px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .top .home { display: none; }
+  .flow { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+  .details li { grid-template-columns: 64px 1fr; padding: 13px 16px; }
+  footer .wrap { flex-direction: column; text-align: center; }
+  .hosts { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="lockup" href="/" aria-label="Atlas Church Solutions, home"><img src="/image_2.png" alt="" width="28" height="28"><b>Atlas</b><span>Network</span></a>
+    <a class="home" href="/">atlaschurchsolutions.com</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="copy">
+        <span class="eyebrow"><i aria-hidden="true"></i>You're invited</span>
+        <h1>Pull up a chair at <span class="line2 grad">The Table.</span></h1>
+        <p class="lede">A monthly call for pastors and church staff to share what works and pray for each other.</p>
+        <ul class="details" aria-label="Gathering details">
+          <li><small>When</small><div><strong id="whenDate">Thursday, November 19</strong><em>7:00 to 7:45 pm Eastern</em></div></li>
+          <li><small>Where</small><div><strong>Google Meet</strong><em>Cameras optional. Link comes with your calendar invite.</em></div></li>
+          <li><small>Bring</small><div><strong>Yourself, and anyone on your staff</strong></div></li>
+        </ul>
+        <a class="scroll-cta" href="#rsvp">Save my seat</a>
+      </div>
+      <div class="art">
+        <img src="/network/table-illustration.png" width="760" height="701" alt="A round table with seven chairs pulled in and one mint chair pulled out, waiting for you.">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT HAPPENS ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Forty-five minutes. <span class="ghost">Nothing to buy.</span></h2>
+        <p>Every gathering follows the same simple shape, so you always know what you're walking into.</p>
+      </div>
+      <div class="flow">
+        <div class="step"><span class="min">01</span><h3>Gather</h3><p>Quick hellos. Who you are, where you serve, one thing on your plate this week.</p></div>
+        <div class="step"><span class="min">02</span><h3>One thing that's working</h3><p>One church shares a system, habit or tool that's helping their staff right now.</p></div>
+        <div class="step"><span class="min">03</span><h3>The table</h3><p>We help one church think through a real problem together. Everyone leaves with an idea.</p></div>
+        <div class="step mint"><span class="min">04</span><h3>Pray</h3><p>We close by praying for each other's churches by name.</p></div>
+      </div>
+      <p class="promise"><b>No pitch.</b> Hosted by Atlas Church Solutions, open to any church, whether you ever use our tools or not.</p>
+    </div>
+  </section>
+
+  <!-- ============ RSVP ============ -->
+  <section class="band gray" id="rsvp">
+    <div class="wrap">
+      <div class="form-wrap">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h2>Save your seat</h2>
+              <p id="formFor">For Thursday, November 19 · 7:00 pm Eastern</p>
+            </div>
+            <span class="pill">Takes 30 seconds</span>
+          </div>
+
+          <form id="rsvpForm" novalidate>
+            <div class="field"><label for="firstname">First name</label><input id="firstname" name="firstname" autocomplete="given-name" required><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="lastname">Last name</label><input id="lastname" name="lastname" autocomplete="family-name" required><span class="err" aria-live="polite"></span></div>
+            <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@yourchurch.org"><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="company">Church name</label><input id="company" name="company" autocomplete="organization" required><span class="err" aria-live="polite"></span></div>
+            <div class="field"><label for="role">Your role</label>
+              <select id="role" required><option value="">Choose one</option><option>Lead or senior pastor</option><option>Executive pastor</option><option>Associate or ministry pastor</option><option>Church administrator</option><option>Operations or office staff</option><option>Communications</option><option>Other church staff</option></select><span class="err" aria-live="polite"></span></div>
+            <div class="field full"><label for="guests">Anyone from your staff joining you? <span class="opt">(optional)</span></label><textarea id="guests" placeholder="Names and emails, and we'll send them an invite too"></textarea></div>
+            <label class="check"><input type="checkbox" id="updates" checked><span>Keep me posted about future gatherings<small>One email a month with the next date. Nothing else.</small></span></label>
+            <div class="foot">
+              <button class="btn" type="submit" id="rsvpSubmit">Save my seat</button>
+              <small>We'll email you a calendar invite with the Google Meet link. <a href="/legal#privacy-policy">Privacy policy</a></small>
+            </div>
+          </form>
+
+          <div class="thanks" id="thanks" hidden>
+            <span class="thanks-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#12261C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 id="thanksTitle" tabindex="-1">You're in.</h3>
+            <p>Watch your inbox for a calendar invite from Lucas with the Google Meet link. We're glad you're coming.</p>
+            <span class="when" id="thanksWhen">Thursday, November 19 · 7:00 pm Eastern</span>
+            <p class="demo" id="demo" hidden>Preview mode: nothing was sent.</p>
+          </div>
+        </div>
+
+        <div class="hosts">
+          <div class="faces"><img src="/team/josiah.webp" alt="Josiah"><img src="/team/lucas.webp" alt="Lucas"><img src="/team/ben.webp" alt="Ben"></div>
+          <p>Hosted by <b>Josiah</b>, with Lucas and Ben from Atlas.<br>Questions? <a href="mailto:support@atlaschurchsolutions.com">support@atlaschurchsolutions.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 Atlas Church Solutions</div>
+    <nav><a href="/">Home</a><a href="/about">About</a><a href="/legal">Privacy Policy</a><a href="/contact-us">Contact Us</a></nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ---------- Next gathering ----------
+     The Table meets the third Thursday of every month, 7:00-7:45 pm Eastern.
+     The page always shows the next one, so this link never needs updating.
+     To skip a month or move a date, add it to OVERRIDES: { "2026-12": "2026-12-10" } moves December, { "2027-07": null } skips July. */
+  var OVERRIDES = {};
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function thirdThursday(y, m) { var d = new Date(Date.UTC(y, m, 1)); var first = (4 - d.getUTCDay() + 7) % 7 + 1; return first + 14; }
+  function nyNow() { var p = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date()); var o = {}; p.forEach(function (x) { o[x.type] = x.value; }); return { y: +o.year, m: +o.month - 1, d: +o.day, mins: (+o.hour % 24) * 60 + +o.minute }; }
+  function nextGathering() {
+    var now = nyNow(), y = now.y, m = now.m;
+    for (var i = 0; i < 14; i++) {
+      var key = y + "-" + pad(m + 1), iso;
+      if (Object.prototype.hasOwnProperty.call(OVERRIDES, key)) iso = OVERRIDES[key];
+      else iso = key + "-" + pad(thirdThursday(y, m));
+      if (iso) {
+        var day = +iso.slice(8, 10), ended = (y === now.y && m === now.m) && (day < now.d || (day === now.d && now.mins >= 19 * 60 + 45));
+        if (!ended) return iso;
+      }
+      m++; if (m > 11) { m = 0; y++; }
+    }
+    return null;
+  }
+  var ISO = nextGathering();
+  var LABEL = ISO ? new Date(ISO + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", timeZone: "UTC" }) : "";
+  if (ISO) {
+    document.getElementById("whenDate").textContent = LABEL;
+    document.getElementById("formFor").textContent = "For " + LABEL + " · 7:00 pm Eastern";
+    document.getElementById("thanksWhen").textContent = LABEL + " · 7:00 pm Eastern";
+  }
+
+  /* ---------- HubSpot ----------
+     Posts to the existing "General contact" form (same as /contact-us), so no new HubSpot form is needed.
+     firstname, lastname, email, company go to their own properties. contact_reason = "Something else".
+     Everything Table-specific goes into the message, which starts with "THE TABLE RSVP" so it's easy to filter. */
+  var HUBSPOT = { portalId: "246126781", formId: "8f08139b-bd1a-48bb-bcef-2f8517a309c0" };
+  function hsSubmit(body) {
+    var hosts = ["api.hsforms.com", "api-na2.hsforms.com"];
+    function attempt(i) {
+      return fetch("https://" + hosts[i] + "/submissions/v3/integration/submit/" + HUBSPOT.portalId + "/" + HUBSPOT.formId, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+        .then(function (r) {
+          if (r.ok) return r;
+          return r.text().then(function (t) {
+            console.error("[Atlas form] HubSpot " + hosts[i] + " responded " + r.status + ": " + t);
+            if (r.status === 404 && i + 1 < hosts.length) return attempt(i + 1);
+            throw new Error(r.status);
+          });
+        }, function (err) {
+          console.error("[Atlas form] Could not reach " + hosts[i], err);
+          if (i + 1 < hosts.length) return attempt(i + 1);
+          throw err;
+        });
+    }
+    return attempt(0);
+  }
+  function hutk() { var m = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/); return m ? m[1] : undefined; }
+
+  var form = document.getElementById("rsvpForm"), btn = document.getElementById("rsvpSubmit"), thanks = document.getElementById("thanks");
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function setErr(f, msg) { var w = f.closest(".field"); w.classList.toggle("invalid", !!msg); var e = w.querySelector(".err"); if (e) e.textContent = msg || ""; f.setAttribute("aria-invalid", msg ? "true" : "false"); }
+  function validate() {
+    var first = null;
+    form.querySelectorAll("[required]").forEach(function (f) {
+      var v = f.value.trim(), m = "";
+      if (!v) m = f.tagName === "SELECT" ? "Choose an option." : "Required.";
+      else if (f.type === "email" && !EMAIL.test(v)) m = "Enter an email like name@church.org.";
+      setErr(f, m); if (m && !first) first = f;
+    });
+    return first;
+  }
+  form.querySelectorAll("[required]").forEach(function (f) { ["input", "change"].forEach(function (ev) { f.addEventListener(ev, function () { if (f.closest(".field").classList.contains("invalid")) validate(); }); }); });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = validate(); if (bad) { bad.focus(); return; }
+    btn.disabled = true; btn.innerHTML = '<span class="spin" aria-hidden="true"></span>Saving your seat';
+    function val(id) { return document.getElementById(id).value.trim(); }
+    var guests = val("guests");
+    var message = [
+      "THE TABLE RSVP · " + (ISO || "next gathering") + (LABEL ? " (" + LABEL + ", 7:00 pm ET)" : ""),
+      "Role: " + val("role"),
+      "Staff joining: " + (guests || "none listed"),
+      "Keep me posted about future gatherings: " + (document.getElementById("updates").checked ? "Yes" : "No")
+    ].join("\n");
+    var fields = [
+      { objectTypeId: "0-1", name: "firstname", value: val("firstname") },
+      { objectTypeId: "0-1", name: "lastname", value: val("lastname") },
+      { objectTypeId: "0-1", name: "email", value: val("email") },
+      { objectTypeId: "0-1", name: "company", value: val("company") },
+      { objectTypeId: "0-1", name: "contact_reason", value: "Something else" },
+      { objectTypeId: "0-1", name: "message", value: message }
+    ];
+    var live = HUBSPOT.portalId && HUBSPOT.formId && !/[?&]preview\b/.test(location.search);
+    var send = live
+      ? hsSubmit({ fields: fields, context: { hutk: hutk(), pageUri: location.href, pageName: "The Table RSVP" } })
+      : new Promise(function (r) { setTimeout(r, 800); });
+    send.then(function () {
+      document.getElementById("thanksTitle").textContent = "You're in, " + val("firstname") + ".";
+      document.getElementById("demo").hidden = !!live;
+      form.hidden = true; thanks.hidden = false;
+      document.getElementById("thanksTitle").focus();
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = "Save my seat";
+      form.querySelector(".foot small").innerHTML = '<span style="color:#DC2626">We couldn’t save that. Check your connection and try again, or email support@atlaschurchsolutions.com.</span>';
+    });
+  });
+})();
+</script>
+</body>
+</html>
