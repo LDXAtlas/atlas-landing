@@ -32,5 +32,25 @@
       "source": "/network/table/:date",
       "destination": "/network/gathering"
     }
+  ],
+  "headers": [
+    {
+      "source": "/network/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/network",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }
