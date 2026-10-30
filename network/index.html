@@ -54,7 +54,7 @@
     <div class="wrap">
       <div class="next-card" id="nextCard">
         <span class="cal" aria-hidden="true"><b>Nov</b><span>19</span><small>Thu</small></span>
-        <div class="meta"><span class="when">Next gathering · Thursday, November 19 · 7:00 pm Eastern</span><h3>The first gathering</h3><p>Meet the table and work through a real staff problem together.</p></div>
+        <div class="meta"><span class="when">Next Table Gathering · Thursday, November 19 · 7:00 pm Eastern</span><h3>The first Table Gathering</h3><p>Meet the table and work through a real staff problem together.</p></div>
         <div class="btn-row"><a class="btn btn-mint" href="/network/table#rsvp">Save my seat</a><a class="btn btn-quiet" href="/network/table/2026-11-19">Details</a></div>
       </div>
     </div>
@@ -92,7 +92,7 @@
     <div class="wrap" style="max-width:860px">
       <div class="section-head left">
         <span class="kicker">The Table</span>
-        <h2>Gatherings.</h2>
+        <h2>Table Gatherings.</h2>
       </div>
       <div class="schedule">
         <div><h3 class="label">Coming up</h3><ul class="rows" id="upcoming"></ul></div>
@@ -122,10 +122,11 @@
   if (n) {
     var detail = n.generated ? "/network/table" : A.url(n);
     document.getElementById("nextCard").innerHTML = A.cal(n) +
-      '<div class="meta"><span class="when">' + (A.status(n) === "today" ? "Tonight" : "Next gathering") + " · " + esc(A.fmt(n.date)) + " · " + esc(A.timeLabel(n).replace(/ to [^ ]+/, "")) +
-      "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") + "</p></div>" +
+      '<div class="meta"><span class="when">' + (A.status(n) === "today" ? "Tonight" : "Next Table Gathering") + " · " + esc(A.fmt(n.date)) + " · " + esc(A.timeLabel(n).replace(/ to [^ ]+/, "")) +
+      "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") + '</p><div class="countdown compact" id="hubCountdown" hidden></div></div>' +
       '<div class="btn-row"><a class="btn btn-mint" href="/network/table#rsvp">Save my seat</a><a class="btn btn-quiet" href="' + detail + '">Details</a></div>';
   }
+  if (n) A.countdown(document.getElementById("hubCountdown"), n, { label: "Starts in", onEnd: function () { if (A.status(n) === "past") location.reload(); else document.getElementById("hubCountdown").hidden = true; } });
   function row(g, past) {
     return '<li><a href="' + A.url(g) + '">' + A.cal(g, past ? "past" : "") + '<span class="t"><strong>' + esc(g.title) + "</strong><em>" +
       esc(A.fmt(g.date)) + (past ? "" : " · " + esc(A.timeLabel(g).replace(/ to [^ ]+/, ""))) + '</em></span><span class="go">' + (past ? "Recap" : "Details") + "</span></a></li>";

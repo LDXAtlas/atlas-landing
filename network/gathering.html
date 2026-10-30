@@ -51,6 +51,7 @@
       <div class="art">
         <img src="/network/table-animated.svg" width="488" height="488" alt="A round table with seven chairs pulled in and one mint chair pulled out, waiting for you.">
       </div>
+      <div class="countdown cd-slot" id="countdown" hidden></div>
     </div>
   </section>
 
@@ -58,7 +59,7 @@
   <section class="band" id="plan">
     <div class="wrap overview">
       <div class="about">
-        <span class="kicker" id="planKicker">The first gathering</span>
+        <span class="kicker" id="planKicker">The first Table Gathering</span>
         <h2 class="section-title" style="font-size:clamp(28px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-0.03em">Forty-five minutes. <span class="ghost" style="display:block">Nothing to buy.</span></h2>
         <p id="summary">Meet the table. Hear why we're starting this, see what one church is doing that works, and work through a real staff problem together.</p>
         <div class="sharing" id="sharing" hidden></div>
@@ -173,10 +174,15 @@
   if (past) {
     $("eyebrow").classList.add("past"); $("eyebrow").lastChild.textContent = "This happened";
     $("bringRow").hidden = true;
-    $("heroCtas").innerHTML = '<a class="btn btn-mint" href="/network/table">See the next gathering</a><a class="btn btn-quiet" href="#recap">What came out of it</a>';
-    $("navRsvp").href = "/network/table"; $("navRsvp").textContent = "Next gathering";
+    $("heroCtas").innerHTML = '<a class="btn btn-mint" href="/network/table">See the next Table Gathering</a><a class="btn btn-quiet" href="#recap">What came out of it</a>';
+    $("navRsvp").href = "/network/table"; $("navRsvp").textContent = "Next Table Gathering";
     $("rsvp").hidden = true;
   }
+  if (!past) A.countdown($("countdown"), g, {
+    label: (A.all.length && A.all[0].date === g.date ? "The first Table Gathering" : "This Table Gathering") + " starts in",
+    // The call is over: reload once so the page moves on to the recap or the next gathering.
+    onEnd: function () { if (A.status(g) === "past") location.reload(); else $("countdown").hidden = true; }
+  });
   $("whenDate").textContent = LABEL;
   $("whenTime").textContent = TIME;
 
@@ -203,7 +209,7 @@
     $("ideas").innerHTML = (r.ideas || []).map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("");
     var n = A.next();
     if (n) {
-      $("afterNext").innerHTML = A.cal(n) + '<div class="meta"><span class="when">Next gathering · ' + esc(A.fmt(n.date)) + "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") +
+      $("afterNext").innerHTML = A.cal(n) + '<div class="meta"><span class="when">Next Table Gathering · ' + esc(A.fmt(n.date)) + "</span><h3>" + esc(n.title) + "</h3><p>" + esc(n.summary || "") +
         '</p></div><div class="btn-row"><a class="btn btn-mint" href="/network/table#rsvp">Save my seat</a></div>';
       $("afterNext").hidden = false;
     }

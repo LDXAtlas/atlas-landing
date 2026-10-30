@@ -221,3 +221,29 @@ footer a:hover { color: var(--ink); }
   .hosts { flex-direction: column; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; } }
+
+/* ---------- Live countdown ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.countdown { width: 100%; max-width: 470px; padding: 16px 18px 18px; border-radius: 18px; background: linear-gradient(160deg, rgba(92,225,165,.14), rgba(160,241,200,.05)); border: 1px solid rgba(92,225,165,.35); }
+.cd-head { margin-bottom: 10px; }
+.cd-label { font: 600 12px/1.2 var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: var(--mint-ink); }
+.cd-units { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cd-unit { display: grid; justify-items: center; gap: 4px; padding: 10px 4px 8px; border-radius: 12px; background: var(--white); border: 1px solid rgba(92,225,165,.25); box-shadow: var(--shadow-sm); }
+.cd-num { font: 600 clamp(24px, 3.2vw, 32px)/1 var(--font-display); letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cd-name { font: 600 10.5px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
+.cd-live { display: flex; align-items: center; gap: 10px; font: 600 16px/1.35 var(--font-display); color: var(--ink); }
+.cd-live i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: #10B981; box-shadow: 0 0 0 0 rgba(16,185,129,.5); animation: live 1.6s ease-out infinite; }
+@keyframes live { to { box-shadow: 0 0 0 10px rgba(16,185,129,0); } }
+.countdown.compact { max-width: none; padding: 12px 14px 14px; margin-top: 8px; }
+.countdown.compact .cd-units { max-width: 380px; gap: 6px; }
+.countdown.compact .cd-num { font-size: 22px; }
+.countdown.compact .cd-unit { padding: 8px 4px 7px; }
+/* Countdown sits under the table on desktop, after the call to action on phones */
+.hero-grid:has(.cd-slot) { grid-template-areas: "copy art" "copy cd"; grid-template-rows: auto auto; row-gap: 8px; }
+.hero-grid:has(.cd-slot) > .copy { grid-area: copy; }
+.hero-grid:has(.cd-slot) > .art { grid-area: art; align-self: end; }
+.cd-slot { grid-area: cd; justify-self: center; align-self: start; }
+@media (max-width: 900px) {
+  .hero-grid:has(.cd-slot) { grid-template-areas: "art" "copy" "cd"; grid-template-columns: 1fr; row-gap: 24px; }
+  .cd-slot { justify-self: stretch; max-width: none; }
+}
