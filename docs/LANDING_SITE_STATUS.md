@@ -40,6 +40,8 @@ All changes are phone-only: CSS inside `max-width` media queries, nothing remove
 - FAQ: no long-term contract, cancel anytime, admins can export anytime. Huddle recording and AI summaries are live for churches that turn on AI; Atlas AI chat, Messages, Serve, Care and Workflows are still coming.
 - Lucas is Founder & CEO; Ben is Co-founder & CTO; Josiah is Co-founder & CMO.
 - The AI Brief button was edited out of the project-board screenshot.
+- **Log in is a placeholder (Oct 31):** the nav, phone menu and footer show "Log in · Soon" as plain text, not a link, so visitors don't think the app is open. app.atlaschurchsolutions.com still works if typed in. To restore, change the three `<span class="… soon">` elements on each page back to links to `https://app.atlaschurchsolutions.com/login`.
+- **Atlas Network (`/network`, `/network/table`, `/table`)** is live. It isn't in the top nav, but the footer of every main page links to `/network` (Oct 31). Network pages stay noindex, so they don't appear in Google. The Atlas logo on Network pages goes to the homepage.
 
 ## Ideas discussed, not built
 - **Glass forms:** frosted form panels with a soft color wash behind them, lighter fields, pill choices instead of dropdowns for staff size and contact reason (same values, so HubSpot is unchanged), and a cleaner contact header. The prompt is in the landing chat of Oct 16; the `form-glass` branch was created but has no changes.
