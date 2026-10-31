@@ -123,7 +123,8 @@ img { max-width: 100%; display: block; }
 /* ---------- Nav: floating glass pill that tightens on scroll ---------- */
 .nav-shell { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: 0; right: 0; z-index: 60; display: flex; justify-content: center; padding-inline: 16px; pointer-events: none; }
 .nav { pointer-events: auto; width: 100%; max-width: 1080px; height: 60px; border-radius: 999px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px 0 18px; transition: max-width .5s var(--ease), height .5s var(--ease); }
-.nav.compact { max-width: 780px; height: 54px; }
+.nav.compact { max-width: 840px; height: 54px; }
+.nav .brand { flex: none; }
 .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .brand b { font: 700 18px var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
 .nav-links { position: relative; display: flex; gap: 2px; }
