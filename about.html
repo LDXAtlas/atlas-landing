@@ -125,6 +125,7 @@ img { max-width: 100%; display: block; }
 .nav { pointer-events: auto; width: 100%; max-width: 1080px; height: 60px; border-radius: 999px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px 0 18px; transition: max-width .5s var(--ease), height .5s var(--ease); }
 .nav.compact { max-width: 840px; height: 54px; }
 .nav .brand { flex: none; }
+@media (min-width: 901px) { .nav { min-width: max-content; } } /* the pill never gets narrower than its contents, so links can't slide under the logo */
 .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .brand b { font: 700 18px var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
 .nav-links { position: relative; display: flex; gap: 2px; }

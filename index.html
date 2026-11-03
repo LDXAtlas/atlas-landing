@@ -107,6 +107,7 @@ img { max-width: 100%; display: block; }
 .nav { pointer-events: auto; width: 100%; max-width: 1080px; height: 60px; border-radius: 999px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px 0 18px; transition: max-width .5s var(--ease), height .5s var(--ease); }
 .nav.compact { max-width: 880px; height: 54px; }
 .nav .brand { flex: none; }
+@media (min-width: 901px) { .nav { min-width: max-content; } } /* the pill never gets narrower than its contents, so links can't slide under the logo */
 .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .logo-mark { width: 28px; height: 28px; border-radius: 8px; flex: none; background: linear-gradient(135deg, var(--mint), var(--mint-deep)); display: grid; place-items: center; box-shadow: inset 0 1px 1px rgba(255,255,255,.6); }
 .logo-mark::before { content: ""; width: 11px; height: 11px; border: 2.5px solid #fff; border-bottom: none; border-radius: 11px 11px 0 0; transform: translateY(2px); }
