@@ -12,6 +12,7 @@ This folder is excluded from the public site by `.vercelignore`, so files here a
 | Contact | `/contact-us` |
 | Legal & Privacy Center | `/legal` (`#privacy-policy`, `#tos`, `#aup`, `#dpa`, `#cookie-policy`) |
 | Sub-processors | `/sub-processors` |
+| Report a security issue | `/security` (plus `/.well-known/security.txt`, which expires Nov 9, 2027: renew it before then) |
 
 - `vercel.json`: `cleanUrls: true`, `trailingSlash: false`. Old `.html` addresses redirect to the clean ones and keep their `#anchor`.
 - Redirects: `/pricing` and `/learn-more` go to `/`; `/Founder-Signup` goes to `/#apply`. `pricing.html` is deleted.
