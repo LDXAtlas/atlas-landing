@@ -499,8 +499,6 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
 .sec-lead { font-size: 19px !important; color: var(--ink) !important; }
 .sec-mail { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; padding: 12px 20px; border-radius: 999px; background: var(--mint); color: #12261C !important; text-decoration: none !important; font: 600 16px var(--font-display); min-height: 44px; overflow-wrap: anywhere; }
 .sec-mail:hover { filter: brightness(.96); }
-.sec-pending { border: 2px dashed #F59E0B; background: #FFFBEB; }
-.sec-pending p { color: #92400E; }
 </style>
 </head>
 <body>
@@ -561,7 +559,7 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
     <div class="page-content content-section">
 
       <div class="sec-card" data-reveal>
-        <p class="sec-lead">If you think you've found a security problem in Atlas or on this website, please tell us. Churches trust us with their staff and member information, and reports like yours help us keep it safe.</p>
+        <p class="sec-lead">If you think you've found a security problem in Atlas or on this website, please tell us. Churches trust us with their staff and member information, so we want to hear about it.</p>
         <p>Email us, and we'll reply within 3 business days.</p>
         <a class="sec-mail" href="mailto:security@atlaschurchsolutions.com">security@atlaschurchsolutions.com</a>
       </div>
@@ -581,19 +579,19 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
         <h2>What we'll do</h2>
         <ul>
           <li>Reply within 3 business days to confirm we have your report.</li>
-          <li>Look into it and tell you what we find.</li>
-          <li>Let you know when it's fixed.</li>
+          <li>Investigate, and tell you what we found about your report and when it's fixed.</li>
         </ul>
       </div>
 
       <div class="sec-card" data-reveal>
         <h2>Please</h2>
         <ul>
-          <li><strong>Only test with your own account and your own church.</strong> Never access, change or delete another church's data, and don't try to.</li>
-          <li>If you come across data that isn't yours, stop. Don't keep it or share it, and tell us what you saw.</li>
-          <li>Don't run tests that could slow Atlas down or take it offline for churches, and don't send spam.</li>
-          <li>Don't trick or pressure our team or our churches into giving you access.</li>
-          <li>Give us a reasonable chance to fix the problem before you tell anyone else about it.</li>
+          <li><strong>Test only with your own account and your own church,</strong> using test data rather than real people's information. Never access, change or delete another church's data.</li>
+          <li>If you come across data that isn't yours, stop. Don't keep, copy or share it, delete anything you saved, and tell us right away.</li>
+          <li>Access only as much as you need to show the problem. Don't use what you find to reach further into Atlas or to keep access.</li>
+          <li>No load testing, denial-of-service or high-volume automated scanning, and no spam.</li>
+          <li>Don't trick or pressure our team or any church into giving you access.</li>
+          <li>Keep the details private until we've fixed the problem, or for 90 days after your report, whichever comes first. If a fix needs longer, we'll tell you why and agree a new date with you.</li>
         </ul>
       </div>
 
@@ -602,10 +600,12 @@ footer { padding-block: 40px 56px; border-top: 1px solid var(--border); display:
         <p>We don't run a bug bounty and don't pay for reports. We're a small team, and we're grateful for every good-faith report.</p>
       </div>
 
-      <!-- LEGAL-PENDING: replace this card with the safe-harbor wording from ⚖️LEGAL - TOS & PRIVACY POLICY before merging. -->
-      <div class="sec-card sec-pending" data-reveal>
+      <!-- Safe-harbor wording from ⚖️LEGAL - TOS & PRIVACY POLICY, Nov 9, 2026. Paste changes from Legal as written. -->
+      <div class="sec-card" id="safe-harbor" data-reveal>
         <h2>Safe harbor</h2>
-        <p>[Safe-harbor wording from Legal goes here. Do not merge until it's replaced.]</p>
+        <p>If you make a good-faith effort to follow this policy, we'll treat your research as authorized. We won't take legal action against you or report you to law enforcement because of it, and we won't treat it as a breach of our Terms of Service or Acceptable Use Policy. If you come across data that isn't yours by accident, and you stop and tell us right away, you're still covered.</p>
+        <p>This covers only Atlas Church Solutions and the systems we run: the Atlas app and this website. It doesn't cover the companies whose services Atlas uses, such as Supabase, Vercel, Stripe, OpenAI, Anthropic, Resend and HubSpot. We can't give permission to test their systems, and we can't promise how they, a church or anyone else will respond. It also doesn't cover anyone who breaks the rules on this page, deliberately accesses, keeps or shares another church's data, or sets out to cause harm. Nothing here overrides the law, and if the law requires us to report something, we will.</p>
+        <p>If your report shows that a church's data was exposed, we may have to tell that church. We won't share your name without your permission unless the law requires it. We may update this policy; the version in place when you did your research is the one that applies. Not sure whether something is allowed? Ask us at <a href="mailto:security@atlaschurchsolutions.com">security@atlaschurchsolutions.com</a> before you test.</p>
       </div>
 
       <div class="sec-card" data-reveal>
