@@ -19,7 +19,42 @@
     },
     {
       "source": "/table",
-      "destination": "/network/table",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/network",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/network/table",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/network/table/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/network/gathering",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/network/gathering.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/network/index",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/network/index.html",
+      "destination": "/",
       "permanent": false
     }
   ],

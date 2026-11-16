@@ -42,7 +42,7 @@ All changes are phone-only: CSS inside `max-width` media queries, nothing remove
 - Lucas is Founder & CEO; Ben is Co-founder & CTO; Josiah is Co-founder & CMO.
 - The AI Brief button was edited out of the project-board screenshot.
 - **Log in is a placeholder (Oct 31):** the nav, phone menu and footer show "Log in · Soon" as plain text, not a link, so visitors don't think the app is open. app.atlaschurchsolutions.com still works if typed in. To restore, change the three `<span class="… soon">` elements on each page back to links to `https://app.atlaschurchsolutions.com/login`.
-- **Atlas Network (`/network`, `/network/table`, `/table`)** is live. It isn't in the top nav, but the footer of every main page links to `/network` (Oct 31). Network pages stay noindex, so they don't appear in Google. The Atlas logo on Network pages goes to the homepage.
+- **Atlas Network: postponed (Nov 16, 2026).** The footer link is removed, and `/network`, `/network/table`, `/network/table/<date>` and `/table` redirect to the homepage (temporary redirects in `vercel.json`). The files stay in `network/`, and the images under `/network/` and `/network/email/` are still served so invites already sent don't break. **To bring it back:** delete those redirects (restore `/table` → `/network/table`) and add the footer link again.
 
 ## Ideas discussed, not built
 - **Glass forms:** frosted form panels with a soft color wash behind them, lighter fields, pill choices instead of dropdowns for staff size and contact reason (same values, so HubSpot is unchanged), and a cleaner contact header. The prompt is in the landing chat of Oct 16; the `form-glass` branch was created but has no changes.
